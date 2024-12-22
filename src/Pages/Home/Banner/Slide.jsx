@@ -24,7 +24,7 @@ const Slide = ({ data }) => {
               .getElementById('marathons')
               ?.scrollIntoView({ behavior: 'smooth' })
           }
-          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-full font-medium"
+          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-lg font-medium"
         >
           {cta_text}
         </button>

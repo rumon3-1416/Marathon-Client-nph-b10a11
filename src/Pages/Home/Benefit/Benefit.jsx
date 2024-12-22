@@ -1,8 +1,8 @@
 import React from 'react';
-import MainLayout from '../../Layouts/MainLayout';
-import { useAuthContext } from '../../Hooks/useAuthContext';
-import trainIcon from '../../assets/icons/training.png';
-import facilitiesIcon from '../../assets/icons/facilities.png';
+import MainLayout from '../../../Layouts/MainLayout';
+import { useAuthContext } from '../../../Hooks/useAuthContext';
+import trainIcon from '../../../assets/icons/training.png';
+import facilitiesIcon from '../../../assets/icons/facilities.png';
 
 const Benefit = () => {
   const { darkTheme } = useAuthContext;
