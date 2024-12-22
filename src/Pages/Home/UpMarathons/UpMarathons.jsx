@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from '../../../Layouts/MainLayout';
 import axios from 'axios';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
-import MarathonCard from './MarathonCard';
+import UpMaraCard from './UpMaraCard';
 
-const Marathons = () => {
-  const [marathons, setMarathons] = useState([]);
+const UpMarathons = () => {
+  const [upMarathons, setUpMarathons] = useState([]);
 
   const { serverUrl } = useAuthContext();
 
-  useState(() => {
+  useEffect(() => {
     axios
-      .get(`${serverUrl}/marathons?limit=6`)
-      .then(res => res.data && setMarathons(res.data));
+      .get(`${serverUrl}/up_marathons`)
+      .then(res => res.data && setUpMarathons(res.data));
   }, [serverUrl]);
 
   return (
-    <div className="bg-greenBg pt-16 pb-8">
+    <div className="bg-goldBg pt-16 pb-8">
       <MainLayout>
         <section id="marathons">
           <h2 className="text-3xl font-bold text-gray-800 mb-10">
-            Our Marathons
+            Upcoming Marathons
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {marathons.map(marathon => (
-              <MarathonCard key={marathon._id} marathon={marathon} />
+            {upMarathons.map(marathon => (
+              <UpMaraCard key={marathon._id} marathon={marathon} />
             ))}
           </div>
         </section>
@@ -34,4 +34,4 @@ const Marathons = () => {
   );
 };
 
-export default Marathons;
+export default UpMarathons;

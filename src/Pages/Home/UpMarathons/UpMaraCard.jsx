@@ -1,10 +1,22 @@
 import React from 'react';
 
-const UpMaraCard = () => {
+import clockIcon from '../../../assets/icons/clock.png';
+import gpsIcon from '../../../assets/icons/location.png';
+
+const UpMaraCard = ({ marathon }) => {
+  const {
+    marathon_title: title,
+    marathon_image: image,
+    description,
+    running_distance: distance,
+    end_registration_date: date,
+    location,
+  } = marathon;
+
   return (
     <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start">
       <img
-        className="w-full aspect-[4/3] object-cover rounded-2xl"
+        className="w-full aspect-[4/3] object-cover rounded-2xl mb-4"
         src={image}
         alt={title}
       />
@@ -23,19 +35,13 @@ const UpMaraCard = () => {
             </div>
           </div>
 
-          <h4 className="text-xl font-semibold mt-3">{title}</h4>
-
-          <p className="text-gray-600 mt-2 mb-4">
-            {description?.slice(0, 60)}...
+          <h4 className="text-xl font-semibold mt-3 mb-1">{title}</h4>
+          <p className="font-medium">
+            Distance :{' '}
+            <span className="text-dark-green font-semibold">{distance}</span>
           </p>
+          <p className="text-gray-600 text-justify mt-3">{description}</p>
         </div>
-
-        <button
-          // onClick={handleDonate}
-          className="bg-green text-white hover:bg-gold font-medium px-6 py-2.5 rounded-lg"
-        >
-          See Details
-        </button>
       </div>
     </div>
   );
