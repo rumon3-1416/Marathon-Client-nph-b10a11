@@ -41,7 +41,7 @@ const Navbar = () => {
       >
         <MainLayout>
           <nav
-            className={`py-6 flex justify-between items-center gap-2 relative`}
+            className={`h-24 py-6 flex justify-between items-center gap-2 relative`}
           >
             <h2
               onClick={() => navigate('/')}

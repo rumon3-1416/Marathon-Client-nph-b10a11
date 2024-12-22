@@ -11,6 +11,7 @@ export default {
         'light-green': '#D4EDDA',
         'dark-green': '#155724',
         gold: '#FFC107',
+        goldBg: '#FFC1070e',
         gold2: '#f1be24',
         gray: '#6C757D',
         blue: '#17A2B8',
