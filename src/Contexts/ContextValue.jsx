@@ -11,6 +11,7 @@ import auth from '../firebase/firebase.config';
 import { useEffect, useState } from 'react';
 
 const googleProvider = new GoogleAuthProvider();
+const serverUrl = 'http://localhost:5000';
 
 export const ContextValue = () => {
   const [loading, setLoading] = useState(true);
@@ -56,6 +57,7 @@ export const ContextValue = () => {
     loading,
     darkTheme,
     setDarkTheme,
+    serverUrl,
     user,
     signUpUser,
     googleSignIn,
