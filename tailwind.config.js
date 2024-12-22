@@ -5,15 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        teal: '#5DADAA',
-        teal2: '#C7E5E3',
-        teal3: '#D3EBEA',
-        tealBg: '#5DADAA0e',
-        tealTrans: '#5DADAAe2',
-        coral: '#FF7468',
-        coral2: '#ff7c70',
-        coral3: '#ff8d83',
-        coralBg: '#FF74680e',
+        greenBg: '#28A7450e',
+        greenTrans: '#28A745e2',
         green: '#28A745',
         'light-green': '#D4EDDA',
         'dark-green': '#155724',

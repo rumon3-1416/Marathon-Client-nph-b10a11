@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 
 const googleProvider = new GoogleAuthProvider();
 
-const ContextValue = () => {
+export const ContextValue = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
@@ -45,7 +45,7 @@ const ContextValue = () => {
   // On Auth Changed
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      currentUser ? setUser(currentUser) : setUser(null);
+      setUser(currentUser || null);
       setLoading(false);
     });
 
@@ -64,5 +64,3 @@ const ContextValue = () => {
     signOutUser,
   };
 };
-
-export default ContextValue;

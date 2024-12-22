@@ -10,6 +10,7 @@ function App() {
     <AuthProvider>
       <ScrollRestoration />
       <Navbar />
+      <div className="h-24"></div>
 
       <Outlet />
     </AuthProvider>

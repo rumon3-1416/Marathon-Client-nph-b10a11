@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import useAuthContext from '../../Hooks/useAuthContext';
+import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
 import lightIcon from '../../assets/icons/light.png';
 import darkIcon from '../../assets/icons/dark.png';
@@ -23,6 +23,10 @@ const Navbar = () => {
 
   const handleTheme = () => {
     document.body.style.backgroundColor = darkTheme ? '#f7f7f7' : '#303030';
+    window.document.documentElement.classList.remove(
+      'bg-[#f7f7f7]',
+      'bg-dark3'
+    );
     window.document.documentElement.classList.add(
       darkTheme ? 'bg-[#f7f7f7]' : 'bg-dark3'
     );
@@ -33,7 +37,7 @@ const Navbar = () => {
     <div className="w-full fixed top-0 inset-x-0 z-10">
       <div
         className={`w-full backdrop-blur-md ${
-          darkTheme ? 'bg-dark5Trans' : 'bg-[#f0fffeb7]'
+          darkTheme ? 'bg-dark5Trans' : 'bg-greenBg'
         }`}
       >
         <MainLayout>
@@ -46,58 +50,12 @@ const Navbar = () => {
                 darkTheme ? 'text-white' : 'text-black'
               } text-xl font-bold cursor-pointer`}
             >
-              CrowdCube
+              RunSphere
             </h2>
-
-            <ul
-              className={`text-white bg-tealTrans md:bg-transparent backdrop-blur-md md:backdrop-blur-none md:text-sm lg:text-base font-medium py-8 md:py-0 rounded-xl overflow-hidden md:flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4 xl:gap-8 absolute md:static inset-x-0 top-24 md:top-0 z-20 ${
-                showNav ? 'flex' : 'hidden'
-              }
-            ${darkTheme ? 'md:text-lightTrans' : 'md:text-[#32443f]'}`}
-            >
-              <li
-                onClick={() => setShowNav(false)}
-                className="hover:text-coral2"
-              >
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li
-                onClick={() => setShowNav(false)}
-                className="hover:text-coral2"
-              >
-                <NavLink to="/all_campaigns">Campaigns</NavLink>
-              </li>
-              <li
-                onClick={() => setShowNav(false)}
-                className="hover:text-coral2 text-nowrap"
-              >
-                <NavLink to="/add_campaign">Add Campaign</NavLink>
-              </li>
-              <li
-                onClick={() => setShowNav(false)}
-                className="hover:text-coral2 text-nowrap"
-              >
-                <NavLink to="/my_campaigns">My Campaign</NavLink>
-              </li>
-              <li
-                onClick={() => setShowNav(false)}
-                className="hover:text-coral2 text-nowrap"
-              >
-                <NavLink to="/my_donations">My Donation</NavLink>
-              </li>
-              {!user && (
-                <li
-                  onClick={() => setShowNav(false)}
-                  className="hover:text-coral2 text-nowrap md:hidden"
-                >
-                  <NavLink to="/signup">Register</NavLink>
-                </li>
-              )}
-            </ul>
 
             <div className="flex items-center gap-2 lg:gap-3 relative">
               {/* Theme Button */}
-              <button
+              {/* <button
                 onClick={handleTheme}
                 className="bg-transparent w-12 h-12 p-2.5 rounded-full outline-none"
               >
@@ -106,7 +64,7 @@ const Navbar = () => {
                   src={darkTheme ? lightIcon : darkIcon}
                   alt=""
                 />
-              </button>
+              </button> */}
 
               {user ? (
                 <>
@@ -149,7 +107,7 @@ const Navbar = () => {
               ) : (
                 <>
                   {/* User */}
-                  <button
+                  {/* <button
                     onClick={() => navigate('/signin')}
                     className={`${
                       darkTheme ? 'bg-dark3' : 'bg-light2'
@@ -160,13 +118,13 @@ const Navbar = () => {
                       src={userIcon}
                       alt="profile"
                     />
-                  </button>
+                  </button> */}
 
-                  <div className="hidden lg:flex items-center">
+                  <div className="hidden md:flex items-center">
                     {/* Login */}
                     <button
                       onClick={() => navigate('/signin')}
-                      className="text-teal hover:text-coral2 text-lg font-medium ps-5 xl:ps-9 pe-1.5 xl:pe-5 py-2 border-2 border-teal hover:border-coral3 rounded-s-full"
+                      className="text-green hover:text-gold text-lg font-medium ps-5 xl:ps-9 pe-1.5 xl:pe-5 py-2 border-2 border-teal hover:border-coral3 rounded-s-full"
                     >
                       Login
                     </button>
