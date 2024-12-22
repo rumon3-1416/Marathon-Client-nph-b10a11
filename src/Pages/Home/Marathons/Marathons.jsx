@@ -7,7 +7,7 @@ import MarathonCard from './MarathonCard';
 const Marathons = () => {
   const [marathons, setMarathons] = useState([]);
 
-  const { serverUrl } = useAuthContext();
+  const { serverUrl, darkTheme } = useAuthContext();
 
   useState(() => {
     axios
@@ -19,9 +19,21 @@ const Marathons = () => {
     <div className="bg-greenBg pt-16 pb-8">
       <MainLayout>
         <section id="marathons">
-          <h2 className="text-3xl font-bold text-gray-800 mb-10">
+          <h1
+            className={`text-4xl leading-[44px] font-semibold mb-4 ${
+              darkTheme ? 'text-light2' : 'text-dark'
+            }`}
+          >
             Our Marathons
-          </h2>
+          </h1>
+          <p
+            className={`text-lg max-w-[480px] mb-10 ${
+              darkTheme ? 'text-gray-200' : 'text-[#32443f]'
+            }`}
+          >
+            Elevate Your Runs with the Ultimate Community and be a member of
+            Runs Sphere.
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {marathons.map(marathon => (
