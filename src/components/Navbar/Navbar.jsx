@@ -3,17 +3,16 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
-import lightIcon from '../../assets/icons/light.png';
-import darkIcon from '../../assets/icons/dark.png';
+// import lightIcon from '../../assets/icons/light.png';
+// import darkIcon from '../../assets/icons/dark.png';
 import userIcon from '../../assets/icons/user.png';
 import menuIcon from '../../assets/icons/menu.png';
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
 
-  const { user, darkTheme, setDarkTheme } = useAuthContext();
+  const { user, darkTheme } = useAuthContext();
   const navigate = useNavigate();
 
   const img = new Image();
@@ -21,17 +20,17 @@ const Navbar = () => {
   img.onload = () => setIsValidUrl(true);
   img.onerror = () => setIsValidUrl(false);
 
-  const handleTheme = () => {
-    document.body.style.backgroundColor = darkTheme ? '#f7f7f7' : '#303030';
-    window.document.documentElement.classList.remove(
-      'bg-[#f7f7f7]',
-      'bg-dark3'
-    );
-    window.document.documentElement.classList.add(
-      darkTheme ? 'bg-[#f7f7f7]' : 'bg-dark3'
-    );
-    setDarkTheme(!darkTheme);
-  };
+  // const handleTheme = () => {
+  //   document.body.style.backgroundColor = darkTheme ? '#f7f7f7' : '#303030';
+  //   window.document.documentElement.classList.remove(
+  //     'bg-[#f7f7f7]',
+  //     'bg-dark3'
+  //   );
+  //   window.document.documentElement.classList.add(
+  //     darkTheme ? 'bg-[#f7f7f7]' : 'bg-dark3'
+  //   );
+  //   setDarkTheme(!darkTheme);
+  // };
 
   return (
     <div className="w-full fixed top-0 inset-x-0 z-10">
@@ -53,99 +52,76 @@ const Navbar = () => {
               RunSphere
             </h2>
 
-            <div className="flex items-center gap-2 lg:gap-3 relative">
-              {/* Theme Button */}
-              {/* <button
-                onClick={handleTheme}
-                className="bg-transparent w-12 h-12 p-2.5 rounded-full outline-none"
+            <div className="flex items-center gap-6">
+              <ul
+                className={`text-white bg-greenTrans md:bg-transparent backdrop-blur-md md:backdrop-blur-none md:text-sm lg:text-base font-medium py-8 md:py-0 rounded-xl overflow-hidden md:flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4 xl:gap-8 absolute md:static inset-x-0 top-24 md:top-0 z-20 ${
+                  showNav ? 'flex' : 'hidden'
+                }
+            ${darkTheme ? 'md:text-lightTrans' : 'md:text-[#32443f]'}`}
               >
-                <img
-                  className="w-full h-full object-cover rounded-full"
-                  src={darkTheme ? lightIcon : darkIcon}
-                  alt=""
-                />
-              </button> */}
+                <li className="hover:text-gold">
+                  <NavLink to="/all_marathons">Marathons</NavLink>
+                </li>
+                {user ? (
+                  <>
+                    <li className="hover:text-gold">
+                      <NavLink to="/dashboard">Dashboard</NavLink>
+                    </li>
+                    <li className="hover:text-gold">Logout</li>
+                  </>
+                ) : (
+                  <>
+                    <li className="hover:text-gold">
+                      <NavLink to="/dashboard">Login</NavLink>
+                    </li>
+                    <li className="hover:text-gold">
+                      <NavLink to="/dashboard">Register</NavLink>
+                    </li>
+                  </>
+                )}
+              </ul>
 
-              {user ? (
-                <>
-                  <button
-                    onMouseOver={() => setShowProfile(true)}
-                    onMouseOut={() => setShowProfile(false)}
-                    className="bg-transparent w-12 h-12 p-0.5 border-2 border-teal rounded-full"
-                  >
-                    <img
-                      className="w-full h-full object-cover rounded-full"
-                      src={isValidUrl ? user.photoURL : userIcon}
-                      alt=""
-                    />
-                  </button>
-
-                  {/* Profile Info */}
-                  <div
-                    onMouseOver={() => setShowProfile(true)}
-                    onMouseOut={() => setShowProfile(false)}
-                    className={`p-2 top-10 right-2 absolute ${
-                      showProfile ? 'block' : 'hidden'
-                    }`}
-                  >
-                    <div
-                      className={`text-center p-4 pb-5 rounded-lg shadow-md shadow-[#7b7b7b] ${
-                        darkTheme
-                          ? 'bg-dark4 text-light2'
-                          : 'bg-light2 text-dark'
-                      }`}
-                    >
-                      <h2 className="font-semibold text-nowrap">
-                        {user.displayName}
-                      </h2>
-                      <button className="text-teal hover:text-coral2 font-medium text-nowrap px-3 py-1 mt-3 border-2 border-teal hover:border-coral2 rounded-full">
-                        Log Out
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* User */}
-                  {/* <button
-                    onClick={() => navigate('/signin')}
-                    className={`${
-                      darkTheme ? 'bg-dark3' : 'bg-light2'
-                    } w-12 h-12 p-0.5 border-2 border-teal rounded-full lg:hidden`}
-                  >
-                    <img
-                      className="w-full h-full object-cover rounded-full"
-                      src={userIcon}
-                      alt="profile"
-                    />
-                  </button> */}
-
-                  <div className="hidden md:flex items-center">
+              <div className="flex items-center gap-3">
+                {user ? (
+                  <>
+                    <button className="bg-transparent w-12 h-12 p-0.5 border-2 border-green rounded-full">
+                      <img
+                        className="w-full h-full object-cover rounded-full"
+                        src={isValidUrl ? user.photoURL : userIcon}
+                        alt=""
+                      />
+                    </button>
+                    <button className="text-green hover:text-gold text-lg font-medium px-4 sm:px-6 py-2 border-2 border-green hover:border-gold rounded-lg hidden sm:block">
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <div className="hidden sm:flex items-center">
                     {/* Login */}
                     <button
                       onClick={() => navigate('/signin')}
-                      className="text-green hover:text-gold text-lg font-medium ps-5 xl:ps-9 pe-1.5 xl:pe-5 py-2 border-2 border-teal hover:border-coral3 rounded-s-full"
+                      className="text-green hover:text-gold text-sm sm:text-lg font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-2 border-2 border-green hover:border-gold rounded-s-lg"
                     >
                       Login
                     </button>
                     {/* Register */}
                     <button
                       onClick={() => navigate('/signup')}
-                      className="bg-teal text-white hover:bg-coral2 text-lg font-medium ps-1.5 xl:ps-5 pe-5 xl:pe-9 py-2  border-2 border-teal hover:border-coral3 rounded-e-full"
+                      className="bg-green text-white hover:bg-gold text-sm sm:text-lg font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold rounded-e-lg"
                     >
                       Register
                     </button>
                   </div>
-                </>
-              )}
+                )}
 
-              {/* Menubar */}
-              <button
-                onClick={() => setShowNav(!showNav)}
-                className="p-2.5 border-2 border-teal rounded-full md:hidden"
-              >
-                <img className="w-6" src={menuIcon} alt="menu" />
-              </button>
+                {/* Menubar */}
+                <button
+                  onClick={() => setShowNav(!showNav)}
+                  className="p-2.5 border-2 border-green rounded-full sm:hidden"
+                >
+                  <img className="w-6" src={menuIcon} alt="menu" />
+                </button>
+              </div>
             </div>
           </nav>
         </MainLayout>
