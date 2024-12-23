@@ -36,7 +36,7 @@ const Navbar = () => {
     <div className="w-full fixed top-0 inset-x-0 z-10">
       <div
         className={`w-full backdrop-blur-md ${
-          darkTheme ? 'bg-dark5Trans' : 'bg-greenBg'
+          darkTheme ? 'bg-dark5Trans' : 'bg-[#28a74618]'
         }`}
       >
         <MainLayout>
@@ -71,10 +71,10 @@ const Navbar = () => {
                   </>
                 ) : (
                   <>
-                    <li className="hover:text-gold">
+                    <li className="hover:text-gold sm:hidden">
                       <NavLink to="/dashboard">Login</NavLink>
                     </li>
-                    <li className="hover:text-gold">
+                    <li className="hover:text-gold sm:hidden">
                       <NavLink to="/dashboard">Register</NavLink>
                     </li>
                   </>
