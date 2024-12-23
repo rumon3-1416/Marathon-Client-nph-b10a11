@@ -24,7 +24,7 @@ export const ContextValue = () => {
     return createUserWithEmailAndPassword(auth, email, pass);
   };
   // Sign In User
-  const signInUser = (email, pass) => {
+  const emailPassSignIn = (email, pass) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
   };
@@ -61,7 +61,7 @@ export const ContextValue = () => {
     user,
     signUpUser,
     googleSignIn,
-    signInUser,
+    emailPassSignIn,
     updateUser,
     signOutUser,
   };

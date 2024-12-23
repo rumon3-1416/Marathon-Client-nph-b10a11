@@ -12,7 +12,7 @@ const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   const [isValidUrl, setIsValidUrl] = useState(false);
 
-  const { user, darkTheme } = useAuthContext();
+  const { user, darkTheme, signOutUser } = useAuthContext();
   const navigate = useNavigate();
 
   const img = new Image();
@@ -67,7 +67,12 @@ const Navbar = () => {
                     <li className="hover:text-gold">
                       <NavLink to="/dashboard">Dashboard</NavLink>
                     </li>
-                    <li className="hover:text-gold">Logout</li>
+                    <li
+                      onClick={() => signOutUser()}
+                      className="hover:text-gold cursor-pointer sm:hidden"
+                    >
+                      Logout
+                    </li>
                   </>
                 ) : (
                   <>
@@ -91,7 +96,10 @@ const Navbar = () => {
                         alt=""
                       />
                     </button>
-                    <button className="text-green hover:text-gold text-lg font-medium px-4 sm:px-6 py-2 border-2 border-green hover:border-gold rounded-lg hidden sm:block">
+                    <button
+                      onClick={() => signOutUser()}
+                      className="text-green hover:text-gold text-lg font-medium px-4 sm:px-6 py-2 border-2 border-green hover:border-gold rounded-lg hidden sm:block"
+                    >
                       Logout
                     </button>
                   </>
@@ -107,7 +115,7 @@ const Navbar = () => {
                     {/* Register */}
                     <button
                       onClick={() => navigate('/signup')}
-                      className="bg-green text-white hover:bg-gold text-sm sm:text-lg font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold rounded-e-lg"
+                      className="bg-green text-white hover:bg-gold2 text-sm sm:text-lg font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold rounded-e-lg"
                     >
                       Register
                     </button>

@@ -3,7 +3,7 @@ import MainLayout from '../../../Layouts/MainLayout';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 
 const QuesAns = () => {
-  const [currTitle, setCurrTitle] = useState(1);
+  const [currTitle, setCurrTitle] = useState(0);
   const { darkTheme } = useAuthContext();
 
   return (
@@ -38,7 +38,7 @@ const QuesAns = () => {
                 currTitle !== 1 ? 'bg-greenBg' : ''
               }`}
             >
-              <input type="radio" name="my-accordion-2" defaultChecked />
+              <input type="radio" name="my-accordion-2" />
               <div
                 className={`collapse-title ${
                   currTitle === 1 && 'text-dark-green'
@@ -68,14 +68,14 @@ const QuesAns = () => {
                   currTitle === 2 && 'text-dark-green'
                 } text-xl font-medium`}
               >
-                <p>Can I edit my registration details after signing up?</p>
+                <p>Can I update my marathon details?</p>
               </div>
               <div className="collapse-content">
                 <p>
-                  Yes, you can edit your registration details by logging into
-                  your account, navigating to your dashboard, and selecting the
-                  Edit Registration option for the respective marathon. Please
-                  note that changes may not be allowed after the registration
+                  Yes, you can update your marathon details by logging into your
+                  account, navigating to your dashboard, and selecting the Edit
+                  Registration option for the respective marathon. Please note
+                  that changes may not be allowed after the registration
                   deadline.
                 </p>
               </div>

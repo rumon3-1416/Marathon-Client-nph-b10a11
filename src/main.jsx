@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 
 import router from './Routes/router';
 import './styles/index.css';
+import 'animate.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -37,7 +37,7 @@ const MarathonCard = ({ marathon }) => {
 
         <button
           // onClick={handleDonate}
-          className="bg-green text-white hover:bg-gold font-medium px-6 py-2.5 rounded-lg"
+          className="bg-green text-white hover:bg-gold2 font-medium px-6 py-2.5 rounded-lg"
         >
           See Details
         </button>
