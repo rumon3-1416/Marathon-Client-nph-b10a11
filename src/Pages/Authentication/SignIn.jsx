@@ -42,7 +42,7 @@ const SignIn = () => {
   };
 
   // Popup Log In Handler
-  const handlePopup = pop => {
+  const handlePopup = () => {
     googleSignIn()
       .then(() => {
         setErrMessage(null);

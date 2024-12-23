@@ -19,7 +19,7 @@ export const ContextValue = () => {
   const [darkTheme, setDarkTheme] = useState(false);
 
   // Create User
-  const signUpUser = (email, pass) => {
+  const emailPassSignUp = (email, pass) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, pass);
   };
@@ -34,9 +34,9 @@ export const ContextValue = () => {
     return signInWithPopup(auth, googleProvider);
   };
   // Update user
-  const updateUser = obj => {
+  const updateUserProfile = (user = auth.currentUser, obj) => {
     setLoading(true);
-    return updateProfile(auth, obj);
+    return updateProfile(user, obj);
   };
   // Sign Out
   const signOutUser = () => {
@@ -59,10 +59,10 @@ export const ContextValue = () => {
     setDarkTheme,
     serverUrl,
     user,
-    signUpUser,
+    emailPassSignUp,
     googleSignIn,
     emailPassSignIn,
-    updateUser,
+    updateUserProfile,
     signOutUser,
   };
 };
