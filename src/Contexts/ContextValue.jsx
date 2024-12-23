@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 import { useEffect, useState } from 'react';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const googleProvider = new GoogleAuthProvider();
 const serverUrl = 'http://localhost:5000';
@@ -17,6 +18,8 @@ export const ContextValue = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
+
+  const axiosSecure = useAxiosSecure();
 
   // Create User
   const emailPassSignUp = (email, pass) => {
@@ -47,11 +50,16 @@ export const ContextValue = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser || null);
+
+      axiosSecure
+        .post('/jwt', { user_email: currentUser.email })
+        .then(res => console.log(res.data));
+
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [axiosSecure]);
 
   return {
     loading,
