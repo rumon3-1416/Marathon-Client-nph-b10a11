@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -8,7 +9,6 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
-import { useEffect, useState } from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const googleProvider = new GoogleAuthProvider();
@@ -51,11 +51,15 @@ export const ContextValue = () => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser || null);
 
-      axiosSecure
-        .post('/jwt', { user_email: currentUser.email })
-        .then(res => console.log(res.data));
+      if (currentUser) {
+        axiosSecure.post('/jwt', { user_email: currentUser.email });
 
-      setLoading(false);
+        setLoading(false);
+      } else {
+        axiosSecure.post('/logout');
+
+        setLoading(false);
+      }
     });
 
     return () => unsubscribe();

@@ -6,6 +6,8 @@ import Home from '../Pages/Home/Home';
 import AllMarathons from '../Pages/AllMarathons/AllMarathons';
 import SignIn from '../Pages/Authentication/SignIn';
 import SignUp from '../Pages/Authentication/SignUp';
+import PrivateNavigator from './PrivateNavigator';
+import Dashboard from '../Pages/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -22,12 +24,20 @@ const router = createBrowserRouter([
         element: <AllMarathons />,
       },
       {
-        path: 'signin',
+        path: '/signin',
         element: <SignIn />,
       },
       {
-        path: 'signup',
+        path: '/signup',
         element: <SignUp />,
+      },
+      {
+        path: '/dashboard',
+        element: (
+          <PrivateNavigator>
+            <Dashboard />
+          </PrivateNavigator>
+        ),
       },
     ],
   },
