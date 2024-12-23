@@ -53,16 +53,25 @@ const Navbar = () => {
                 }
             ${darkTheme ? 'sm:text-lightTrans' : 'sm:text-[#32443f]'}`}
               >
-                <li className="hover:text-gold">
+                <li
+                  onClick={() => setShowNav(false)}
+                  className="hover:text-gold"
+                >
                   <NavLink to="/all_marathons">Marathons</NavLink>
                 </li>
                 {user ? (
                   <>
-                    <li className="hover:text-gold">
+                    <li
+                      onClick={() => setShowNav(false)}
+                      className="hover:text-gold"
+                    >
                       <NavLink to="/dashboard">Dashboard</NavLink>
                     </li>
                     <li
-                      onClick={() => signOutUser()}
+                      onClick={() => {
+                        signOutUser();
+                        setShowNav(false);
+                      }}
                       className="hover:text-gold cursor-pointer sm:hidden"
                     >
                       Logout
@@ -70,10 +79,16 @@ const Navbar = () => {
                   </>
                 ) : (
                   <>
-                    <li className="hover:text-gold sm:hidden">
+                    <li
+                      onClick={() => setShowNav(false)}
+                      className="hover:text-gold sm:hidden"
+                    >
                       <NavLink to="/dashboard">Login</NavLink>
                     </li>
-                    <li className="hover:text-gold sm:hidden">
+                    <li
+                      onClick={() => setShowNav(false)}
+                      className="hover:text-gold sm:hidden"
+                    >
                       <NavLink to="/dashboard">Register</NavLink>
                     </li>
                   </>

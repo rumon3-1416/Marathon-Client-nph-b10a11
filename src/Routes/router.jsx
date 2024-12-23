@@ -8,6 +8,9 @@ import SignIn from '../Pages/Authentication/SignIn';
 import SignUp from '../Pages/Authentication/SignUp';
 import PrivateNavigator from './PrivateNavigator';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import AddMarathon from '../Pages/Dashboard/Pages/AddMarathon/AddMarathon';
+import MyMarathons from '../Pages/Dashboard/Pages/MyMarathons/MyMarathons';
+import MyApply from '../Pages/Dashboard/Pages/MyApply/MyApply';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,20 @@ const router = createBrowserRouter([
             <Dashboard />
           </PrivateNavigator>
         ),
+        children: [
+          {
+            index: true,
+            element: <AddMarathon />,
+          },
+          {
+            path: 'my_marathons',
+            element: <MyMarathons />,
+          },
+          {
+            path: 'my_apply',
+            element: <MyApply />,
+          },
+        ],
       },
     ],
   },
