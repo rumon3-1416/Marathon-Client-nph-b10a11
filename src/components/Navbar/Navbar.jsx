@@ -27,7 +27,7 @@ const Navbar = () => {
   // };
 
   return (
-    <div className="w-full fixed top-0 inset-x-0 z-10">
+    <div className="w-full fixed top-0 inset-x-0 z-20">
       <div
         className={`w-full backdrop-blur-lg ${
           darkTheme ? 'bg-dark5Trans' : 'bg-[#28a74628]'
@@ -48,7 +48,7 @@ const Navbar = () => {
 
             <div className="flex items-center gap-6">
               <ul
-                className={`text-white bg-greenTrans sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none sm:text-sm lg:text-base font-medium py-8 sm:py-0 rounded-xl overflow-hidden sm:flex flex-col sm:flex-row items-center gap-4 sm:gap-2 lg:gap-4 xl:gap-8 absolute sm:static inset-x-0 top-24 sm:top-0 z-20 ${
+                className={`text-white bg-greenTrans sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none sm:text-sm lg:text-base font-medium py-8 sm:py-0 rounded-xl overflow-hidden sm:flex flex-col sm:flex-row items-center gap-4 sm:gap-2 lg:gap-4 xl:gap-8 absolute sm:static inset-x-0 top-24 sm:top-0 z-30 ${
                   showNav ? 'flex' : 'hidden'
                 }
             ${darkTheme ? 'sm:text-lightTrans' : 'sm:text-[#32443f]'}`}

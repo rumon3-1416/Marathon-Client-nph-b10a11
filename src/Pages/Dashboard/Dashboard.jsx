@@ -7,10 +7,10 @@ const Dashboard = () => {
   return (
     <div className="bg-greenBg pb-16">
       <MainLayout>
-        <div className="flex gap-8">
+        <div className="flex gap-20 sm:gap-8">
           <Sidebar />
 
-          <div className="border border-yellow-500">
+          <div className="pt-12 flex-grow">
             <Outlet />
           </div>
         </div>
