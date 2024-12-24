@@ -14,21 +14,22 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.innerWidth < 640 ? setCollapse(true) : setCollapse(false);
+    window.innerWidth < 768 ? setCollapse(true) : setCollapse(false);
   }, []);
-  window.addEventListener('resize', e => {
-    e.target.innerWidth < 640 ? setCollapse(true) : setCollapse(false);
-  });
 
   return (
     <div className="min-h-[13.5rem] max-h-[calc(100vh-96px)] sticky top-24 left-0 z-10">
       <div className="h-full relative">
         <div
           className={
-            'bg-[#28a74628] backdrop-blur-md w-max h-full absolute sm:static'
+            'bg-[#3db05828] backdrop-blur-md w-max h-full absolute md:static'
           }
         >
-          <div className="ps-3 pe-3.5 sm:ps-6 sm:pe-7 pt-20 pb-8 relative">
+          <div
+            className={`ps-3 md:ps-6 pt-20 pb-8 relative ${
+              collapse ? 'pe-3.5 md:pe-6' : 'pe-6 md:pe-8'
+            }`}
+          >
             {/* Sidebar Button */}
             <button
               onClick={() => setCollapse(!collapse)}

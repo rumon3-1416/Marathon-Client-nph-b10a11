@@ -46,7 +46,15 @@ const AddMarathon = () => {
 
     axiosSecure
       .post(`${serverUrl}/add_marathon`, { marathon: marathonInfo })
-      .then(res => console.log(res.data));
+      .then(
+        res =>
+          res.data.acknowledged &&
+          (setModal({ show: true, res: 'success', title: 'Marathon Added' }),
+          form.reset(),
+          setStartDate(new Date()),
+          setEndDate(new Date()),
+          setMarathonDate(new Date()))
+      );
   };
 
   return (
@@ -78,36 +86,66 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Start */}
-        <div className="mb-6 flex flex-col">
-          <p className={`font-semibold mb-2 ${labelColor}`}>
-            Registration Start
-          </p>
-          <DatePicker
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-            selected={startDate}
-            onChange={date => setStartDate(date)}
-          />
+        {/* Start & End */}
+        <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col">
+            <p className={`font-semibold mb-2 ${labelColor}`}>
+              Registration Start
+            </p>
+            <DatePicker
+              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              selected={startDate}
+              onChange={date => setStartDate(date)}
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <p className={`font-semibold mb-2 ${labelColor}`}>
+              Registration End
+            </p>
+            <DatePicker
+              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              selected={endDate}
+              onChange={date => setEndDate(date)}
+            />
+          </div>
         </div>
 
-        {/* Ends */}
-        <div className="mb-6 flex flex-col">
-          <p className={`font-semibold mb-2 ${labelColor}`}>Registration End</p>
-          <DatePicker
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-            selected={endDate}
-            onChange={date => setEndDate(date)}
-          />
-        </div>
+        {/* marathon Date & Distance */}
+        <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col">
+            <p className={`font-semibold mb-2 ${labelColor}`}>Marathon Start</p>
+            <DatePicker
+              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              selected={marathonDate}
+              onChange={date => setMarathonDate(date)}
+            />
+          </div>
 
-        {/* marathon Date */}
-        <div className="mb-6 flex flex-col">
-          <p className={`font-semibold mb-2 ${labelColor}`}>Marathon Start</p>
-          <DatePicker
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-            selected={marathonDate}
-            onChange={date => setMarathonDate(date)}
-          />
+          <div className="flex flex-col">
+            <label
+              htmlFor="distance"
+              className={`font-semibold mb-2 ${labelColor}`}
+            >
+              Running Distance
+            </label>
+            <select
+              className={`w-full px-4 py-3 rounded-lg outline-none  ${inputColor}`}
+              defaultValue=""
+              name="distance"
+              id="distance"
+              required
+            >
+              <option value="" disabled>
+                Select Distance
+              </option>
+              <option value="5km">5km</option>
+              <option value="10km">10km</option>
+              <option value="15km">15km</option>
+              <option value="20km">20km</option>
+              <option value="30km">30km</option>
+            </select>
+          </div>
         </div>
 
         {/* Location */}
@@ -126,32 +164,6 @@ const AddMarathon = () => {
             placeholder="Marathon Location"
             required
           />
-        </div>
-
-        {/* Distance */}
-        <div className="mb-6 flex flex-col">
-          <label
-            htmlFor="distance"
-            className={`font-semibold mb-2 ${labelColor}`}
-          >
-            Running Distance
-          </label>
-          <select
-            className={`w-full px-4 py-3 rounded-lg outline-none  ${inputColor}`}
-            defaultValue=""
-            name="distance"
-            id="distance"
-            required
-          >
-            <option value="" disabled>
-              Select Distance
-            </option>
-            <option value="5km">5km</option>
-            <option value="10km">10km</option>
-            <option value="15km">15km</option>
-            <option value="20km">20km</option>
-            <option value="30km">30km</option>
-          </select>
         </div>
 
         {/* Image */}
@@ -201,7 +213,7 @@ const AddMarathon = () => {
       <Modal property={modal}>
         <button
           onClick={() => setModal({ ...modal, show: false })}
-          className="bg-teal text-white text-lg font-medium px-6 py-2 rounded-full"
+          className="bg-green text-white text-lg font-medium px-6 py-2 rounded-xl"
         >
           OK
         </button>

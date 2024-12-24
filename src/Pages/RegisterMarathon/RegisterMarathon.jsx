@@ -62,6 +62,99 @@ const RegisterMarathon = () => {
           </h3>
 
           <form onSubmit={handleSubmit}>
+            {/* First & Last */}
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label
+                  htmlFor="first_name"
+                  className={`font-semibold mb-2 ${labelColor}`}
+                >
+                  First Name
+                </label>
+                <input
+                  className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label
+                  htmlFor="last_name"
+                  className={`font-semibold mb-2 ${labelColor}`}
+                >
+                  Last Name
+                </label>
+                <input
+                  className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Age */}
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="mb-6 flex flex-col">
+                <label
+                  htmlFor="age"
+                  className={`font-semibold mb-2 ${labelColor}`}
+                >
+                  Your Age
+                </label>
+                <input
+                  className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                  type="number"
+                  id="age"
+                  name="age"
+                  placeholder="Your Age"
+                  required
+                />
+              </div>
+
+              {/* Contact Number */}
+              <div className="mb-6 flex flex-col">
+                <label
+                  htmlFor="contact"
+                  className={`font-semibold mb-2 ${labelColor}`}
+                >
+                  Contact Number
+                </label>
+                <input
+                  className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                  type="number"
+                  id="contact"
+                  name="contact"
+                  placeholder="Contact Number"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="mb-6 flex flex-col">
+              <label
+                htmlFor="email"
+                className={`font-semibold mb-2 ${labelColor}`}
+              >
+                Email
+              </label>
+              <input
+                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                type="text"
+                id="email"
+                name="email"
+                defaultValue={user_email}
+                readOnly
+              />
+            </div>
+
             {/* Title */}
             <div className="mb-6 flex flex-col">
               <label
@@ -81,7 +174,7 @@ const RegisterMarathon = () => {
             </div>
 
             {/* marathon Date */}
-            <div className="mb-6 flex flex-col">
+            <div className="mb-10 flex flex-col">
               <label
                 htmlFor="date"
                 className={`font-semibold mb-2 ${labelColor}`}
@@ -94,96 +187,6 @@ const RegisterMarathon = () => {
                 type="text"
                 name="date"
                 defaultValue={marathonDate?.split('T')[0]}
-                readOnly
-              />
-            </div>
-
-            {/* First Name */}
-            <div className="mb-6 flex flex-col">
-              <label
-                htmlFor="first_name"
-                className={`font-semibold mb-2 ${labelColor}`}
-              >
-                First Name
-              </label>
-              <input
-                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                type="text"
-                id="first_name"
-                name="first_name"
-                placeholder="First Name"
-                required
-              />
-            </div>
-
-            {/* Last Name */}
-            <div className="mb-6 flex flex-col">
-              <label
-                htmlFor="last_name"
-                className={`font-semibold mb-2 ${labelColor}`}
-              >
-                Last Name
-              </label>
-              <input
-                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                type="text"
-                id="last_name"
-                name="last_name"
-                placeholder="Last Name"
-                required
-              />
-            </div>
-
-            {/* Age */}
-            <div className="mb-6 flex flex-col">
-              <label
-                htmlFor="age"
-                className={`font-semibold mb-2 ${labelColor}`}
-              >
-                Your Age
-              </label>
-              <input
-                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                type="number"
-                id="age"
-                name="age"
-                placeholder="Your Age"
-                required
-              />
-            </div>
-
-            {/* Contact Number */}
-            <div className="mb-6 flex flex-col">
-              <label
-                htmlFor="contact"
-                className={`font-semibold mb-2 ${labelColor}`}
-              >
-                Contact Number
-              </label>
-              <input
-                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                type="number"
-                id="contact"
-                name="contact"
-                placeholder="Contact Number"
-                required
-              />
-            </div>
-
-            {/* Email */}
-            <div className="mb-10 flex flex-col">
-              <label
-                htmlFor="email"
-                className={`font-semibold mb-2 ${labelColor}`}
-              >
-                Email
-              </label>
-              <input
-                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                type="text"
-                id="email"
-                name="email"
-                defaultValue={user_email}
                 readOnly
               />
             </div>

@@ -19,7 +19,8 @@ const SignUp = () => {
   });
 
   const navigate = useNavigate();
-  const { emailPassSignUp, googleSignIn, updateUserProfile } = useAuthContext();
+  const { setLoading, emailPassSignUp, googleSignIn, updateUserProfile } =
+    useAuthContext();
 
   // Form Submit handler
   const handleSubmit = e => {
@@ -58,6 +59,7 @@ const SignUp = () => {
 
           updateUserProfile(res.user, { displayName, photoURL })
             .then(() => {
+              setLoading(false);
               setErrMessage(null);
               setModal({
                 show: true,

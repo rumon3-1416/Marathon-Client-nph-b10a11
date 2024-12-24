@@ -67,6 +67,7 @@ export const ContextValue = () => {
 
   return {
     loading,
+    setLoading,
     darkTheme,
     setDarkTheme,
     serverUrl,

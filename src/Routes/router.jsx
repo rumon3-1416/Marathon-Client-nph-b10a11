@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/all_marathons',
-        element: <AllMarathons />,
+        element: (
+          <PrivateNavigator>
+            <AllMarathons />
+          </PrivateNavigator>
+        ),
       },
       {
         path: '/signin',
