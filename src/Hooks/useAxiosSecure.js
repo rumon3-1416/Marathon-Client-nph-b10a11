@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
   useEffect(() => {
-    axiosInstance.interceptors.response.use(
+    const interceptor = axiosInstance.interceptors.response.use(
       res => {
         return res;
       },
@@ -16,6 +16,10 @@ const useAxiosSecure = () => {
         return Promise.reject(err);
       }
     );
+
+    return () => {
+      axiosInstance.interceptors.response.eject(interceptor);
+    };
   }, []);
 
   return axiosInstance;

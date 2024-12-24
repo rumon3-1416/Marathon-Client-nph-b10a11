@@ -21,7 +21,7 @@ const Sidebar = () => {
   });
 
   return (
-    <div className="max-h-[calc(100vh-96px)] sticky top-24 left-0 z-10">
+    <div className="min-h-[13.5rem] max-h-[calc(100vh-96px)] sticky top-24 left-0 z-10">
       <div className="h-full relative">
         <div
           className={

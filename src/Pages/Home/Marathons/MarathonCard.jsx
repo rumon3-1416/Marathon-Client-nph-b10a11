@@ -1,12 +1,7 @@
 import React from 'react';
 
 const MarathonCard = ({ marathon }) => {
-  const {
-    marathon_title: title,
-    marathon_image: image,
-    location,
-    end_registration_date: date,
-  } = marathon;
+  const { title, image, location, endDate } = marathon;
 
   return (
     <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start">
@@ -31,7 +26,7 @@ const MarathonCard = ({ marathon }) => {
             <span className="text-dark-green font-medium">
               Registration Ends :
             </span>
-            <span className="font-medium ms-2">{date?.split('T')[0]}</span>
+            <span className="font-medium ms-2">{endDate?.split('T')[0]}</span>
           </p>
         </div>
 

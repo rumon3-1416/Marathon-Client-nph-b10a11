@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { useAuthContext } from '../../../../Hooks/useAuthContext';
 import Modal from '../../../../components/Modal/Modal';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const AddMarathon = () => {
   const [modal, setModal] = useState({
@@ -11,13 +12,13 @@ const AddMarathon = () => {
     res: '',
     title: '',
   });
-
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [marathonDate, setMarathonDate] = useState(new Date());
-  const createDate = useState(new Date());
+  const createDate = new Date();
 
   const { darkTheme, serverUrl, user } = useAuthContext();
+  const axiosSecure = useAxiosSecure();
 
   const labelColor = darkTheme ? 'text-gray-300' : 'text-gray-700';
   const inputColor = darkTheme
@@ -32,7 +33,20 @@ const AddMarathon = () => {
 
     const details = Object.fromEntries(formData.entries());
 
-    console.log(details);
+    const marathonInfo = {
+      ...details,
+      startDate: startDate.toISOString(),
+      endDate: endDate.toISOString(),
+      marathonDate: marathonDate.toISOString(),
+      createDate: createDate.toISOString(),
+      register_count: 0,
+      user_name: user?.displayName,
+      user_email: user?.email,
+    };
+
+    axiosSecure
+      .post(`${serverUrl}/add_marathon`, { marathon: marathonInfo })
+      .then(res => console.log(res.data));
   };
 
   return (
@@ -114,7 +128,7 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Amount */}
+        {/* Distance */}
         <div className="mb-6 flex flex-col">
           <label
             htmlFor="distance"
@@ -124,16 +138,15 @@ const AddMarathon = () => {
           </label>
           <select
             className={`w-full px-4 py-3 rounded-lg outline-none  ${inputColor}`}
-            defaultValue="0"
+            defaultValue=""
             name="distance"
             id="distance"
+            required
           >
-            <option value="0" disabled>
+            <option value="" disabled>
               Select Distance
             </option>
-            <option className="accent-green" value="5km">
-              5km
-            </option>
+            <option value="5km">5km</option>
             <option value="10km">10km</option>
             <option value="15km">15km</option>
             <option value="20km">20km</option>
@@ -178,7 +191,7 @@ const AddMarathon = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-full"
+            className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-xl"
           >
             Add
           </button>

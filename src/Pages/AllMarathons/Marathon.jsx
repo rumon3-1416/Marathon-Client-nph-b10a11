@@ -1,13 +1,7 @@
 import React from 'react';
 
 const Marathon = ({ marathon }) => {
-  const {
-    marathon_title: title,
-    marathon_image: image,
-    start_registration_date: start_date,
-    end_registration_date: end_date,
-    location,
-  } = marathon;
+  const { title, image, startDate, endDate, location } = marathon;
 
   return (
     <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start">
@@ -32,15 +26,13 @@ const Marathon = ({ marathon }) => {
             <span className="text-dark-green font-medium">
               Registration starts :
             </span>
-            <span className="font-medium ms-2">
-              {start_date?.split('T')[0]}
-            </span>
+            <span className="font-medium ms-2">{startDate?.split('T')[0]}</span>
           </p>
           <p className="mb-4 flex flex-wrap items-center">
             <span className="text-dark-green font-medium">
               Registration Ends :
             </span>
-            <span className="font-medium ms-2">{end_date?.split('T')[0]}</span>
+            <span className="font-medium ms-2">{endDate?.split('T')[0]}</span>
           </p>
         </div>
 

@@ -11,6 +11,7 @@ import Dashboard from '../Pages/Dashboard/Dashboard';
 import AddMarathon from '../Pages/Dashboard/Pages/AddMarathon/AddMarathon';
 import MyMarathons from '../Pages/Dashboard/Pages/MyMarathons/MyMarathons';
 import MyApply from '../Pages/Dashboard/Pages/MyApply/MyApply';
+import MarathonDetails from '../Pages/MarathonDetails/MarathonDetails';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
             element: <MyApply />,
           },
         ],
+      },
+      {
+        path: '/marathon_details:id',
+        element: (
+          <PrivateNavigator>
+            <MarathonDetails />
+          </PrivateNavigator>
+        ),
       },
     ],
   },
