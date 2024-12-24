@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '/marathon_details:id',
+        path: '/marathon_details/:id',
         element: (
           <PrivateNavigator>
             <MarathonDetails />

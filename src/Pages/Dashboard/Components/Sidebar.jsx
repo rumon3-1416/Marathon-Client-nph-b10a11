@@ -44,7 +44,7 @@ const Sidebar = () => {
                   className={`flex items-center gap-2 ${
                     pathname === '/dashboard' && 'text-green font-semibold'
                   }`}
-                  to="/dashboard"
+                  to="."
                 >
                   <img
                     className="w-6"
@@ -56,13 +56,14 @@ const Sidebar = () => {
                   </span>
                 </NavLink>
               </li>
+
               <li className="mt-5">
                 <NavLink
                   className={`flex items-center gap-2 ${
                     pathname === '/dashboard/my_marathons' &&
                     'text-green font-semibold'
                   }`}
-                  to="/dashboard/my_marathons"
+                  to="my_marathons"
                 >
                   <img
                     className="w-6"
@@ -78,13 +79,14 @@ const Sidebar = () => {
                   </span>
                 </NavLink>
               </li>
+
               <li className="mt-5">
                 <NavLink
                   className={`flex items-center gap-2 ${
                     pathname === '/dashboard/my_apply' &&
                     'text-green font-semibold'
                   }`}
-                  to="/dashboard/my_apply"
+                  to="my_apply"
                 >
                   <img
                     className="w-6"
