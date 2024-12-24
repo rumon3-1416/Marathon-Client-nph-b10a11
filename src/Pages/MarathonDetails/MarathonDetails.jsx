@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
@@ -31,6 +31,7 @@ const MarathonDetails = () => {
 
   const { serverUrl, darkTheme, user } = useAuthContext();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -40,11 +41,8 @@ const MarathonDetails = () => {
   }, [axiosSecure, serverUrl, id]);
 
   const handleRegister = () => {
-    const { displayName: name, email } = user;
-    const date = new Date().toISOString();
-
     if (new Date(endDate) >= new Date()) {
-      setModal({ show: true, res: 'success', title: 'Donation Successful' });
+      navigate(`/register_marathon/${_id}`);
     } else {
       setModal({ show: true, res: 'error', title: 'Deadline has Passed!' });
     }
