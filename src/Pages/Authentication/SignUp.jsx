@@ -91,7 +91,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    document.title = 'Register | CrowdCube';
+    document.title = 'Register | RunSphere';
   }, []);
 
   return (

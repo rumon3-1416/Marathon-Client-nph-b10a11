@@ -24,6 +24,8 @@ const RegisterMarathon = () => {
     : 'bg-[#f1f1f1] text-gray-800';
 
   useEffect(() => {
+    document.title = 'Register Marathon | RunSphere';
+
     axiosSecure
       .get(`${serverUrl}/marathon/${id}`)
       .then(res => setMarathon(res.data));

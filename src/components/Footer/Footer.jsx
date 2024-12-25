@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 
+import logo from '../../assets/icons/logo.png';
 import fbIcon from '../../assets/icons/facebook.png';
 import twitterIcon from '../../assets/icons/twitter.png';
 import instIcon from '../../assets/icons/instagram.png';
 
 const Footer = () => {
   const { darkTheme } = useAuthContext;
+  const navigate = useNavigate();
 
   return (
     <footer
@@ -21,13 +23,14 @@ const Footer = () => {
         <div className="pt-24 pb-10 grid grid-cols-1 md:grid-cols-[2fr,_3fr] gap-8">
           {/* Intro */}
           <div>
-            <h2
-              className={`text-2xl font-semibold mb-3 ${
-                darkTheme ? 'text-light2' : 'text-dark'
-              }`}
+            {/* Logo */}
+            <div
+              onClick={() => navigate('/')}
+              className="mb-3 cursor-pointer flex items-center gap-0"
             >
-              RunSphere
-            </h2>
+              <h2 className="text-green text-xl font-bold">RunSphere</h2>
+              <img className="h-8 relative right-1.5" src={logo} alt="" />
+            </div>
             <p
               className={`max-w-80 text-sm font-medium text-justify ${
                 darkTheme ? 'text-[#b0b0b0]' : 'text-[#09080F99]'
@@ -57,7 +60,7 @@ const Footer = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/marathons">Marathons</Link>
+                  <Link to="/all_marathons">Marathons</Link>
                 </li>
                 <li>
                   <Link to="/signin">Login</Link>

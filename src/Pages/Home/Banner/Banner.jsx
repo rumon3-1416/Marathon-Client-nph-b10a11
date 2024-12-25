@@ -12,6 +12,7 @@ import './carousel.css';
 import Slide from './Slide';
 import MainLayout from '../../../Layouts/MainLayout';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
+import Loading from '../../../components/Loading/Loading';
 
 const Banner = () => {
   const [slides, setSlides] = useState([]);
@@ -27,7 +28,7 @@ const Banner = () => {
   return (
     <section className="bg-greenBg">
       <MainLayout>
-        {slides?.length >= 3 && (
+        {slides?.length > 2 ? (
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
@@ -46,6 +47,8 @@ const Banner = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        ) : (
+          <Loading />
         )}
       </MainLayout>
     </section>

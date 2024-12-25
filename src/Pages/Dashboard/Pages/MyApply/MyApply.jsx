@@ -4,11 +4,12 @@ import Modal from '../../../../components/Modal/Modal';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import UpdateApply from './UpdateApply';
 import MyApplyRow from './MyApplyRow';
+import ApplySearch from './ApplySearch';
 
 const MyApply = () => {
   const [applications, setApplications] = useState([]);
   const [delId, setDelId] = useState(null);
-  const [deleted, setDeleted] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
   const [updateApplicationModal, setUpdateApplicationModal] = useState({
     showModal: false,
     application: {},
@@ -30,6 +31,10 @@ const MyApply = () => {
       .then(res => res.data && setApplications(res.data));
   }, [axiosSecure, serverUrl, user]);
 
+  useEffect(() => {
+    document.title = 'My Apply | Dashboard | RunSphere';
+  }, []);
+
   // handle Pre Update
   const handleUpdate = application => {
     setUpdateApplicationModal({ showModal: true, application: application });
@@ -48,6 +53,11 @@ const MyApply = () => {
           setUpdateApplicationModal({
             showModal: false,
             Application: {},
+          }),
+          setModal({
+            show: true,
+            res: 'success',
+            title: 'Application Updated',
           }))
       );
   };
@@ -55,6 +65,7 @@ const MyApply = () => {
   // handle Pre Delete
   const handleDelete = id => {
     setDelId(id);
+    setConfirmModal(true);
     setModal({ show: true, res: 'warn', title: 'Delete Application?' });
   };
   // Delete Application
@@ -63,7 +74,7 @@ const MyApply = () => {
       res =>
         res.data.acknowledged &&
         (loadApplications(),
-        setDeleted(true),
+        setConfirmModal(false),
         setModal({
           show: true,
           res: 'success',
@@ -86,8 +97,11 @@ const MyApply = () => {
           darkTheme ? 'text-light2' : 'text-gray-800'
         }`}
       >
-        My Applications
+        My Apply List
       </h3>
+
+      {/* Search */}
+      <ApplySearch setApplications={setApplications} />
 
       {/* Table */}
       <div className="bg-[#fffcfc] overflow-x-auto mt-4">
@@ -125,7 +139,7 @@ const MyApply = () => {
           />
         )}
 
-        {!deleted ? (
+        {confirmModal ? (
           <Modal property={modal}>
             <div className="flex gap-4">
               <button
@@ -138,6 +152,7 @@ const MyApply = () => {
                 onClick={() => {
                   setModal({ ...modal, show: false });
                   setDelId(null);
+                  setConfirmModal(false);
                 }}
                 className="bg-[#979797] text-white text-lg font-medium px-6 py-2 rounded-full"
               >
@@ -150,7 +165,7 @@ const MyApply = () => {
             <button
               onClick={() => {
                 setModal({ ...modal, show: false });
-                setDeleted(false);
+                setConfirmModal(false);
               }}
               className="bg-green text-white text-lg font-medium px-6 py-2 rounded-full"
             >

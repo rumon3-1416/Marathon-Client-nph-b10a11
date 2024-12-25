@@ -8,7 +8,7 @@ import Modal from '../../../../components/Modal/Modal';
 const MyMarathons = () => {
   const [marathons, setMarathons] = useState([]);
   const [delId, setDelId] = useState(null);
-  const [deleted, setDeleted] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
   const [updateMarathonModal, setUpdateMarathonModal] = useState({
     showModal: false,
     marathon: {},
@@ -30,6 +30,10 @@ const MyMarathons = () => {
       .then(res => res.data && setMarathons(res.data));
   }, [axiosSecure, serverUrl, user]);
 
+  useEffect(() => {
+    document.title = 'My Marathons | Dashboard | RunSphere';
+  }, []);
+
   // handle Pre Update
   const handleUpdate = marathon => {
     setUpdateMarathonModal({ showModal: true, marathon: marathon });
@@ -42,18 +46,26 @@ const MyMarathons = () => {
       .patch(`${serverUrl}/my_marathon/${_id}`, {
         updatedMarathon: updatedMara,
       })
-      .then(res => res.data.acknowledged && loadMarathons());
-
-    setUpdateMarathonModal({
-      showModal: false,
-      marathon: {},
-    });
+      .then(
+        res =>
+          res.data.acknowledged &&
+          (loadMarathons(),
+          setUpdateMarathonModal({
+            showModal: false,
+            marathon: {},
+          }),
+          setModal({
+            show: true,
+            res: 'success',
+            title: 'Marathon Updated',
+          }))
+      );
   };
 
   // handle Pre Delete
   const handleDelete = id => {
     setDelId(id);
-
+    setConfirmModal(true);
     setModal({ show: true, res: 'warn', title: 'Delete Marathon?' });
   };
   // Delete Marathon
@@ -64,8 +76,8 @@ const MyMarathons = () => {
         res =>
           res.data.acknowledged &&
           (loadMarathons(),
-          setDeleted(true),
-          setModal({ show: true, res: 'success', title: 'Campaign Deleted' }))
+          setConfirmModal(false),
+          setModal({ show: true, res: 'success', title: 'Marathon Deleted' }))
       );
   };
 
@@ -122,7 +134,7 @@ const MyMarathons = () => {
           />
         )}
 
-        {!deleted ? (
+        {confirmModal ? (
           <Modal property={modal}>
             <div className="flex gap-4">
               <button
@@ -135,6 +147,7 @@ const MyMarathons = () => {
                 onClick={() => {
                   setModal({ ...modal, show: false });
                   setDelId(null);
+                  setConfirmModal(false);
                 }}
                 className="bg-[#979797] text-white text-lg font-medium px-6 py-2 rounded-full"
               >
@@ -147,7 +160,7 @@ const MyMarathons = () => {
             <button
               onClick={() => {
                 setModal({ ...modal, show: false });
-                setDeleted(false);
+                setConfirmModal(false);
               }}
               className="bg-green text-white text-lg font-medium px-6 py-2 rounded-full"
             >

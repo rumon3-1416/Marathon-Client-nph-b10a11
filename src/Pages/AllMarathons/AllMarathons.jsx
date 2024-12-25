@@ -4,19 +4,27 @@ import MainLayout from '../../Layouts/MainLayout';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import Marathon from './Marathon';
 import SortMara from './SortMara';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const AllMarathons = () => {
   const [marathons, setMarathons] = useState([]);
 
   const { darkTheme, serverUrl } = useAuthContext();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios.get(`${serverUrl}/marathons`).then(res => setMarathons(res.data));
-  }, [serverUrl]);
+    axiosSecure
+      .get(`${serverUrl}/all_marathons`)
+      .then(res => setMarathons(res.data));
+  }, [serverUrl, axiosSecure]);
+
+  useEffect(() => {
+    document.title = 'Marathons | RunSphere';
+  }, []);
 
   const handleSort = sort => {
-    axios
-      .get(`${serverUrl}/marathons?sort=${sort}`)
+    axiosSecure
+      .get(`${serverUrl}/all_marathons?sort=${sort}`)
       .then(res => setMarathons(res.data));
   };
 

@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
+import logo from '../../assets/icons/logo.png';
 // import lightIcon from '../../assets/icons/light.png';
 // import darkIcon from '../../assets/icons/dark.png';
 import userIcon from '../../assets/icons/user.png';
@@ -30,21 +31,21 @@ const Navbar = () => {
     <div className="w-full fixed top-0 inset-x-0 z-20">
       <div
         className={`w-full backdrop-blur-lg ${
-          darkTheme ? 'bg-dark5Trans' : 'bg-[#cfefd7a2]'
+          darkTheme ? 'bg-dark5Trans' : 'bg-[#d9ebdea2]'
         }`}
       >
         <MainLayout>
           <nav
             className={`h-24 py-6 flex justify-between items-center gap-2 relative`}
           >
-            <h2
+            {/* Logo */}
+            <div
               onClick={() => navigate('/')}
-              className={`${
-                darkTheme ? 'text-white' : 'text-black'
-              } text-xl font-bold cursor-pointer`}
+              className="cursor-pointer flex items-center gap-0"
             >
-              RunSphere
-            </h2>
+              <h2 className="text-green text-xl font-bold">RunSphere</h2>
+              <img className="h-8 relative right-1.5" src={logo} alt="" />
+            </div>
 
             <div className="flex items-center gap-6">
               <ul
@@ -53,6 +54,12 @@ const Navbar = () => {
                 }
             ${darkTheme ? 'sm:text-lightTrans' : 'sm:text-[#32443f]'}`}
               >
+                <li
+                  onClick={() => setShowNav(false)}
+                  className="hover:text-gold"
+                >
+                  <NavLink to="/">Home</NavLink>
+                </li>
                 <li
                   onClick={() => setShowNav(false)}
                   className="hover:text-gold"
@@ -98,7 +105,7 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 {user ? (
                   <>
-                    <button className="bg-transparent w-12 h-12 p-0.5 border-2 border-green rounded-full">
+                    <button className="bg-transparent w-12 h-12 p-0.5 border-2 border-green hover:border-gold rounded-full">
                       <img
                         className="w-full h-full object-cover rounded-full"
                         referrerPolicy="no-referrer"
@@ -108,7 +115,7 @@ const Navbar = () => {
                     </button>
                     <button
                       onClick={() => signOutUser()}
-                      className="text-green hover:text-gold text-lg font-medium px-4 sm:px-6 py-2 border-2 border-green hover:border-gold rounded-lg hidden sm:block"
+                      className="text-green hover:text-gold2 font-medium sm:px-4 md:px-6 py-2 border-2 border-green hover:border-gold2 rounded-lg hidden sm:block"
                     >
                       Logout
                     </button>
@@ -118,14 +125,14 @@ const Navbar = () => {
                     {/* Login */}
                     <button
                       onClick={() => navigate('/signin')}
-                      className="text-green hover:text-gold text-sm sm:text-lg font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-2 border-2 border-green hover:border-gold rounded-s-lg"
+                      className="text-green hover:text-gold2 text-sm sm:text-base font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-2 border-2 border-green hover:border-gold2 rounded-s-lg"
                     >
                       Login
                     </button>
                     {/* Register */}
                     <button
                       onClick={() => navigate('/signup')}
-                      className="bg-green text-white hover:bg-gold2 text-sm sm:text-lg font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold rounded-e-lg"
+                      className="bg-green text-white hover:bg-gold2 text-sm sm:text-base font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold2 rounded-e-lg"
                     >
                       Register
                     </button>

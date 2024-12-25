@@ -12,7 +12,7 @@ import auth from '../firebase/firebase.config';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const googleProvider = new GoogleAuthProvider();
-const serverUrl = 'http://localhost:5000';
+const serverUrl = import.meta.env.VITE_ServerUrl;
 
 export const ContextValue = () => {
   const [loading, setLoading] = useState(true);

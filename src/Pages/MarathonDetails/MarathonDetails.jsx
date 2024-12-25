@@ -4,6 +4,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
 import Modal from '../../components/Modal/Modal';
+import Timer from './Timer';
 
 const MarathonDetails = () => {
   const [marathon, setMarathon] = useState({});
@@ -20,13 +21,9 @@ const MarathonDetails = () => {
     distance,
     image,
     description,
-    startDate,
     endDate,
     marathonDate,
-    createDate,
     register_count,
-    user_name,
-    user_email,
   } = marathon;
 
   const { serverUrl, darkTheme, user } = useAuthContext();
@@ -35,6 +32,8 @@ const MarathonDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    document.title = 'Details Marathon | RunSphere';
+
     axiosSecure
       .get(`${serverUrl}/marathon/${id}`)
       .then(res => setMarathon(res.data));
@@ -54,12 +53,14 @@ const MarathonDetails = () => {
         <div className="bg-greenBg p-6 shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8">
           <img
             className="
-        w-full aspect-video md:aspect-[4/3] lg:aspect-video object-cover rounded-xl"
+        w-full aspect-video md:aspect-square lg:aspect-[4/3] xl:aspect-video object-cover rounded-xl"
             src={image}
             alt={title}
           />
           {/* Description */}
           <div className="flex flex-col justify-between items-start">
+            {marathonDate && <Timer date={marathonDate} />}
+
             <div>
               {/* Head */}
               <h2

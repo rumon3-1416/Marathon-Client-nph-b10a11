@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from '../../Layouts/MainLayout';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../Hooks/useAuthContext';
@@ -22,6 +22,10 @@ const SignIn = () => {
   const { emailPassSignIn, googleSignIn } = useAuthContext();
 
   const desired = location.state?.pathname || '/';
+
+  useEffect(() => {
+    document.title = 'Login | RunSphere';
+  }, []);
 
   // Email Password Log In Handler
   const handleSubmit = e => {

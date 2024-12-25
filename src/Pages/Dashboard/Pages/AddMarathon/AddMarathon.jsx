@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -24,6 +24,10 @@ const AddMarathon = () => {
   const inputColor = darkTheme
     ? 'bg-dark3 text-gray-200'
     : 'bg-[#f1f1f1] text-gray-800';
+
+  useEffect(() => {
+    document.title = 'Add Marathon | Dashboard | RunSphere';
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -139,6 +143,7 @@ const AddMarathon = () => {
               <option value="" disabled>
                 Select Distance
               </option>
+              <option value="3km">3km</option>
               <option value="5km">5km</option>
               <option value="10km">10km</option>
               <option value="15km">15km</option>
