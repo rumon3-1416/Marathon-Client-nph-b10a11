@@ -25,8 +25,10 @@ const MyMarathons = () => {
   useEffect(() => {
     document.title = 'My Marathons | RunSphere';
 
-    loadMarathons();
-  }, []);
+    axiosSecure
+      .get(`${serverUrl}/my_marathons?user_email=${user.email}`)
+      .then(res => res.data && setMarathons(res.data));
+  }, [axiosSecure, serverUrl, user]);
 
   // handle Pre Update
   const handleUpdate = marathon => {

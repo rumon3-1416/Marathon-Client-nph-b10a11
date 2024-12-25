@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAuthContext } from '../../../../Hooks/useAuthContext';
 
-const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
-  const { _id, title, distance, marathonDate } = marathon;
+const MyApplyRow = ({ application, index, handleUpdate, handleDelete }) => {
+  const { _id, title, first_name, last_name, contact } = application;
 
   const { darkTheme } = useAuthContext();
 
@@ -14,12 +14,12 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
     >
       <td className="text-nowrap">{index + 1}</td>
       <td className="text-nowrap">{title}</td>
-      <td className="text-center text-nowrap">{distance}</td>
-      <td className="text-nowrap">{marathonDate.split('T')[0]}</td>
+      <td className="text-center text-nowrap">{`${first_name} ${last_name}`}</td>
+      <td className="text-nowrap">{contact}</td>
       <td>
         <div className="flex justify-center items-center gap-4">
           <p
-            onClick={() => handleUpdate(marathon)}
+            onClick={() => handleUpdate(application)}
             className="text-green hover:text-orange cursor-pointer"
           >
             Update
@@ -36,4 +36,4 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
   );
 };
 
-export default MyMaraRow;
+export default MyApplyRow;

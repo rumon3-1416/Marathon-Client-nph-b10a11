@@ -12,7 +12,7 @@ const RegisterMarathon = () => {
     res: '',
     title: '',
   });
-  const { _id, title, marathonDate, user_email } = marathon;
+  const { _id, title, marathonDate } = marathon;
 
   const { darkTheme, serverUrl, user } = useAuthContext();
   const axiosSecure = useAxiosSecure();
@@ -140,7 +140,7 @@ const RegisterMarathon = () => {
             {/* Email */}
             <div className="mb-6 flex flex-col">
               <label
-                htmlFor="email"
+                htmlFor="user_email"
                 className={`font-semibold mb-2 ${labelColor}`}
               >
                 Email
@@ -148,9 +148,9 @@ const RegisterMarathon = () => {
               <input
                 className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
                 type="text"
-                id="email"
-                name="email"
-                defaultValue={user_email}
+                id="user_email"
+                name="user_email"
+                defaultValue={user.email}
                 readOnly
               />
             </div>

@@ -19,7 +19,7 @@ const UpdateModal = ({ marathon, updateMarathon }) => {
   const [endDate, setEndDate] = useState(new Date(end));
   const [marathonDate, setMarathonDate] = useState(new Date(mara));
 
-  const { darkTheme, serverUrl, user } = useAuthContext();
+  const { darkTheme, user } = useAuthContext();
 
   const labelColor = darkTheme ? 'text-gray-300' : 'text-gray-700';
   const inputColor = darkTheme
@@ -56,9 +56,9 @@ const UpdateModal = ({ marathon, updateMarathon }) => {
   };
 
   return (
-    <div className="bg-[#00000053] w-full min-h-screen max-h-screen backdrop-blur-sm p-12 fixed inset-0 overflow-hidden z-50">
+    <div className="bg-[#00000053] w-full min-h-screen max-h-screen backdrop-blur-sm p-8 sm:p-10 md:p-12 fixed inset-0 overflow-hidden flex flex-col justify-center items-center z-50">
       <div
-        className={`animate__animated animate__zoomIn px-8 py-10 h-full shadow-lg overflow-y-auto rounded-xl ${
+        className={`animate__animated animate__zoomIn px-8 py-10 max-h-full w-full max-w-[1232px] mx-auto shadow-lg overflow-y-auto rounded-xl ${
           darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
         }`}
       >
