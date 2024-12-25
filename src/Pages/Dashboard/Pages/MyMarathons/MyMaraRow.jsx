@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../../Hooks/useAuthContext';
 
-const MyMaraRow = ({ marathon, index, handleDelete }) => {
+const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
   const { _id, title, distance, marathonDate } = marathon;
 
   const navigate = useNavigate();
@@ -21,14 +21,14 @@ const MyMaraRow = ({ marathon, index, handleDelete }) => {
       <td>
         <div className="flex justify-center items-center gap-4">
           <p
-            onClick={() => navigate(`/update_marathon/${_id}`)}
+            onClick={() => handleUpdate(marathon)}
             className="text-green hover:text-orange cursor-pointer"
           >
             Update
           </p>
           <p
             onClick={() => handleDelete(_id)}
-            className="text-[#ff6363] hover:text-[#ff0000] px-2 rounded-md cursor-pointer"
+            className="text-[#ff8629] hover:text-[#ff0000] px-2 rounded-md cursor-pointer"
           >
             Delete
           </p>

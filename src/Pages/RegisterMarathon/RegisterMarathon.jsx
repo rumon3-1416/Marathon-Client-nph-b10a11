@@ -110,7 +110,7 @@ const RegisterMarathon = () => {
                 </label>
                 <input
                   className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                  type="number"
+                  type="text"
                   id="age"
                   name="age"
                   placeholder="Your Age"
@@ -128,7 +128,7 @@ const RegisterMarathon = () => {
                 </label>
                 <input
                   className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                  type="number"
+                  type="text"
                   id="contact"
                   name="contact"
                   placeholder="Contact Number"

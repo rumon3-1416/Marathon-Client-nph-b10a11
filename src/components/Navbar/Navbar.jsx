@@ -101,6 +101,7 @@ const Navbar = () => {
                     <button className="bg-transparent w-12 h-12 p-0.5 border-2 border-green rounded-full">
                       <img
                         className="w-full h-full object-cover rounded-full"
+                        referrerPolicy="no-referrer"
                         src={user?.photoURL || userIcon}
                         alt=""
                       />

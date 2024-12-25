@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../../../Hooks/useAuthContext';
-import Modal from '../../../../components/Modal/Modal';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import MyMaraRow from './MyMaraRow';
+import UpdateMarathon from './UpdateMarathon';
+import Modal from '../../../../components/Modal/Modal';
 
 const MyMarathons = () => {
   const [marathons, setMarathons] = useState([]);
   const [delId, setDelId] = useState(null);
   const [deleted, setDeleted] = useState(false);
+  const [updateMarathonModal, setUpdateMarathonModal] = useState({
+    showModal: false,
+    marathon: {},
+  });
   const [modal, setModal] = useState({
     show: false,
     res: '',
@@ -20,10 +25,28 @@ const MyMarathons = () => {
   useEffect(() => {
     document.title = 'My Marathons | RunSphere';
 
+    loadMarathons();
+  }, []);
+
+  // handle Pre Update
+  const handleUpdate = marathon => {
+    setUpdateMarathonModal({ showModal: true, marathon: marathon });
+  };
+  // Update Marathon
+  const updateMarathon = updatedMarathon => {
+    const { _id, ...updatedMara } = updatedMarathon;
+
     axiosSecure
-      .get(`${serverUrl}/my_marathons?user_email=${user.email}`)
-      .then(res => res.data && setMarathons(res.data));
-  }, [axiosSecure, serverUrl, user]);
+      .patch(`${serverUrl}/my_marathon/${_id}`, {
+        updatedMarathon: updatedMara,
+      })
+      .then(res => res.data.acknowledged && loadMarathons());
+
+    setUpdateMarathonModal({
+      showModal: false,
+      marathon: {},
+    });
+  };
 
   // handle Pre Delete
   const handleDelete = id => {
@@ -31,20 +54,24 @@ const MyMarathons = () => {
 
     setModal({ show: true, res: 'warn', title: 'Delete Marathon?' });
   };
-
-  // Delete handle
+  // Delete Marathon
   const deleteModal = () => {
     axiosSecure
       .delete(`${serverUrl}/marathon/${delId}`)
       .then(
         res =>
           res.data.acknowledged &&
-          (axiosSecure
-            .get(`${serverUrl}/my_marathons?user_email=${user.email}`)
-            .then(res => res.data && setMarathons(res.data)),
+          (loadMarathons(),
           setDeleted(true),
           setModal({ show: true, res: 'success', title: 'Campaign Deleted' }))
       );
+  };
+
+  // Load marathons
+  const loadMarathons = () => {
+    axiosSecure
+      .get(`${serverUrl}/my_marathons?user_email=${user.email}`)
+      .then(res => res.data && setMarathons(res.data));
   };
 
   return (
@@ -79,11 +106,19 @@ const MyMarathons = () => {
                   key={marathon._id}
                   marathon={marathon}
                   index={index}
+                  handleUpdate={handleUpdate}
                   handleDelete={handleDelete}
                 />
               ))}
           </tbody>
         </table>
+
+        {updateMarathonModal.showModal && (
+          <UpdateMarathon
+            marathon={updateMarathonModal.marathon}
+            updateMarathon={updateMarathon}
+          />
+        )}
 
         {!deleted ? (
           <Modal property={modal}>
