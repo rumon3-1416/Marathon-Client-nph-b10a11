@@ -4,6 +4,8 @@ import Benefit from './Benefit/Benefit';
 import Marathons from './Marathons/Marathons';
 import UpMarathons from './UpMarathons/UpMarathons';
 import QuesAns from './QuesAns/QuesAns';
+import QuickView from './QuickView/QuickView';
+import NewsLetter from './NewsLetter/NewsLetter';
 
 const Home = () => {
   useEffect(() => {
@@ -13,10 +15,12 @@ const Home = () => {
   return (
     <>
       <Banner />
+      <QuickView />
       <Benefit />
       <Marathons />
       <QuesAns />
       <UpMarathons />
+      <NewsLetter />
     </>
   );
 };

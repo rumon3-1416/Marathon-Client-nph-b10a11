@@ -24,7 +24,9 @@ const Timer = ({ date }) => {
         >
           {({ remainingTime }) => (
             <div className="text-center">
-              <p>{Math.floor(remainingTime / (24 * 60 * 60))}</p>
+              <p className="text-orange font-medium">
+                {Math.floor(remainingTime / (24 * 60 * 60))}
+              </p>
             </div>
           )}
         </CountdownCircleTimer>
@@ -36,7 +38,7 @@ const Timer = ({ date }) => {
           isPlaying
           duration={24 * 60 * 60}
           initialRemainingTime={hrs * 60 * 60}
-          strokeWidth={8}
+          strokeWidth={7}
           size={60}
           colors="#28A745"
           colorsTime={[7, 5, 2, 0]}
@@ -46,7 +48,9 @@ const Timer = ({ date }) => {
         >
           {({ remainingTime }) => (
             <div>
-              <p>{Math.floor(remainingTime / (60 * 60))}</p>
+              <p className="text-orange font-medium">
+                {Math.floor(remainingTime / (60 * 60))}
+              </p>
             </div>
           )}
         </CountdownCircleTimer>
@@ -58,7 +62,7 @@ const Timer = ({ date }) => {
           isPlaying
           duration={60 * 60}
           initialRemainingTime={min * 60}
-          strokeWidth={8}
+          strokeWidth={6}
           size={60}
           colors="#28A745"
           colorsTime={[7, 5, 2, 0]}
@@ -68,7 +72,9 @@ const Timer = ({ date }) => {
         >
           {({ remainingTime }) => (
             <div>
-              <p>{Math.floor(remainingTime / 60)}</p>
+              <p className="text-orange font-medium">
+                {Math.floor(remainingTime / 60)}
+              </p>
             </div>
           )}
         </CountdownCircleTimer>

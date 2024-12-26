@@ -7,7 +7,7 @@ const MarathonCard = ({ marathon }) => {
 
   return (
     <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start">
-      <div className="p-4">
+      <div className="w-full p-4">
         <img
           className="w-full aspect-[4/3] object-cover rounded-xl"
           src={image}
