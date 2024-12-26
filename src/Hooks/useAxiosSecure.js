@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
+import { useAuthContext } from './useAuthContext';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_ServerUrl,
@@ -7,12 +8,18 @@ const axiosInstance = axios.create({
 });
 
 const useAxiosSecure = () => {
+  const { signOutUser } = useAuthContext();
+
   useEffect(() => {
     const interceptor = axiosInstance.interceptors.response.use(
       res => {
         return res;
       },
       err => {
+        if (err.status === 401 || err.status === 403) {
+          signOutUser();
+        }
+
         return Promise.reject(err);
       }
     );
@@ -20,7 +27,7 @@ const useAxiosSecure = () => {
     return () => {
       axiosInstance.interceptors.response.eject(interceptor);
     };
-  }, []);
+  }, [signOutUser]);
 
   return axiosInstance;
 };
