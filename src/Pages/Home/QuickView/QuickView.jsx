@@ -9,10 +9,10 @@ const QuickView = () => {
   return (
     <div className="bg-greenBg">
       <MainLayout>
-        <section className="py-8 grid grid-cols-3 gap-6">
+        <section className="py-8 md:px-8 grid grid-cols-3 gap-6">
           <div className="p-4 flex flex-col lg:flex-row items-center gap-4">
             <div className="bg-[#fd7d1453] p-4 rounded-full">
-              <img className="max-w-16" src={eventIcon} alt="Volunteer" />
+              <img className="max-w-12" src={eventIcon} alt="Volunteer" />
             </div>
             <div className="text-center lg:text-left">
               <h3 className="text-[#ffa238] text-2xl md:text-3xl font-bold text-gray-700 mb-1">
@@ -24,7 +24,7 @@ const QuickView = () => {
 
           <div className="p-4 flex flex-col lg:flex-row items-center gap-4">
             <div className="bg-[#fd7d1453] p-4 rounded-full">
-              <img className="max-w-16" src={locationIcon} alt="Volunteer" />
+              <img className="max-w-12" src={locationIcon} alt="Volunteer" />
             </div>
             <div className="text-center lg:text-left">
               <h3 className="text-[#ffa238] text-2xl md:text-3xl font-bold text-gray-700 mb-1">
@@ -36,7 +36,7 @@ const QuickView = () => {
 
           <div className="p-4 flex flex-col lg:flex-row items-center gap-4">
             <div className="bg-[#fd7d1453] p-4 rounded-full">
-              <img className="max-w-16" src={membersIcon} alt="Volunteer" />
+              <img className="max-w-12" src={membersIcon} alt="Volunteer" />
             </div>
             <div className="text-center lg:text-left">
               <h3 className="text-[#ffa238] text-2xl md:text-3xl font-bold text-gray-700 mb-1">
