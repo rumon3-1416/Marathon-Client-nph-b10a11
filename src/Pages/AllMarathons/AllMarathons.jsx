@@ -24,7 +24,7 @@ const AllMarathons = () => {
       .then(res => setTotalMarathons(res.data.count));
   }, [serverUrl, axiosSecure]);
 
-  // set Marathons
+  // load Marathons data
   useEffect(() => {
     const conditionalLink = sort
       ? `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}&sort=${sort}`
@@ -32,10 +32,6 @@ const AllMarathons = () => {
 
     axiosSecure.get(conditionalLink).then(res => setMarathons(res.data));
   }, [currentPage, cardPerPage, sort, axiosSecure, serverUrl]);
-
-  const handleSort = sort => {
-    setSort(sort);
-  };
 
   useEffect(() => {
     document.title = 'Marathons | RunSphere';
@@ -53,7 +49,7 @@ const AllMarathons = () => {
             Explore All Marathons
           </h1>
 
-          <SortMara handleSort={handleSort} />
+          <SortMara setSort={setSort} setCardPerPage={setCardPerPage} />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {marathons.map(marathon => (
