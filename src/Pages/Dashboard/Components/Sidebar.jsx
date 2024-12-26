@@ -17,6 +17,10 @@ const Sidebar = () => {
     window.innerWidth < 768 ? setCollapse(true) : setCollapse(false);
   }, []);
 
+  window.addEventListener('resize', e => {
+    e.target.innerWidth < 768 && setCollapse(true);
+  });
+
   return (
     <div className="min-h-[13.5rem] max-h-[calc(100vh-96px)] sticky top-24 left-0 z-10">
       <div className="h-full relative">
