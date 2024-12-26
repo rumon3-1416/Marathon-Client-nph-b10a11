@@ -1,13 +1,16 @@
 import React from 'react';
 
-const SortMara = ({ setSort, setCardPerPage }) => {
+const SortMara = ({ setSort, setCardPerPage, setCurrentPage }) => {
   return (
     <div className="mb-6 flex justify-end">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
           <p className="text-dark-green text-lg font-semibold">Show : </p>
           <select
-            onChange={e => setCardPerPage(Number(e.target.value))}
+            onChange={e => {
+              setCardPerPage(Number(e.target.value));
+              setCurrentPage(1);
+            }}
             className="font-semibold w-24 px-4 py-1.5 border-2 border-green rounded-lg outline-none"
             defaultValue={9}
             name="page"

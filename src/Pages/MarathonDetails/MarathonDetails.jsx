@@ -26,7 +26,7 @@ const MarathonDetails = () => {
     register_count,
   } = marathon;
 
-  const { serverUrl, darkTheme, user } = useAuthContext();
+  const { serverUrl, darkTheme } = useAuthContext();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -40,7 +40,10 @@ const MarathonDetails = () => {
   }, [axiosSecure, serverUrl, id]);
 
   const handleRegister = () => {
-    if (new Date(endDate) >= new Date()) {
+    if (
+      new Date(endDate) >= new Date() &&
+      new Date(marathonDate) >= new Date()
+    ) {
       navigate(`/register_marathon/${_id}`);
     } else {
       setModal({ show: true, res: 'error', title: 'Deadline has Passed!' });
@@ -127,7 +130,7 @@ const MarathonDetails = () => {
               </p>
             </div>
 
-            {/* Donate Button */}
+            {/* Register Button */}
             <button
               onClick={handleRegister}
               className="bg-green text-light2 hover:bg-gold2 font-medium px-9 py-2 mt-auto mb-2 rounded-xl"

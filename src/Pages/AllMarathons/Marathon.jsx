@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Marathon = ({ marathon }) => {
-  const { _id, title, image, createDate, endDate, location } = marathon;
+  const { _id, title, image, createDate, startDate, endDate, location } =
+    marathon;
 
   const navigate = useNavigate();
 
@@ -30,6 +31,12 @@ const Marathon = ({ marathon }) => {
             <span className="font-medium ms-2">
               {createDate?.split('T')[0]}
             </span>
+          </p>
+          <p className="flex flex-wrap items-center">
+            <span className="text-dark-green font-medium">
+              Registration Starts :
+            </span>
+            <span className="font-medium ms-2">{startDate?.split('T')[0]}</span>
           </p>
           <p className="mb-4 flex flex-wrap items-center">
             <span className="text-dark-green font-medium">
