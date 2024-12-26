@@ -1,14 +1,29 @@
-# Crowdcube
+# RunSphere
 
-## [https://assignment-10-9a717.web.app/](https://assignment-10-9a717.web.app/)
+### Live Site URL
 
-Welcome to **Crowdcube**, a crowdfunding platform where users can raise money for personal needs, creative ideas, startups, and more. Crowdcube connects donors and campaigners, making fundraising efficient and transparent.
+[https://assignment-11-d1cd3.web.app/](https://assignment-11-d1cd3.web.app/)
+
+RunSphere is a modern and intuitive website for organizing and participating in marathon events. Whether you're an event organizer or a participant, RunSphere offers an easy way to manage and explore marathons.
+
+---
 
 ## Features
 
-- **Browse Campaigns:** Discover various campaigns with detailed descriptions, minimum donation amounts, and deadlines.
-- **Add Campaigns:** Create and manage your own fundraising campaigns with an intuitive interface.
-- **Update & Delete Campaigns:** Modify or remove your campaigns with ease.
-- **Donate to Campaigns:** Contribute securely to campaigns that matter to you and make a difference.
-- **View Donation History:** Track all your donations in one convenient place.
-- **Dark/Light Theme Support:** Choose between themes for a personalized browsing experience.
+- **Browse Marathon Events**: Users can explore marathon events and view essential details such as description, location, registration deadlines, and time remaining until the event.
+- **Detailed Event Information**: Each event includes comprehensive information to help participants make informed decisions.
+
+- **Apply to Marathons**: Users can easily register for marathons they’re interested in by submitting their applications.
+
+- **Manage Your Events**: Event organizers can add new marathon events, update event details, or delete events they created.
+
+- **Control Your Applications**: Participants can manage their marathon applications, including updating or canceling them as needed.
+
+---
+
+## Technology Stack
+
+- **Frontend**: React.js with Tailwind CSS
+- **Backend**: Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase Authentication
