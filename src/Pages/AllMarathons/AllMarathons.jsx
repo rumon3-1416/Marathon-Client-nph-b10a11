@@ -26,11 +26,11 @@ const AllMarathons = () => {
 
   // set Marathons
   useEffect(() => {
-    axiosSecure
-      .get(
-        `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}&sort=${sort}`
-      )
-      .then(res => setMarathons(res.data));
+    const conditionalLink = sort
+      ? `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}&sort=${sort}`
+      : `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}`;
+
+    axiosSecure.get(conditionalLink).then(res => setMarathons(res.data));
   }, [currentPage, cardPerPage, sort, axiosSecure, serverUrl]);
 
   const handleSort = sort => {
