@@ -101,7 +101,7 @@ const RegisterMarathon = () => {
               </div>
             </div>
 
-            {/* Age */}
+            {/* Age & Contact */}
             <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="mb-6 flex flex-col">
                 <label
@@ -112,7 +112,7 @@ const RegisterMarathon = () => {
                 </label>
                 <input
                   className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                  type="text"
+                  type="number"
                   id="age"
                   name="age"
                   placeholder="Your Age"
@@ -120,7 +120,6 @@ const RegisterMarathon = () => {
                 />
               </div>
 
-              {/* Contact Number */}
               <div className="mb-6 flex flex-col">
                 <label
                   htmlFor="contact"
@@ -130,7 +129,7 @@ const RegisterMarathon = () => {
                 </label>
                 <input
                   className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-                  type="text"
+                  type="number"
                   id="contact"
                   name="contact"
                   placeholder="Contact Number"
