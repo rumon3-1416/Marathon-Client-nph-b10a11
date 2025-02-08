@@ -1,4 +1,4 @@
-[<img src='https://raw.githubusercontent.com/rumon3-1416/Marathon-Client-nph-b10a11/refs/heads/main/src/assets/marathon.png'>](https://github.com/rumon3-1416/)
+[<img src='https://raw.githubusercontent.com/rumon3-1416/Portfolio/refs/heads/main/src/assets/images/marathon1.png'>](https://github.com/rumon3-1416/)
 
 # RunSphere (Assignment 11)
 
