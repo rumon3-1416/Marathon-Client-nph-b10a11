@@ -1,13 +1,27 @@
 import React, { useEffect } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { scroller } from 'react-scroll';
+
 import Banner from './Banner/Banner';
+// import QuickView from './QuickView/QuickView';
 import Benefit from './Benefit/Benefit';
 import Marathons from './Marathons/Marathons';
 import UpMarathons from './UpMarathons/UpMarathons';
 import QuesAns from './QuesAns/QuesAns';
-import QuickView from './QuickView/QuickView';
 import NewsLetter from './NewsLetter/NewsLetter';
 
 const Home = () => {
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (state?.scrollTo) {
+      scroller.scrollTo(state.scrollTo, {
+        smooth: true,
+        duration: 500,
+      });
+    }
+  }, [state]);
+
   useEffect(() => {
     document.title = 'Home | RunSphere';
   }, []);
@@ -15,7 +29,7 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <QuickView />
+      {/* <QuickView /> */}
       <Benefit />
       <Marathons />
       <QuesAns />
