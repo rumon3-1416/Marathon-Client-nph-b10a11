@@ -55,7 +55,7 @@ const AllMarathons = () => {
             setCurrentPage={setCurrentPage}
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {marathons.map(marathon => (
               <Marathon key={marathon._id} marathon={marathon} />
             ))}
