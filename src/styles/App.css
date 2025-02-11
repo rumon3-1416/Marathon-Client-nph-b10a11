@@ -19,13 +19,13 @@ button:hover {
 }
 
 nav a.active {
-  color: #fd7e14;
+  color: #28a745;
   font-weight: 700;
   text-decoration: underline;
 }
 
-@media screen and (min-width: 640px) {
+/* @media screen and (min-width: 640px) {
   nav a.active {
     color: #155724;
   }
-}
+} */
