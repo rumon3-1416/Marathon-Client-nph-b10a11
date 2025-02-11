@@ -1,4 +1,6 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import MainLayout from '../../../Layouts/MainLayout';
 
 const NewsLetter = () => {
@@ -16,20 +18,33 @@ const NewsLetter = () => {
             </p>
           </div>
 
-          <div className="flex items-center">
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              toast.success('Subscription successful!');
+              e.target.reset();
+            }}
+            className="flex items-center"
+          >
             <input
               className="w-[10rem] sm:w-[15rem] md:w-[10rem] lg:w-[15rem] xl:w-[20rem] px-6 py-3 border-2 border-green outline-none rounded-s-xl"
-              type="text"
+              type="email"
               name="subscribe"
               id="subscribe"
               placeholder="Email"
+              required
             />
-            <button className="bg-green text-white font-semibold px-6 py-3 border-2 border-green rounded-e-xl">
+            <button
+              type="submit"
+              className="bg-green text-white font-semibold px-6 py-3 border-2 border-green rounded-e-xl"
+            >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </MainLayout>
+
+      <ToastContainer pauseOnFocusLoss={false} />
     </div>
   );
 };
