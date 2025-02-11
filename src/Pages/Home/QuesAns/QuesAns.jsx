@@ -7,7 +7,7 @@ const QuesAns = () => {
   const { darkTheme } = useAuthContext();
 
   return (
-    <div className="bg-goldBg pt-16 pb-8">
+    <div id="help" className="bg-goldBg pt-16 pb-10">
       <MainLayout>
         <section className="grid grid-cols-1 lg:grid-cols-[2fr,_3fr] items-center gap-16 md:gap-8 lg:gap-12 xl:gap-20">
           {/* Cards */}

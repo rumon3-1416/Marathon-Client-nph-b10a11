@@ -8,7 +8,7 @@ const Benefit = () => {
   const { darkTheme } = useAuthContext;
 
   return (
-    <section className="bg-goldBg pt-24 pb-8">
+    <section className="bg-goldBg pt-16 pb-10">
       <MainLayout>
         <div className="grid md:grid-cols-2 items-center">
           {/* Images */}
