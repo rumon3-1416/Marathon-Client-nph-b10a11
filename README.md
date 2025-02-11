@@ -1,3 +1,46 @@
+<img src='https://raw.githubusercontent.com/rumon3-1416/Marathon-Client-nph-b10a11/refs/heads/main/public/assets/marathon1.png'>
+
+# RunSphere (Assignment 11)
+
+## [Live Demo](https://assignment-11-d1cd3.web.app/)
+
+RunSphere is a modern and intuitive website for organizing and participating in marathon events. Whether you're an event organizer or a participant, RunSphere offers an easy way to manage and explore marathons.
+
+---
+
+## Features
+
+- **Browse Marathon Events**: Users can explore marathon events and view essential details such as description, location, registration deadlines, and time remaining until the event.
+- **Detailed Event Information**: Each event includes comprehensive information to help participants make informed decisions.
+
+- **Apply to Marathons**: Users can easily register for marathons they’re interested in by submitting their applications.
+
+- **Manage Your Events**: Event organizers can add new marathon events, update event details, or delete events they created.
+
+- **Control Your Applications**: Participants can manage their marathon applications, including updating or canceling them as needed.
+
+---
+
+## Technology Stack
+
+- **Frontend**: React.js with Tailwind CSS
+- **Backend**: Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase Authentication
+
+## NPM Packages Used
+
+Here is a list of the primary npm packages used in the project:
+
+- `react`
+- `react-router-dom`
+- `firebase`
+- `react-toastify`
+- `react-intersection-observer`
+- `swiper-slider`
+- `animate.css`
+- `tailwindcss`
+
 ## Run Locally
 
 This is a React.js project built with Vite, Tailwind CSS, and various dependencies. Follow the steps below to set up and run the project locally.
@@ -15,7 +58,7 @@ Make sure you have the following installed on your system:
 Open a terminal and run:
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/rumon3-1416/Marathon-Client-nph-b10a11.git
 cd your-repository
 ```
 
@@ -60,12 +103,3 @@ npm run preview
 # or
 yarn preview
 ```
-
-## 🛠 Technologies Used
-
-- React.js
-- Vite
-- Tailwind CSS
-- React Router
-- Axios
-- Firebase (if applicable)
