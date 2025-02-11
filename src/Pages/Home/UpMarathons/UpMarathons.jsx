@@ -16,7 +16,7 @@ const UpMarathons = () => {
   }, [serverUrl]);
 
   return (
-    <div className="bg-greenBg pt-16 pb-10">
+    <div id="upcoming" className="bg-greenBg pt-16 pb-10">
       <MainLayout>
         <section id="marathons">
           <h1
