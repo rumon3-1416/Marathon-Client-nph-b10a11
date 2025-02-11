@@ -27,30 +27,28 @@ const Banner = () => {
 
   return (
     <section className="bg-greenBg">
-      <MainLayout>
-        {slides?.length > 2 ? (
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Pagination, Navigation, Autoplay]}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="mySwiper"
-          >
-            {slides?.map(data => (
-              <SwiperSlide key={data._id}>
-                <Slide data={data} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <Loading />
-        )}
-      </MainLayout>
+      {slides?.length > 2 ? (
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation, Autoplay]}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          className="mySwiper"
+        >
+          {slides?.map(data => (
+            <SwiperSlide key={data._id}>
+              <Slide data={data} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <Loading />
+      )}
     </section>
   );
 };
