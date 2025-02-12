@@ -66,7 +66,7 @@ const AllMarathons = () => {
           </div>
 
           {/* Pagination */}
-          <div className="text-gray sm:text-lg md:text-xl font-semibold pt-12 flex justify-center items-center gap-3">
+          <div className="text-gray2 sm:text-lg md:text-xl font-semibold pt-12 flex justify-center items-center gap-3">
             <p
               onClick={() => {
                 currentPage > 1 && setCurrentPage(currentPage - 1);

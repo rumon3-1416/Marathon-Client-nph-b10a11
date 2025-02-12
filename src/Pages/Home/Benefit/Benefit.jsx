@@ -5,10 +5,10 @@ import trainIcon from '../../../assets/icons/training.png';
 import facilitiesIcon from '../../../assets/icons/facilities.png';
 
 const Benefit = () => {
-  const { darkTheme } = useAuthContext;
+  const { darkTheme } = useAuthContext();
 
   return (
-    <section className="bg-goldBg pt-16 pb-10">
+    <section className="bg-greenBg pt-16 pb-10">
       <MainLayout>
         <div className="grid md:grid-cols-2 items-center">
           {/* Images */}

@@ -13,7 +13,7 @@ export default {
         gold: '#FFC107',
         goldBg: '#FFC1070e',
         gold2: '#f1be24',
-        gray: '#6C757D',
+        gray2: '#6C757D',
         blue: '#17A2B8',
         orange: '#FD7E14',
         light2: '#f7f7f7',

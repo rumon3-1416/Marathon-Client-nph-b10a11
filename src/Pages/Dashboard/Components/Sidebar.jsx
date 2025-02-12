@@ -37,13 +37,13 @@ const Sidebar = () => {
             {/* Sidebar Button */}
             <button
               onClick={() => setCollapse(!collapse)}
-              className="bg-[#DDF1E2] rounded-md shadow-md shadow-gray absolute top-6 -right-4"
+              className="bg-[#DDF1E2] rounded-md shadow-md shadow-gray2 absolute top-6 -right-4"
             >
               <img className="w-8" src={sidebarIcon} alt="" />
             </button>
 
             {/* Sidebar Links */}
-            <ul className="text-gray font-medium">
+            <ul className="text-gray2 font-medium">
               <li>
                 <NavLink
                   className={`flex items-center gap-2 ${

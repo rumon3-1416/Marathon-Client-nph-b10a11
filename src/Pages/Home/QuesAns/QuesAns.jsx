@@ -7,7 +7,7 @@ const QuesAns = () => {
   const { darkTheme } = useAuthContext();
 
   return (
-    <div id="help" className="bg-goldBg pt-16 pb-10">
+    <div id="help" className="bg-greenBg pt-16 pb-10">
       <MainLayout>
         <section className="grid grid-cols-1 lg:grid-cols-[2fr,_3fr] items-center gap-16 md:gap-8 lg:gap-12 xl:gap-20">
           {/* Cards */}
@@ -41,13 +41,19 @@ const QuesAns = () => {
               <input type="radio" name="my-accordion-2" />
               <div
                 className={`collapse-title ${
-                  currTitle === 1 && 'text-dark-green'
+                  currTitle === 1
+                    ? darkTheme
+                      ? 'text-light2'
+                      : 'text-dark-green'
+                    : darkTheme
+                    ? 'text-gray-300'
+                    : ''
                 } text-xl font-medium`}
               >
                 <p>How do I register for a marathon?</p>
               </div>
               <div className="collapse-content">
-                <p>
+                <p className={darkTheme ? 'text-gray-200' : ''}>
                   To register for a marathon, browse the list of upcoming events
                   on our website, select your desired marathon, and click the
                   Register button. Complete the registration form and payment
@@ -65,13 +71,19 @@ const QuesAns = () => {
               <input type="radio" name="my-accordion-2" />
               <div
                 className={`collapse-title ${
-                  currTitle === 2 && 'text-dark-green'
+                  currTitle === 2
+                    ? darkTheme
+                      ? 'text-light2'
+                      : 'text-dark-green'
+                    : darkTheme
+                    ? 'text-gray-300'
+                    : ''
                 } text-xl font-medium`}
               >
                 <p>Can I update my marathon details?</p>
               </div>
               <div className="collapse-content">
-                <p>
+                <p className={darkTheme ? 'text-gray-200' : ''}>
                   Yes, you can update your marathon details by logging into your
                   account, navigating to your dashboard, and selecting the Edit
                   Registration option for the respective marathon. Please note
@@ -90,7 +102,13 @@ const QuesAns = () => {
               <input type="radio" name="my-accordion-2" />
               <div
                 className={`collapse-title ${
-                  currTitle === 3 && 'text-dark-green'
+                  currTitle === 3
+                    ? darkTheme
+                      ? 'text-light2'
+                      : 'text-dark-green'
+                    : darkTheme
+                    ? 'text-gray-300'
+                    : ''
                 } text-xl font-medium`}
               >
                 <p>
@@ -99,7 +117,7 @@ const QuesAns = () => {
                 </p>
               </div>
               <div className="collapse-content">
-                <p>
+                <p className={darkTheme ? 'text-gray-200' : ''}>
                   Refund policies vary by event and are determined by the event
                   organizer. Please check the event-specific details on the
                   marathons page. Some events may offer partial refunds if
@@ -117,7 +135,13 @@ const QuesAns = () => {
               <input type="radio" name="my-accordion-2" />
               <div
                 className={`collapse-title ${
-                  currTitle === 4 && 'text-dark-green'
+                  currTitle === 4
+                    ? darkTheme
+                      ? 'text-light2'
+                      : 'text-dark-green'
+                    : darkTheme
+                    ? 'text-gray-300'
+                    : ''
                 } text-xl font-medium`}
               >
                 <p>
@@ -126,7 +150,7 @@ const QuesAns = () => {
                 </p>
               </div>
               <div className="collapse-content">
-                <p>
+                <p className={darkTheme ? 'text-gray-200' : ''}>
                   Each marathon may have specific requirements, such as a
                   minimum age, fitness level, or medical clearance. These
                   details are provided on the event page. Ensure you meet the

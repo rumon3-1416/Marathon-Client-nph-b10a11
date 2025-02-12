@@ -19,10 +19,9 @@ const Home = () => {
         scroller.scrollTo(state.scrollTo, {
           smooth: true,
           duration: 500,
-          delay: 500,
         });
       }
-    }, 1200);
+    }, 1500);
   }, [state]);
 
   useEffect(() => {

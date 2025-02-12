@@ -8,7 +8,7 @@ import twitterIcon from '../../assets/icons/twitter.png';
 import instIcon from '../../assets/icons/instagram.png';
 
 const Footer = () => {
-  const { darkTheme } = useAuthContext;
+  const { darkTheme } = useAuthContext();
   const navigate = useNavigate();
 
   return (

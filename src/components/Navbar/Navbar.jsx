@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
-import {
-  NavLink,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { scroller } from 'react-scroll';
+import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import MainLayout from '../../Layouts/MainLayout';
 import logo from '../../assets/icons/logo.png';
 import userIcon from '../../assets/icons/user.png';
 import menuIcon from '../../assets/icons/menu.png';
-import { scroller } from 'react-scroll';
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
-  const { user, darkTheme, signOutUser, setLoading } = useAuthContext();
+  const { user, darkTheme, signOutUser, setDarkTheme } = useAuthContext();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -30,6 +26,14 @@ const Navbar = () => {
     }
 
     setShowNav(false);
+  };
+
+  const handleTheme = () => {
+    document.body.style.backgroundColor = darkTheme ? '#f7f7f7' : '#303030';
+    window.document.documentElement.classList.add(
+      darkTheme ? 'bg-[#f7f7f7]' : 'bg-dark3'
+    );
+    setDarkTheme(!darkTheme);
   };
 
   return (
@@ -53,8 +57,12 @@ const Navbar = () => {
             </div>
 
             <ul
-              className={`text-[#32443f] bg-[#cfead7f7] md:bg-transparent backdrop-blur-md md:backdrop-blur-none md:text-sm lg:text-base font-medium md:h-fit md:py-0 rounded-b-xl overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4 xl:gap-8 absolute md:static inset-x-0 top-20 md:top-0 z-30 transition-all duration-300 ${
+              className={`md:bg-transparent backdrop-blur-md md:backdrop-blur-none md:text-sm lg:text-base font-medium md:h-fit md:py-0 rounded-b-xl shadow-lg md:shadow-none overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4 xl:gap-8 absolute md:static inset-x-0 top-20 md:top-0 z-30 transition-all duration-300 ${
                 showNav ? 'h-72 py-8' : 'h-0'
+              } ${
+                darkTheme
+                  ? 'text-light2 bg-[#464646f6]'
+                  : 'text-[#32443f] bg-[#cfead7f7]'
               }`}
             >
               <li onClick={() => setShowNav(false)} className="hover:text-gold">
@@ -114,6 +122,15 @@ const Navbar = () => {
 
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-3">
+                <button
+                  onClick={handleTheme}
+                  className={`text-3xl ${
+                    darkTheme ? 'text-white' : 'text-dark'
+                  }`}
+                >
+                  {darkTheme ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                </button>
+
                 {user ? (
                   <>
                     <button className="bg-transparent w-12 h-12 p-0.5 border-2 border-green rounded-full cursor-default">
@@ -126,7 +143,7 @@ const Navbar = () => {
                     </button>
                     <button
                       onClick={() => signOutUser()}
-                      className="text-green hover:text-gold2 font-medium sm:px-4 md:px-6 py-2 border-2 border-green hover:border-gold2 rounded-lg hidden md:block"
+                      className="text-green hover:text-gold2 font-medium sm:px-4 lg:px-6 py-2 border-2 border-green hover:border-gold2 rounded-lg hidden md:block"
                     >
                       Logout
                     </button>

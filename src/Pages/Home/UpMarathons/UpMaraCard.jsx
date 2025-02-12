@@ -2,6 +2,7 @@ import React from 'react';
 
 import clockIcon from '../../../assets/icons/clock.png';
 import gpsIcon from '../../../assets/icons/location.png';
+import { useAuthContext } from '../../../Hooks/useAuthContext';
 
 const UpMaraCard = ({ marathon }) => {
   const {
@@ -13,8 +14,14 @@ const UpMaraCard = ({ marathon }) => {
     location,
   } = marathon;
 
+  const { darkTheme } = useAuthContext();
+
   return (
-    <div className="bg-white rounded-xl shadow-lg flex flex-col items-start">
+    <div
+      className={`rounded-xl shadow-lg flex flex-col items-start ${
+        darkTheme ? 'bg-dark5' : 'bg-white'
+      }`}
+    >
       <img
         className="w-full aspect-[4/3] object-cover rounded-xl mb-4"
         src={image}
@@ -35,12 +42,30 @@ const UpMaraCard = ({ marathon }) => {
             </div>
           </div>
 
-          <h4 className="text-xl font-semibold mt-3 mb-1">{title}</h4>
-          <p className="font-medium">
-            Distance :{' '}
-            <span className="text-dark-green font-semibold">{distance}</span>
+          <h4
+            className={`text-xl font-semibold mt-3 mb-1 ${
+              darkTheme ? 'text-light2' : ''
+            }`}
+          >
+            {title}
+          </h4>
+          <p className={`font-medium ${darkTheme ? 'text-gray-300' : ''}`}>
+            Distance{' '}
+            <span
+              className={`font-semibold ${
+                darkTheme ? 'text-gray-200' : 'text-dark-green'
+              }`}
+            >
+              {distance}
+            </span>
           </p>
-          <p className="text-gray-600 text-justify mt-3">{description}</p>
+          <p
+            className={`text-justify mt-3 ${
+              darkTheme ? 'text-gray-300' : 'text-gray-600'
+            }`}
+          >
+            {description}
+          </p>
         </div>
       </div>
     </div>

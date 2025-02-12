@@ -25,7 +25,7 @@ const Marathon = ({ marathon }) => {
             <span>{location}</span>
             <span>{marathonDate?.split('T')[0]}</span>
           </p>
-          <p className="text-gray font-medium mt-2 text-justify">
+          <p className="text-gray2 font-medium mt-2 text-justify">
             {description}
           </p>
         </div>
