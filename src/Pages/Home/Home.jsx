@@ -14,13 +14,15 @@ const Home = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    if (state?.scrollTo) {
-      scroller.scrollTo(state.scrollTo, {
-        smooth: true,
-        duration: 500,
-        delay: 200,
-      });
-    }
+    setTimeout(() => {
+      if (state?.scrollTo) {
+        scroller.scrollTo(state.scrollTo, {
+          smooth: true,
+          duration: 500,
+          delay: 500,
+        });
+      }
+    }, 1200);
   }, [state]);
 
   useEffect(() => {
