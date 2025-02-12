@@ -10,7 +10,6 @@ import 'swiper/css/autoplay';
 
 import './carousel.css';
 import Slide from './Slide';
-import MainLayout from '../../../Layouts/MainLayout';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 import Loading from '../../../components/Loading/Loading';
 

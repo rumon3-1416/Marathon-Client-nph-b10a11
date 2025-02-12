@@ -15,7 +15,7 @@ import { scroller } from 'react-scroll';
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
-  const { user, darkTheme, signOutUser } = useAuthContext();
+  const { user, darkTheme, signOutUser, setLoading } = useAuthContext();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const Navbar = () => {
       <div
         className={`w-full backdrop-blur-lg ${
           darkTheme ? 'bg-dark5Trans' : 'bg-[#cfead7ba]'
-        }`}
+        } shadow-lg`}
       >
         <MainLayout>
           <nav

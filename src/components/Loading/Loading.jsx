@@ -1,13 +1,12 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import loadingHand from './loadingHand.json';
-import MainLayout from '../../Layouts/MainLayout';
+import loadingSpinner from './loading-spinner.json';
 
 const Loading = () => {
   return (
-    <MainLayout>
-      <Lottie className="h-[70vh]" animationData={loadingHand} />
-    </MainLayout>
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+      <Lottie className="h-32" animationData={loadingSpinner} />
+    </div>
   );
 };
 

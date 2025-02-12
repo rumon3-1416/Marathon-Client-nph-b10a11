@@ -4,8 +4,10 @@ import { useAuthContext } from '../../Hooks/useAuthContext';
 import Marathon from './Marathon';
 import SortMara from './SortMara';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Loading from '../../components/Loading/Loading';
 
 const AllMarathons = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [marathons, setMarathons] = useState([]);
   const [totalMarathons, setTotalMarathons] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,13 +33,15 @@ const AllMarathons = () => {
       : `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}`;
 
     axiosSecure.get(conditionalLink).then(res => setMarathons(res.data));
+
+    setIsLoading(false);
   }, [currentPage, cardPerPage, sort, axiosSecure, serverUrl]);
 
   useEffect(() => {
     document.title = 'Marathons | RunSphere';
   }, []);
 
-  return (
+  return !isLoading ? (
     <div className="bg-greenBg py-16">
       <MainLayout>
         <section id="marathons">
@@ -96,6 +100,8 @@ const AllMarathons = () => {
         </section>
       </MainLayout>
     </div>
+  ) : (
+    <Loading />
   );
 };
 

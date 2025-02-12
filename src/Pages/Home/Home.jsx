@@ -18,6 +18,7 @@ const Home = () => {
       scroller.scrollTo(state.scrollTo, {
         smooth: true,
         duration: 500,
+        delay: 200,
       });
     }
   }, [state]);
