@@ -14,10 +14,12 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 const googleProvider = new GoogleAuthProvider();
 const serverUrl = import.meta.env.VITE_ServerUrl;
 
+const dark = localStorage.getItem('darkTheme');
+
 export const ContextValue = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(dark || false);
 
   const axiosSecure = useAxiosSecure();
 

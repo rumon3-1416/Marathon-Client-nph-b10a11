@@ -71,7 +71,9 @@ const AllMarathons = () => {
               onClick={() => {
                 currentPage > 1 && setCurrentPage(currentPage - 1);
               }}
-              className="hover:text-green cursor-pointer"
+              className={`hover:text-green cursor-pointer ${
+                darkTheme ? 'text-gray-200' : ''
+              }`}
             >
               Prev
             </p>
@@ -80,7 +82,11 @@ const AllMarathons = () => {
                 onClick={() => setCurrentPage(num + 1)}
                 className={`px-2 sm:px-3.5 sm:py-1 rounded-lg border-2 border-light-green ${
                   currentPage === num + 1
-                    ? 'bg-light-green text-green'
+                    ? darkTheme
+                      ? 'bg-greenBg text-gray-400'
+                      : 'bg-greenBg text-green'
+                    : darkTheme
+                    ? 'bg-goldBg text-gray-200'
                     : 'bg-white'
                 }`}
                 key={num}
@@ -92,7 +98,9 @@ const AllMarathons = () => {
               onClick={() => {
                 currentPage < totalPages && setCurrentPage(currentPage + 1);
               }}
-              className="hover:text-green cursor-pointer"
+              className={`hover:text-green cursor-pointer ${
+                darkTheme ? 'text-gray-200' : ''
+              }`}
             >
               Next
             </p>

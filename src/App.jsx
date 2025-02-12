@@ -15,7 +15,7 @@ function App() {
     <>
       <ScrollRestoration />
       <Navbar />
-      <div className="h-10"></div>
+      <div className="h-20"></div>
 
       <Outlet />
 

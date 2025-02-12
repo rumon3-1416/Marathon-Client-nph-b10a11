@@ -4,7 +4,7 @@ import { useAuthContext } from '../../../../Hooks/useAuthContext';
 
 const ApplySearch = ({ setApplications }) => {
   const axiosSecure = useAxiosSecure();
-  const { serverUrl, user } = useAuthContext();
+  const { serverUrl, user, darkTheme } = useAuthContext();
 
   const handleSearch = e => {
     e.preventDefault();
@@ -20,7 +20,9 @@ const ApplySearch = ({ setApplications }) => {
     <div className="mb-6">
       <input
         onChange={handleSearch}
-        className="px-3 py-1.5 border-2 border-[#6d9f78] rounded-lg outline-none"
+        className={`px-3 py-1.5 border-2 border-[#6d9f78] rounded-lg outline-none ${
+          darkTheme ? 'bg-dark5 text-light2' : ''
+        }`}
         type="text"
         name="search"
         id="search"

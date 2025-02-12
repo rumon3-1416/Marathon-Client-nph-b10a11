@@ -108,7 +108,11 @@ const MyApply = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className={`bg-[#e6e6e6] ${darkTheme && 'text-light2'}`}>
+            <tr
+              className={`border-none ${
+                darkTheme ? 'text-light2 bg-dark5' : 'bg-[#e6e6e6]'
+              }`}
+            >
               <th>No</th>
               <th>Title</th>
               <th className="text-center">Name</th>

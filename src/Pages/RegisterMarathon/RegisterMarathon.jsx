@@ -54,7 +54,11 @@ const RegisterMarathon = () => {
   return (
     <div className="bg-greenBg pt-12 pb-24">
       <MainLayout>
-        <section className="bg-[#fffcfc] px-8 py-10 rounded-xl shadow-lg">
+        <section
+          className={`px-8 py-10 rounded-xl shadow-lg ${
+            darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
+          }`}
+        >
           <h3
             className={`text-3xl font-bold text-center mb-12 ${
               darkTheme ? 'text-light2' : 'text-gray-800'

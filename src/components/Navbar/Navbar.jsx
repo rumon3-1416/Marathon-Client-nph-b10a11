@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
@@ -28,13 +28,15 @@ const Navbar = () => {
     setShowNav(false);
   };
 
-  const handleTheme = () => {
-    document.body.style.backgroundColor = darkTheme ? '#f7f7f7' : '#303030';
+  useEffect(() => {
+    document.body.style.backgroundColor = darkTheme ? '#303030' : '#f7f7f7';
     window.document.documentElement.classList.add(
+      darkTheme ? 'bg-dark3' : 'bg-[#f7f7f7]'
+    );
+    window.document.documentElement.classList.remove(
       darkTheme ? 'bg-[#f7f7f7]' : 'bg-dark3'
     );
-    setDarkTheme(!darkTheme);
-  };
+  }, [darkTheme]);
 
   return (
     <div className="w-full fixed top-0 inset-x-0 z-20">
@@ -122,8 +124,12 @@ const Navbar = () => {
 
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-3">
+                {/* Theme Button */}
                 <button
-                  onClick={handleTheme}
+                  onClick={() => {
+                    localStorage.setItem('darkTheme', darkTheme ? '' : true);
+                    setDarkTheme(!darkTheme);
+                  }}
                   className={`text-3xl ${
                     darkTheme ? 'text-white' : 'text-dark'
                   }`}

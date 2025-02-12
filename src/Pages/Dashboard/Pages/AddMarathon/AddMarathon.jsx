@@ -73,7 +73,9 @@ const AddMarathon = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-[#fffcfc] px-8 py-10 rounded-xl shadow-lg"
+        className={`px-8 py-10 rounded-xl shadow-lg ${
+          darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
+        }`}
       >
         {/* Title */}
         <div className="mb-6 flex flex-col">

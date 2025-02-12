@@ -51,9 +51,13 @@ const MarathonDetails = () => {
   };
 
   return (
-    <div className="bg-goldBg pt-12 pb-24">
+    <div className="bg-greenBg pt-12 pb-24">
       <MainLayout>
-        <div className="bg-greenBg p-6 shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          className={`p-6 shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8 ${
+            darkTheme ? 'bg-dark5' : 'bg-white'
+          }`}
+        >
           <img
             className="
         w-full aspect-video md:aspect-square lg:aspect-[4/3] xl:aspect-video object-cover rounded-lg"
@@ -62,7 +66,7 @@ const MarathonDetails = () => {
           />
           {/* Description */}
           <div className="flex flex-col justify-between items-start">
-            {marathonDate && <Timer date={marathonDate} />}
+            {endDate && <Timer date={endDate} />}
 
             <div>
               {/* Head */}

@@ -20,7 +20,7 @@ const Footer = () => {
       }`}
     >
       <div className="w-[95%] md:w-[90%] max-w-7xl mx-auto">
-        <div className="pt-24 pb-10 grid grid-cols-1 md:grid-cols-[2fr,_3fr] gap-8">
+        <div className="pt-16 pb-10 grid grid-cols-1 md:grid-cols-[2fr,_3fr] gap-8">
           {/* Intro */}
           <div>
             {/* Logo */}

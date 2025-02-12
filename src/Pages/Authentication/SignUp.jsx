@@ -98,7 +98,7 @@ const SignUp = () => {
     <div className="bg-greenBg py-8">
       <MainLayout>
         <section className="min-h-[calc(95vh-5rem)] flex justify-center items-center">
-          <div className="text-[#403F3F] bg-[#fffcfc] w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 mt-8 rounded-xl shadow-lg">
+          <div className="text-[#403F3F] bg-[#fffcfc] w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 rounded-xl shadow-lg">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* Name & Photo */}
               <div className="grid grid-cols-2 gap-4">
@@ -115,7 +115,7 @@ const SignUp = () => {
                   id="photo"
                   name="photo"
                   type="text"
-                  placeholder="Photo url"
+                  placeholder="Photo URL"
                   required
                 />
               </div>
