@@ -154,42 +154,43 @@ const UpdateModal = ({ marathon, updateMarathon }) => {
             </div>
           </div>
 
-          {/* Location */}
-          <div className="mb-6 flex flex-col">
-            <label
-              htmlFor="location"
-              className={`font-semibold mb-2 ${labelColor}`}
-            >
-              Location
-            </label>
-            <input
-              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-              type="text"
-              id="location"
-              name="location"
-              placeholder="Marathon Location"
-              defaultValue={location}
-              required
-            />
-          </div>
+          {/* Location & Image */}
+          <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col">
+              <label
+                htmlFor="location"
+                className={`font-semibold mb-2 ${labelColor}`}
+              >
+                Location
+              </label>
+              <input
+                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Marathon Location"
+                defaultValue={location}
+                required
+              />
+            </div>
 
-          {/* Image */}
-          <div className="mb-6 flex flex-col">
-            <label
-              htmlFor="image"
-              className={`font-semibold mb-2 ${labelColor}`}
-            >
-              Marathon Image
-            </label>
-            <input
-              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
-              type="text"
-              id="image"
-              name="image"
-              placeholder="Marathon Image URL"
-              defaultValue={image}
-              required
-            />
+            <div className="flex flex-col">
+              <label
+                htmlFor="image"
+                className={`font-semibold mb-2 ${labelColor}`}
+              >
+                Marathon Image
+              </label>
+              <input
+                className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+                type="text"
+                id="image"
+                name="image"
+                placeholder="Marathon Image URL"
+                defaultValue={image}
+                required
+              />
+            </div>
           </div>
 
           {/* description */}

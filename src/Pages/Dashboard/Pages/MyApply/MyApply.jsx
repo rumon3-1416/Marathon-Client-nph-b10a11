@@ -104,37 +104,52 @@ const MyApply = () => {
       <ApplySearch setApplications={setApplications} />
 
       {/* Table */}
-      <div className="bg-[#fffcfc] overflow-x-auto mt-4">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr
-              className={`border-none ${
-                darkTheme ? 'text-light2 bg-dark5' : 'bg-[#e6e6e6]'
+      <div className="overflow-x-auto mt-4">
+        {applications.length > 0 ? (
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr
+                className={`border-none ${
+                  darkTheme ? 'text-light2 bg-dark5' : 'bg-[#e6e6e6]'
+                }`}
+              >
+                <th>No</th>
+                <th>Title</th>
+                <th className="text-center">Name</th>
+                <th>Contact</th>
+                <th className="text-center">Action</th>
+              </tr>
+            </thead>
+
+            {/* body */}
+            <tbody>
+              {applications.length > 0 &&
+                applications.map((application, index) => (
+                  <MyApplyRow
+                    key={application._id}
+                    application={application}
+                    index={index}
+                    handleUpdate={handleUpdate}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="text-center">
+            <h2
+              className={`text-2xl font-semibold ${
+                darkTheme ? 'text-gray-200' : 'text-dark5'
               }`}
             >
-              <th>No</th>
-              <th>Title</th>
-              <th className="text-center">Name</th>
-              <th>Contact</th>
-              <th className="text-center">Action</th>
-            </tr>
-          </thead>
-
-          {/* body */}
-          <tbody>
-            {applications.length > 0 &&
-              applications.map((application, index) => (
-                <MyApplyRow
-                  key={application._id}
-                  application={application}
-                  index={index}
-                  handleUpdate={handleUpdate}
-                  handleDelete={handleDelete}
-                />
-              ))}
-          </tbody>
-        </table>
+              No Data Found!
+            </h2>
+            <p className={`mt-2 ${darkTheme ? 'text-gray-300' : ''}`}>
+              Apply Marathons to see here.
+            </p>
+          </div>
+        )}
 
         {updateApplicationModal.showModal && (
           <UpdateApply

@@ -97,39 +97,53 @@ const MyMarathons = () => {
       >
         My Marathons
       </h3>
-
       {/* Table */}
-      <div className="bg-[#fffcfc] overflow-x-auto mt-4">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr
-              className={`border-none ${
-                darkTheme ? 'text-light2 bg-dark5' : 'bg-[#e6e6e6]'
+      <div className="overflow-x-auto mt-4">
+        {marathons.length > 0 ? (
+          <table className="table bg-[#fffcfc]">
+            {/* head */}
+            <thead>
+              <tr
+                className={`border-none ${
+                  darkTheme ? 'text-light2 bg-dark5' : 'bg-[#e6e6e6]'
+                }`}
+              >
+                <th>No</th>
+                <th>Title</th>
+                <th className="text-center">Distance</th>
+                <th>Date</th>
+                <th className="text-center">Action</th>
+              </tr>
+            </thead>
+
+            {/* body */}
+            <tbody>
+              {marathons.length > 0 &&
+                marathons.map((marathon, index) => (
+                  <MyMaraRow
+                    key={marathon._id}
+                    marathon={marathon}
+                    index={index}
+                    handleUpdate={handleUpdate}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="text-center">
+            <h2
+              className={`text-2xl font-semibold ${
+                darkTheme ? 'text-gray-200' : 'text-dark5'
               }`}
             >
-              <th>No</th>
-              <th>Title</th>
-              <th className="text-center">Distance</th>
-              <th>Date</th>
-              <th className="text-center">Action</th>
-            </tr>
-          </thead>
-
-          {/* body */}
-          <tbody>
-            {marathons.length > 0 &&
-              marathons.map((marathon, index) => (
-                <MyMaraRow
-                  key={marathon._id}
-                  marathon={marathon}
-                  index={index}
-                  handleUpdate={handleUpdate}
-                  handleDelete={handleDelete}
-                />
-              ))}
-          </tbody>
-        </table>
+              No Data Found!
+            </h2>
+            <p className={`mt-2 ${darkTheme ? 'text-gray-300' : ''}`}>
+              Add Marathons to see here.
+            </p>
+          </div>
+        )}
 
         {updateMarathonModal.showModal && (
           <UpdateMarathon

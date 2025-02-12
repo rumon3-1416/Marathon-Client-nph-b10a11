@@ -14,7 +14,7 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
             ? 'bg-[#595959]'
             : 'bg-[#f1f1f1]'
           : darkTheme
-          ? 'bg-[#6f6f6f]'
+          ? 'bg-[#616161]'
           : ''
       } ${
         darkTheme ? 'text-gray-100 hover:bg-[#4f4f4f]' : 'hover:bg-[#e6e6e6]'
