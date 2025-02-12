@@ -100,13 +100,13 @@ const Navbar = () => {
                     onClick={() => setShowNav(false)}
                     className="hover:text-gold md:hidden"
                   >
-                    <NavLink to="/dashboard">Login</NavLink>
+                    <NavLink to="/signin">Login</NavLink>
                   </li>
                   <li
                     onClick={() => setShowNav(false)}
                     className="hover:text-gold md:hidden"
                   >
-                    <NavLink to="/dashboard">Register</NavLink>
+                    <NavLink to="/signup">Register</NavLink>
                   </li>
                 </>
               )}
@@ -136,14 +136,22 @@ const Navbar = () => {
                     {/* Login */}
                     <button
                       onClick={() => navigate('/signin')}
-                      className="text-green hover:text-gold2 text-sm sm:text-base font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-2 border-2 border-green hover:border-gold2 rounded-s-lg"
+                      className={`text-sm sm:text-base font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-2 border-2 rounded-s-lg ${
+                        pathname === '/signin'
+                          ? 'text-gold2 border-gold2'
+                          : 'text-green hover:text-gold2 border-green hover:border-gold2'
+                      }`}
                     >
                       Login
                     </button>
                     {/* Register */}
                     <button
                       onClick={() => navigate('/signup')}
-                      className="bg-green text-white hover:bg-gold2 text-sm sm:text-base font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 border-green hover:border-gold2 rounded-e-lg"
+                      className={`text-white text-sm sm:text-base font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-2  border-2 rounded-e-lg ${
+                        pathname === '/signup'
+                          ? 'bg-gold2 border-gold2'
+                          : 'bg-green hover:bg-gold2 border-green hover:border-gold2'
+                      }`}
                     >
                       Register
                     </button>

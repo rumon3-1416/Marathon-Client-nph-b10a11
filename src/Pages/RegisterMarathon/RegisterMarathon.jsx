@@ -196,7 +196,7 @@ const RegisterMarathon = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-xl"
+                className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-lg"
               >
                 Register
               </button>
@@ -206,7 +206,7 @@ const RegisterMarathon = () => {
           <Modal property={modal}>
             <button
               onClick={() => setModal({ ...modal, show: false })}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-xl"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
             >
               OK
             </button>

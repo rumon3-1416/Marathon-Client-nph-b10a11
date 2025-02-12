@@ -215,7 +215,7 @@ const UpdateModal = ({ marathon, updateMarathon }) => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-xl"
+              className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-lg"
             >
               Update
             </button>

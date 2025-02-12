@@ -14,9 +14,9 @@ const UpMaraCard = ({ marathon }) => {
   } = marathon;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg flex flex-col items-start">
+    <div className="bg-white rounded-xl shadow-lg flex flex-col items-start">
       <img
-        className="w-full aspect-[4/3] object-cover rounded-2xl mb-4"
+        className="w-full aspect-[4/3] object-cover rounded-xl mb-4"
         src={image}
         alt={title}
       />

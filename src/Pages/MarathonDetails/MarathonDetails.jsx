@@ -56,7 +56,7 @@ const MarathonDetails = () => {
         <div className="bg-greenBg p-6 shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8">
           <img
             className="
-        w-full aspect-video md:aspect-square lg:aspect-[4/3] xl:aspect-video object-cover rounded-xl"
+        w-full aspect-video md:aspect-square lg:aspect-[4/3] xl:aspect-video object-cover rounded-lg"
             src={image}
             alt={title}
           />
@@ -133,7 +133,7 @@ const MarathonDetails = () => {
             {/* Register Button */}
             <button
               onClick={handleRegister}
-              className="bg-green text-light2 hover:bg-gold2 font-medium px-9 py-2 mt-auto mb-2 rounded-xl"
+              className="bg-green text-light2 hover:bg-gold2 font-medium px-9 py-2 mt-auto mb-2 rounded-lg"
             >
               Register
             </button>
@@ -142,7 +142,7 @@ const MarathonDetails = () => {
           <Modal property={modal}>
             <button
               onClick={() => setModal({ ...modal, show: false })}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-xl"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
             >
               OK
             </button>

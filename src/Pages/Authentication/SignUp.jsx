@@ -95,70 +95,54 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className="bg-greenBg pb-24">
+    <div className="bg-greenBg py-8">
       <MainLayout>
-        <section className="min-h-[80vh] p-6 md:p-10 flex justify-center items-center">
-          <div className="text-[#403F3F bg-[#fffcfc] w-full md:w-4/5 lg:w-3/5 px-6 md:px-14 pt-12 md:pt-16 pb-16 rounded-2xl shadow-lg">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl text-center font-semibold">
-              Register Your Account
-            </h3>
-            {/* border */}
-            <div className="border border-[#E7E7E7] my-8"></div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="md:px-6 flex flex-col gap-6"
-            >
-              {/* Name */}
-              <div>
-                <p className="text-xl font-semibold mb-4">Name</p>
+        <section className="min-h-[calc(95vh-5rem)] flex justify-center items-center">
+          <div className="text-[#403F3F] bg-[#fffcfc] w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 mt-8 rounded-xl shadow-lg">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {/* Name & Photo */}
+              <div className="grid grid-cols-2 gap-4">
                 <input
-                  className="bg-[#F3F3F3] w-full p-5 outline-none rounded-md"
+                  className="bg-[#F3F3F3] w-full px-5 py-3 outline-none focus:border-[1.5px] border-green rounded-md"
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Your name"
                   required
                 />
-              </div>
-              {/* Email */}
-              <div>
-                <p className="text-xl font-semibold mb-4">Email</p>
                 <input
-                  className="bg-[#F3F3F3] w-full p-5 outline-none rounded-md"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              {/* Photo */}
-              <div>
-                <p className="text-xl font-semibold mb-4">Photo URL</p>
-                <input
-                  className="bg-[#F3F3F3] w-full p-5 outline-none rounded-md"
+                  className="bg-[#F3F3F3] w-full px-5 py-3 outline-none focus:border-[1.5px] border-green rounded-md"
                   id="photo"
                   name="photo"
                   type="text"
-                  placeholder="Enter your photo url"
+                  placeholder="Photo url"
                   required
                 />
               </div>
+
+              {/* Email */}
+              <input
+                className="bg-[#F3F3F3] w-full px-5 py-3 outline-none focus:border-[1.5px] border-green rounded-md"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+              />
+
               {/* Password */}
               <div className="relative">
-                <p className="text-xl font-semibold mb-4">Password</p>
                 <input
-                  className="bg-[#F3F3F3] w-full p-5 outline-none rounded-md"
+                  className="bg-[#F3F3F3] w-full px-5 py-3 outline-none focus:border-[1.5px] border-green rounded-md"
                   id="password"
                   name="password"
                   type={showPass ? `text` : `password`}
-                  placeholder="Enter password"
+                  placeholder="Password"
                   required
                 />
                 <button
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute top-16 right-4 rounded-full"
+                  className="absolute top-4 right-4 rounded-full"
                   type="button"
                 >
                   {showPass ? (
@@ -167,17 +151,17 @@ const SignUp = () => {
                     <FaRegEyeSlash className="text-2xl" />
                   )}
                 </button>
-                {passErr && <p className="text-red-500 mt-3">{passErr}</p>}
+                {passErr && <p className="text-red-500">{passErr}</p>}
               </div>
               {/* Terms */}
               <div className="flex items-center gap-2.5">
                 <input
-                  className="w-6 h-6 outline-none accent-green"
+                  className="w-5 h-5 outline-none accent-green"
                   type="checkbox"
                   name="terms"
                   id="terms"
                 />
-                <p>
+                <p className="text-sm">
                   Accept our{' '}
                   <span className="font-semibold">Terms & Conditions.</span>
                 </p>
@@ -186,14 +170,14 @@ const SignUp = () => {
               {errMessage && <p className="text-red-500">{errMessage}</p>}
               {/* Submit */}
               <button
-                className="bg-green hover:bg-gold2 text-white text-xl font-semibold px-5 py-4 mt-6 rounded-xl"
+                className="bg-green hover:bg-gold2 text-white font-semibold px-5 py-3 rounded-lg"
                 type="submit"
               >
                 Register
               </button>
             </form>
 
-            <p className="text-[#706F6F] text-center font-semibold mt-7">
+            <p className="text-[#706F6F] text-sm text-center font-semibold mt-4">
               Already Have An Account ?{' '}
               <Link className="text-orange whitespace-nowrap" to="/signin">
                 Log In
@@ -201,9 +185,9 @@ const SignUp = () => {
             </p>
 
             {/* or border */}
-            <div className="my-6 grid grid-cols-[1fr,_40px,_1fr] items-center">
+            <div className="my-3 grid grid-cols-[1fr,_40px,_1fr] items-center">
               <div className="border border-[#8d8b8b]"></div>
-              <p className="text-[#403F3F] text-2xl font-medium text-center">
+              <p className="text-[#403F3F] text-xl font-medium text-center">
                 or
               </p>
               <div className="border border-[#8d8b8b]"></div>
@@ -212,7 +196,7 @@ const SignUp = () => {
             {/* Google Sign In */}
             <button
               onClick={() => handlePopup('google')}
-              className="w-full sm:text-xl font-semibold p-4 border-2 border-dark-green hover:border-gold rounded-full flex justify-center items-center gap-2 sm:gap-4"
+              className="w-full font-semibold px-5 py-2.5 border-[1.5px] border-dark-green hover:border-gold rounded-full flex justify-center items-center gap-2 sm:gap-4"
             >
               <img className="w-6 sm:w-8" src={googleIcon} alt="G" />
               <span>Continue With Google</span>
@@ -225,7 +209,7 @@ const SignUp = () => {
                 setModal({ ...modal, show: false });
                 !errMessage && navigate('/');
               }}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-xl"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
             >
               OK
             </button>

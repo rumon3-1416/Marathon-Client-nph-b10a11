@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 
 import './styles/App.css';
 import Navbar from './components/Navbar/Navbar';
@@ -9,6 +9,7 @@ import Loading from './components/Loading/Loading';
 
 function App() {
   const { loading } = useAuthContext();
+  const { pathname } = useLocation();
 
   return !loading ? (
     <>
@@ -18,7 +19,7 @@ function App() {
 
       <Outlet />
 
-      <Footer />
+      {pathname !== '/signin' && pathname !== '/signup' && <Footer />}
     </>
   ) : (
     <Loading />

@@ -23,27 +23,27 @@ export const ContextValue = () => {
 
   // Create User
   const emailPassSignUp = (email, pass) => {
-    setLoading(true);
+    // setLoading(true);
     return createUserWithEmailAndPassword(auth, email, pass);
   };
   // Sign In User
   const emailPassSignIn = (email, pass) => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
   };
   // Google Sign
   const googleSignIn = () => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   // Update user
   const updateUserProfile = (user = auth.currentUser, obj) => {
-    setLoading(true);
+    // setLoading(true);
     return updateProfile(user, obj);
   };
   // Sign Out
   const signOutUser = () => {
-    setLoading(true);
+    // setLoading(true);
     return signOut(auth);
   };
   // On Auth Changed

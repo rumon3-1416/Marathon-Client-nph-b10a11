@@ -27,7 +27,7 @@ const NewsLetter = () => {
             className="flex items-center"
           >
             <input
-              className="w-[10rem] sm:w-[15rem] md:w-[10rem] lg:w-[15rem] xl:w-[20rem] px-6 py-3 border-2 border-green outline-none rounded-s-xl"
+              className="w-[10rem] sm:w-[15rem] md:w-[10rem] lg:w-[15rem] xl:w-[20rem] px-6 py-3 border-2 border-green outline-none rounded-s-lg"
               type="email"
               name="subscribe"
               id="subscribe"
@@ -36,7 +36,7 @@ const NewsLetter = () => {
             />
             <button
               type="submit"
-              className="bg-green text-white font-semibold px-6 py-3 border-2 border-green rounded-e-xl"
+              className="bg-green text-white font-semibold px-6 py-3 border-2 border-green rounded-e-lg"
             >
               Subscribe
             </button>
