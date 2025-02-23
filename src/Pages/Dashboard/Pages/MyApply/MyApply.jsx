@@ -106,7 +106,7 @@ const MyApply = () => {
       {/* Table */}
       <div className="overflow-x-auto mt-4">
         {applications.length > 0 ? (
-          <table className="table">
+          <table className="table bg-white">
             {/* head */}
             <thead>
               <tr

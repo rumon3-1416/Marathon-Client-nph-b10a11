@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
+import axios from 'axios';
 
 const googleProvider = new GoogleAuthProvider();
 const serverUrl = import.meta.env.VITE_ServerUrl;
@@ -21,51 +21,53 @@ export const ContextValue = () => {
   const [user, setUser] = useState(null);
   const [darkTheme, setDarkTheme] = useState(dark || false);
 
-  const axiosSecure = useAxiosSecure();
-
   // Create User
   const emailPassSignUp = (email, pass) => {
-    // setLoading(true);
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, pass);
   };
   // Sign In User
   const emailPassSignIn = (email, pass) => {
-    // setLoading(true);
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
   };
   // Google Sign
   const googleSignIn = () => {
-    // setLoading(true);
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   // Update user
   const updateUserProfile = (user = auth.currentUser, obj) => {
-    // setLoading(true);
+    setLoading(true);
     return updateProfile(user, obj);
   };
   // Sign Out
   const signOutUser = () => {
-    // setLoading(true);
+    setLoading(true);
     return signOut(auth);
   };
+
   // On Auth Changed
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser || null);
-
       if (currentUser) {
-        axiosSecure.post('/jwt', { user_email: currentUser.email });
+        axios.post(
+          `${serverUrl}/jwt`,
+          { user_email: currentUser.email },
+          { withCredentials: true }
+        );
 
         setLoading(false);
       } else {
-        axiosSecure.post('/logout');
+        axios.post(`${serverUrl}/logout`, {}, { withCredentials: true });
 
         setLoading(false);
       }
     });
 
     return () => unsubscribe();
-  }, [axiosSecure]);
+  }, []);
 
   return {
     loading,

@@ -42,7 +42,7 @@ const Navbar = () => {
     <div className="w-full fixed top-0 inset-x-0 z-20">
       <div
         className={`w-full backdrop-blur-lg ${
-          darkTheme ? 'bg-dark5Trans' : 'bg-[#cfead7ba]'
+          darkTheme ? 'bg-dark5Trans' : 'bg-[#f0fffeb7]'
         } shadow-lg`}
       >
         <MainLayout>

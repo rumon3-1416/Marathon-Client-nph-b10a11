@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const authContext = useAuthContext();
+  const { signOutUser } = useAuthContext();
 
   useEffect(() => {
     const interceptor = axiosInstance.interceptors.response.use(
@@ -17,7 +17,7 @@ const useAxiosSecure = () => {
       },
       err => {
         if (err.status === 401 || err.status === 403) {
-          authContext?.signOutUser();
+          signOutUser();
         }
         return Promise.reject(err);
       }
@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
     return () => {
       axiosInstance.interceptors.response.eject(interceptor);
     };
-  }, [authContext]);
+  }, [signOutUser]);
 
   return axiosInstance;
 };

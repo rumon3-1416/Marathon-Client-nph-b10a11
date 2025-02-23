@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import MainLayout from '../../Layouts/MainLayout';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../Hooks/useAuthContext';
-import Modal from '../../components/Modal/Modal';
-
 import { IoEyeOutline } from 'react-icons/io5';
 import { FaRegEyeSlash } from 'react-icons/fa';
+
+import { useAuthContext } from '../../Hooks/useAuthContext';
+import MainLayout from '../../Layouts/MainLayout';
+import Modal from '../../components/Modal/Modal';
 import googleIcon from '../../assets/icons/google.png';
 
 const SignIn = () => {
@@ -25,10 +25,6 @@ const SignIn = () => {
     : 'bg-[#f1f1f1] text-gray-800';
 
   const desired = location.state?.pathname || '/';
-
-  useEffect(() => {
-    document.title = 'Login | RunSphere';
-  }, []);
 
   // Email Password Log In Handler
   const handleSubmit = e => {
@@ -56,15 +52,19 @@ const SignIn = () => {
         setModal({ show: true, res: 'success', title: 'Log In Successful' });
       })
       .catch(err => {
-        setErrMessage(err.message),
-          setModal({ show: true, res: 'error', title: 'Log In failed' });
+        setErrMessage(err.message);
+        setModal({ show: true, res: 'error', title: 'Log In failed' });
       });
   };
+
+  useEffect(() => {
+    document.title = 'Login | RunSphere';
+  }, []);
 
   return (
     <div className="bg-greenBg py-8">
       <MainLayout>
-        <section className="min-h-[calc(95vh-5rem)] flex justify-center items-center">
+        <section className="min-h-[calc(95vh-7rem)] flex justify-center items-center">
           <div
             className={`w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 rounded-xl shadow-lg ${
               darkTheme ? 'text-light2 bg-dark5' : 'text-[#403F3F] bg-[#fffcfc]'
@@ -143,7 +143,7 @@ const SignIn = () => {
 
             {/* Google Sign In */}
             <button
-              onClick={() => handlePopup('google')}
+              onClick={handlePopup}
               className={`w-full font-semibold px-5 py-2.5 border-[1.5px] hover:border-gold rounded-full flex justify-center items-center gap-2 sm:gap-4 ${
                 darkTheme ? 'border-gray-300' : 'border-dark-green'
               }`}

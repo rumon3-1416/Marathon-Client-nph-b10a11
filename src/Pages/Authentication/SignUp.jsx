@@ -105,7 +105,7 @@ const SignUp = () => {
   return (
     <div className="bg-greenBg py-8">
       <MainLayout>
-        <section className="min-h-[calc(95vh-5rem)] flex justify-center items-center">
+        <section className="min-h-[calc(95vh-7rem)] flex justify-center items-center">
           <div
             className={`w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 rounded-xl shadow-lg ${
               darkTheme ? 'text-light2 bg-dark5' : 'text-[#403F3F] bg-[#fffcfc]'

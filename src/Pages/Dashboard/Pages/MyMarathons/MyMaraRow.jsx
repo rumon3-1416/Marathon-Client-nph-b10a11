@@ -17,7 +17,7 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
           ? 'bg-[#616161]'
           : ''
       } ${
-        darkTheme ? 'text-gray-100 hover:bg-[#4f4f4f]' : 'hover:bg-[#e6e6e6]'
+        darkTheme ? 'text-gray-100 hover:bg-[#4f4f4f]' : 'hover:bg-[#dadada]'
       } border-none`}
     >
       <td className="text-nowrap">{index + 1}</td>
