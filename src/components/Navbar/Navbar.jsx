@@ -10,7 +10,9 @@ import userIcon from '../../assets/icons/user.png';
 import menuIcon from '../../assets/icons/menu.png';
 
 const Navbar = () => {
+  const [lastYScroll, setLastYScroll] = useState(0);
   const [showNav, setShowNav] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const { user, darkTheme, signOutUser, setDarkTheme } = useAuthContext();
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const Navbar = () => {
       navigate('/', { state: { scrollTo: secId } });
     }
 
-    setShowNav(false);
+    setShowMenu(false);
   };
 
   useEffect(() => {
@@ -38,8 +40,30 @@ const Navbar = () => {
     );
   }, [darkTheme]);
 
+  useEffect(() => {
+    const handleNav = () => {
+      const scrollY = window.scrollY;
+
+      if (lastYScroll < scrollY) {
+        setShowNav(false);
+      } else if (lastYScroll > scrollY) {
+        setShowNav(true);
+      }
+
+      setLastYScroll(scrollY);
+    };
+
+    document.addEventListener('scroll', handleNav);
+
+    return () => document.removeEventListener('scroll', handleNav);
+  }, [lastYScroll]);
+
   return (
-    <div className="w-full fixed top-0 inset-x-0 z-20">
+    <div
+      className={`w-full fixed top-0 inset-x-0 z-20 duration-300 ${
+        showNav ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div
         className={`w-full backdrop-blur-lg ${
           darkTheme ? 'bg-dark5Trans' : 'bg-[#f0fffeb7]'
@@ -60,17 +84,23 @@ const Navbar = () => {
 
             <ul
               className={`md:bg-transparent backdrop-blur-md md:backdrop-blur-none md:text-sm lg:text-base font-medium md:h-fit md:py-0 rounded-b-xl shadow-lg md:shadow-none overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4 xl:gap-8 absolute md:static inset-x-0 top-20 md:top-0 z-30 transition-all duration-300 ${
-                showNav ? 'h-72 py-8' : 'h-0'
+                showMenu ? 'h-72 py-8' : 'h-0'
               } ${
                 darkTheme
                   ? 'text-light2 bg-[#464646f6]'
                   : 'text-[#32443f] bg-[#cfead7f7]'
               }`}
             >
-              <li onClick={() => setShowNav(false)} className="hover:text-gold">
+              <li
+                onClick={() => setShowMenu(false)}
+                className="hover:text-gold"
+              >
                 <NavLink to="/">Home</NavLink>
               </li>
-              <li onClick={() => setShowNav(false)} className="hover:text-gold">
+              <li
+                onClick={() => setShowMenu(false)}
+                className="hover:text-gold"
+              >
                 <NavLink to="/all_marathons">Marathons</NavLink>
               </li>
               <li
@@ -89,7 +119,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   <li
-                    onClick={() => setShowNav(false)}
+                    onClick={() => setShowMenu(false)}
                     className="hover:text-gold"
                   >
                     <NavLink to="/dashboard">Dashboard</NavLink>
@@ -97,7 +127,7 @@ const Navbar = () => {
                   <li
                     onClick={() => {
                       signOutUser();
-                      setShowNav(false);
+                      setShowMenu(false);
                     }}
                     className="hover:text-gold cursor-pointer md:hidden"
                   >
@@ -107,13 +137,13 @@ const Navbar = () => {
               ) : (
                 <>
                   <li
-                    onClick={() => setShowNav(false)}
+                    onClick={() => setShowMenu(false)}
                     className="hover:text-gold md:hidden"
                   >
                     <NavLink to="/signin">Login</NavLink>
                   </li>
                   <li
-                    onClick={() => setShowNav(false)}
+                    onClick={() => setShowMenu(false)}
                     className="hover:text-gold md:hidden"
                   >
                     <NavLink to="/signup">Register</NavLink>
@@ -183,7 +213,7 @@ const Navbar = () => {
 
                 {/* Menubar */}
                 <button
-                  onClick={() => setShowNav(!showNav)}
+                  onClick={() => setShowMenu(!showMenu)}
                   className="p-2.5 border-2 border-green rounded-full md:hidden"
                 >
                   <img className="w-6" src={menuIcon} alt="menu" />
