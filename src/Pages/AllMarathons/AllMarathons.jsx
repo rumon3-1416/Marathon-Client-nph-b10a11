@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import Marathon from './Marathon';
 import SortMara from './SortMara';
@@ -43,7 +43,7 @@ const AllMarathons = () => {
 
   return !isLoading ? (
     <div className="bg-greenBg py-16">
-      <MainLayout>
+      <Container>
         <section id="marathons">
           <h1
             className={`text-4xl leading-[44px] font-semibold mb-4 ${
@@ -106,7 +106,7 @@ const AllMarathons = () => {
             </p>
           </div>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   ) : (
     <Loading />

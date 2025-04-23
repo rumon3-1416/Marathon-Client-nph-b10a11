@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import MainLayout from '../../../Layouts/MainLayout';
+import Container from '../../../Layouts/Container';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 
 const NewsLetter = () => {
@@ -9,7 +9,7 @@ const NewsLetter = () => {
 
   return (
     <div className="bg-greenBg py-20">
-      <MainLayout>
+      <Container>
         <div className="px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h2
@@ -55,7 +55,7 @@ const NewsLetter = () => {
             </button>
           </form>
         </div>
-      </MainLayout>
+      </Container>
 
       <ToastContainer pauseOnFocusLoss={false} />
     </div>

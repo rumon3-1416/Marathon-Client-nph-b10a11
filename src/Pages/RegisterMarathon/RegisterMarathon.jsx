@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Modal from '../../components/Modal/Modal';
@@ -53,7 +53,7 @@ const RegisterMarathon = () => {
 
   return (
     <div className="bg-greenBg pt-12 pb-24">
-      <MainLayout>
+      <Container>
         <section
           className={`px-8 py-10 rounded-xl shadow-lg ${
             darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
@@ -216,7 +216,7 @@ const RegisterMarathon = () => {
             </button>
           </Modal>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

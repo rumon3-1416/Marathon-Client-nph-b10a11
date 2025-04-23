@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLayout from '../../../Layouts/MainLayout';
+import Container from '../../../Layouts/Container';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 import trainIcon from '../../../assets/icons/training.png';
 import facilitiesIcon from '../../../assets/icons/facilities.png';
@@ -9,7 +9,7 @@ const Benefit = () => {
 
   return (
     <section className="bg-greenBg pt-16 pb-10">
-      <MainLayout>
+      <Container>
         <div className="grid md:grid-cols-2 items-center">
           {/* Images */}
           <div className="py-6 ps-4 pe-8">
@@ -85,7 +85,7 @@ const Benefit = () => {
             </div>
           </div>
         </div>
-      </MainLayout>
+      </Container>
     </section>
   );
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useAuthContext } from '../../Hooks/useAuthContext';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import Modal from '../../components/Modal/Modal';
 import Timer from './Timer';
 
@@ -52,7 +52,7 @@ const MarathonDetails = () => {
 
   return (
     <div className="bg-greenBg pt-12 pb-24">
-      <MainLayout>
+      <Container>
         <div
           className={`p-6 shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8 ${
             darkTheme ? 'bg-dark5' : 'bg-white'
@@ -152,7 +152,7 @@ const MarathonDetails = () => {
             </button>
           </Modal>
         </div>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

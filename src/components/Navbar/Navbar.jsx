@@ -4,7 +4,7 @@ import { scroller } from 'react-scroll';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import logo from '../../assets/icons/logo.png';
 import userIcon from '../../assets/icons/user.png';
 import menuIcon from '../../assets/icons/menu.png';
@@ -14,6 +14,7 @@ const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { user, darkTheme, signOutUser, setDarkTheme } = useAuthContext();
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -58,7 +59,9 @@ const Navbar = () => {
     return () => document.removeEventListener('scroll', handleNav);
   }, [lastYScroll]);
 
-  return (
+  return pathname.includes('signin') || pathname.includes('signup') ? (
+    <></>
+  ) : (
     <div
       className={`w-full fixed top-0 inset-x-0 z-20 duration-300 ${
         showNav ? 'translate-y-0' : '-translate-y-full'
@@ -69,7 +72,7 @@ const Navbar = () => {
           darkTheme ? 'bg-dark5Trans' : 'bg-[#f0fffeb7]'
         } shadow-lg`}
       >
-        <MainLayout>
+        <Container>
           <nav
             className={`h-20 py-5 flex justify-between items-center gap-2 relative`}
           >
@@ -221,7 +224,7 @@ const Navbar = () => {
               </div>
             </div>
           </nav>
-        </MainLayout>
+        </Container>
       </div>
     </div>
   );

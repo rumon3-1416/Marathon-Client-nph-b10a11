@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Components/Sidebar';
 

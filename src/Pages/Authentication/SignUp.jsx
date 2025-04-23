@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import Modal from '../../components/Modal/Modal';
@@ -104,7 +104,7 @@ const SignUp = () => {
 
   return (
     <div className="bg-greenBg py-8">
-      <MainLayout>
+      <Container>
         <section className="min-h-[calc(95vh-7rem)] flex justify-center items-center">
           <div
             className={`w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 rounded-xl shadow-lg ${
@@ -237,7 +237,7 @@ const SignUp = () => {
             </button>
           </Modal>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

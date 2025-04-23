@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MainLayout from '../../../Layouts/MainLayout';
+import Container from '../../../Layouts/Container';
 import axios from 'axios';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 import UpMaraCard from './UpMaraCard';
@@ -17,7 +17,7 @@ const UpMarathons = () => {
 
   return (
     <div id="upcoming" className="bg-greenBg pt-16 pb-10">
-      <MainLayout>
+      <Container>
         <section id="marathons">
           <h1
             className={`text-4xl leading-[44px] font-semibold mb-4 ${
@@ -40,7 +40,7 @@ const UpMarathons = () => {
             ))}
           </div>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

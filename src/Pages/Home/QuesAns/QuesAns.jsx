@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainLayout from '../../../Layouts/MainLayout';
+import Container from '../../../Layouts/Container';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 
 const QuesAns = () => {
@@ -8,7 +8,7 @@ const QuesAns = () => {
 
   return (
     <div id="help" className="bg-greenBg pt-16 pb-10">
-      <MainLayout>
+      <Container>
         <section className="grid grid-cols-1 lg:grid-cols-[2fr,_3fr] items-center gap-16 md:gap-8 lg:gap-12 xl:gap-20">
           {/* Cards */}
           <div>
@@ -160,7 +160,7 @@ const QuesAns = () => {
             </div>
           </div>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

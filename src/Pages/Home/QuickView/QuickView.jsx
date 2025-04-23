@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLayout from '../../../Layouts/MainLayout';
+import Container from '../../../Layouts/Container';
 
 import eventIcon from '../../../assets/icons/event.png';
 import locationIcon from '../../../assets/icons/mara_location.png';
@@ -8,7 +8,7 @@ import membersIcon from '../../../assets/icons/team.png';
 const QuickView = () => {
   return (
     <div className="bg-greenBg">
-      <MainLayout>
+      <Container>
         <section className="pt-8 md:px-8 grid grid-cols-3 gap-6">
           <div className="p-4 flex flex-col lg:flex-row items-center gap-4">
             <div className="bg-[#38a2ff41] p-4 rounded-full">
@@ -46,7 +46,7 @@ const QuickView = () => {
             </div>
           </div>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };

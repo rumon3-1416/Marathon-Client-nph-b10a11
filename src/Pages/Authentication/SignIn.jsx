@@ -4,7 +4,7 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { FaRegEyeSlash } from 'react-icons/fa';
 
 import { useAuthContext } from '../../Hooks/useAuthContext';
-import MainLayout from '../../Layouts/MainLayout';
+import Container from '../../Layouts/Container';
 import Modal from '../../components/Modal/Modal';
 import googleIcon from '../../assets/icons/google.png';
 
@@ -63,7 +63,7 @@ const SignIn = () => {
 
   return (
     <div className="bg-greenBg py-8">
-      <MainLayout>
+      <Container>
         <section className="min-h-[calc(95vh-7rem)] flex justify-center items-center">
           <div
             className={`w-full md:w-4/5 max-w-md px-5 md:px-6 py-6 md:py-8 rounded-xl shadow-lg ${
@@ -165,7 +165,7 @@ const SignIn = () => {
             </button>
           </Modal>
         </section>
-      </MainLayout>
+      </Container>
     </div>
   );
 };
