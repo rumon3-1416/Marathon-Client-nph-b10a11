@@ -14,7 +14,7 @@ const Slide = ({ data, index }) => {
         alt=""
       />
 
-      <div className="bg-[#00000093] w-full text-white text-center flex flex-col items-center justify-center absolute inset-0">
+      <div className="bg-[#000000a0] w-full text-white text-center flex flex-col items-center justify-center absolute inset-0">
         <h2 className="max-w-[80%] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold lg:font-bold">
           {title}
         </h2>
@@ -33,7 +33,7 @@ const Slide = ({ data, index }) => {
                 ?.scrollIntoView({ behavior: 'smooth' });
             }
           }}
-          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-sm font-medium transition-colors duration-300"
+          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-md font-medium transition-colors duration-300"
         >
           {cta_text}
         </button>

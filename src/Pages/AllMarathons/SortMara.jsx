@@ -20,10 +20,10 @@ const SortMara = ({ setSort, setCardPerPage, setCurrentPage }) => {
               setCardPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className={`font-semibold w-24 px-4 py-1.5 border-[1.5px] border-green rounded-lg outline-none ${
+            className={`font-semibold w-24 px-4 py-1.5 border-[1.5px] border-green rounded-md outline-none ${
               darkTheme ? 'bg-dark5 text-light2' : ''
             }`}
-            defaultValue={2}
+            defaultValue={12}
             name="page"
             id="page"
           >
@@ -34,11 +34,11 @@ const SortMara = ({ setSort, setCardPerPage, setCurrentPage }) => {
         </div>
 
         <div className="group text-center cursor-pointer relative group">
-          <p className="bg-light2 text-gray-800 font-medium w-28 px-4 py-2 border-[1.5px] border-green rounded-t-lg rounded-b-lg group-hover:rounded-b-none">
+          <p className="bg-light2 text-gray-800 font-medium w-28 px-4 py-2 border-[1.5px] border-green rounded-t-md rounded-b-md group-hover:rounded-b-none">
             Sort By
           </p>
 
-          <ul className="bg-light2 text-gray-900 w-28 h-0 group-hover:h-[6.5rem] overflow-hidden font-medium border-x-[1.5px] group-hover:border-b-[1.5px] group-hover:border-green rounded-b-lg absolute top-9 right-0 z-10 transition-all duration-300">
+          <ul className="bg-[#dddddd] text-gray-900 w-28 h-0 group-hover:h-[6.5rem] overflow-hidden font-medium border-x-[1.5px] group-hover:border-b-[1.5px] group-hover:border-green rounded-b-md absolute top-9 right-0 z-10 transition-all duration-300">
             <li
               onClick={() => setSort(null)}
               className="hover:text-orange text-nowrap px-4 py-1"

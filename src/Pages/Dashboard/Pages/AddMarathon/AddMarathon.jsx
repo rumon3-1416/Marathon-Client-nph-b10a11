@@ -220,7 +220,7 @@ const AddMarathon = () => {
       <Modal property={modal}>
         <button
           onClick={() => setModal({ ...modal, show: false })}
-          className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
+          className="bg-green text-white text-lg font-medium px-6 py-2 rounded-md"
         >
           OK
         </button>

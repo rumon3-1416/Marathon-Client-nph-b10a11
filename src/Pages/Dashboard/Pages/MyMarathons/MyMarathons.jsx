@@ -157,7 +157,7 @@ const MyMarathons = () => {
             <div className="flex gap-4">
               <button
                 onClick={deleteModal}
-                className="bg-[#ff3d3d] text-white text-lg font-medium px-6 py-2 rounded-lg"
+                className="bg-[#ff3d3d] text-white text-lg font-medium px-6 py-2 rounded-md"
               >
                 Delete
               </button>
@@ -167,7 +167,7 @@ const MyMarathons = () => {
                   setDelId(null);
                   setConfirmModal(false);
                 }}
-                className="bg-[#979797] text-white text-lg font-medium px-6 py-2 rounded-lg"
+                className="bg-[#979797] text-white text-lg font-medium px-6 py-2 rounded-md"
               >
                 Cancel
               </button>
@@ -180,7 +180,7 @@ const MyMarathons = () => {
                 setModal({ ...modal, show: false });
                 setConfirmModal(false);
               }}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-md"
             >
               OK
             </button>

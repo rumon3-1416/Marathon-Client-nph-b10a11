@@ -231,7 +231,7 @@ const SignUp = () => {
                 setModal({ ...modal, show: false });
                 !errMessage && navigate('/');
               }}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-md"
             >
               OK
             </button>

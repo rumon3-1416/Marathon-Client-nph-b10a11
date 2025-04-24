@@ -159,7 +159,7 @@ const SignIn = () => {
                 setModal({ ...modal, show: false });
                 !errMessage && navigate(desired);
               }}
-              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-lg"
+              className="bg-green text-white text-lg font-medium px-6 py-2 rounded-md"
             >
               OK
             </button>
