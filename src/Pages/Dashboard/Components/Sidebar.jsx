@@ -24,7 +24,7 @@ const Sidebar = () => {
   });
 
   return (
-    <div className="min-h-[13.5rem] max-h-[calc(100vh-96px)] sticky top-20 left-0 z-10">
+    <div className="min-h-screen max-h-screen sticky top-0 left-0 z-10">
       <div className="h-full relative">
         <div
           className={`backdrop-blur-md w-max h-full absolute md:static ${

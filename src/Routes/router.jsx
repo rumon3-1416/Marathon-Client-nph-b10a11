@@ -6,13 +6,13 @@ import AllMarathons from '../Pages/AllMarathons/AllMarathons';
 import SignIn from '../Pages/Authentication/SignIn';
 import SignUp from '../Pages/Authentication/SignUp';
 import PrivateNavigator from './PrivateNavigator';
-import Dashboard from '../Pages/Dashboard/Dashboard';
 import AddMarathon from '../Pages/Dashboard/Pages/AddMarathon/AddMarathon';
 import MyMarathons from '../Pages/Dashboard/Pages/MyMarathons/MyMarathons';
 import MyApply from '../Pages/Dashboard/Pages/MyApply/MyApply';
 import MarathonDetails from '../Pages/MarathonDetails/MarathonDetails';
 import RegisterMarathon from '../Pages/RegisterMarathon/RegisterMarathon';
 import MainLayout from '../Layouts/MainLayout';
+import DashboardLayout from '../Layouts/DashboardLayout';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: (
           <PrivateNavigator>
-            <Dashboard />
+            <DashboardLayout />
           </PrivateNavigator>
         ),
         children: [
