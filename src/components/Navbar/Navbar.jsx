@@ -11,7 +11,7 @@ import menuIcon from '../../assets/icons/menu.png';
 
 const Navbar = () => {
   const [lastYScroll, setLastYScroll] = useState(0);
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const { user, darkTheme, signOutUser, setDarkTheme } = useAuthContext();
 
@@ -226,6 +226,8 @@ const Navbar = () => {
           </nav>
         </Container>
       </div>
+
+      <div className="h-20"></div>
     </div>
   );
 };
