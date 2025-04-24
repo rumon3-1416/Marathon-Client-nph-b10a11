@@ -60,9 +60,7 @@ const Navbar = () => {
     return () => document.removeEventListener('scroll', handleNav);
   }, [lastYScroll]);
 
-  return pathname.includes('signin') || pathname.includes('signup') ? (
-    <></>
-  ) : (
+  return (
     <div
       className={`w-full fixed top-0 inset-x-0 z-20 duration-300 ${
         showNav ? 'translate-y-0' : '-translate-y-full'

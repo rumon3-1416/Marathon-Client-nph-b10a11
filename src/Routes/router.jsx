@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import App from '../App';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import AllMarathons from '../Pages/AllMarathons/AllMarathons';
@@ -13,11 +12,12 @@ import MyMarathons from '../Pages/Dashboard/Pages/MyMarathons/MyMarathons';
 import MyApply from '../Pages/Dashboard/Pages/MyApply/MyApply';
 import MarathonDetails from '../Pages/MarathonDetails/MarathonDetails';
 import RegisterMarathon from '../Pages/RegisterMarathon/RegisterMarathon';
+import MainLayout from '../Layouts/MainLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <MainLayout />,
     errorElement: <Error />,
     children: [
       {

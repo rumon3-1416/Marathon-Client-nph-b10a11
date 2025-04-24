@@ -7,6 +7,7 @@ const SortMara = ({ setSort, setCardPerPage, setCurrentPage }) => {
   return (
     <div className="mb-6 flex justify-end">
       <div className="flex items-center gap-4">
+        {/* Card per Page */}
         <div className="flex items-center gap-3">
           <p
             className={`text-lg font-semibold ${
@@ -33,12 +34,23 @@ const SortMara = ({ setSort, setCardPerPage, setCurrentPage }) => {
           </select>
         </div>
 
+        {/* Sort By */}
         <div className="group text-center cursor-pointer relative group">
-          <p className="bg-light2 text-gray-800 font-medium w-28 px-4 py-2 border-[1.5px] border-green rounded-t-md rounded-b-md group-hover:rounded-b-none">
+          <p
+            className={`font-medium w-28 px-4 py-2 border-[1.5px] border-green rounded-t-md rounded-b-md group-hover:rounded-b-none ${
+              darkTheme ? 'bg-[#343434] text-light2' : 'bg-light2 text-gray-800'
+            }`}
+          >
             Sort By
           </p>
 
-          <ul className="bg-[#dddddd] text-gray-900 w-28 h-0 group-hover:h-[6.5rem] overflow-hidden font-medium border-x-[1.5px] group-hover:border-b-[1.5px] group-hover:border-green rounded-b-md absolute top-9 right-0 z-10 transition-all duration-300">
+          <ul
+            className={`w-28 h-0 group-hover:h-[6.5rem] overflow-hidden font-medium border-x-[1.5px] group-hover:border-b-[1.5px] group-hover:border-green rounded-b-md absolute top-9 right-0 z-10 transition-all duration-300 ${
+              darkTheme
+                ? 'bg-[#414141] text-light2'
+                : 'bg-[#dddddd] text-gray-900'
+            }`}
+          >
             <li
               onClick={() => setSort(null)}
               className="hover:text-orange text-nowrap px-4 py-1"
