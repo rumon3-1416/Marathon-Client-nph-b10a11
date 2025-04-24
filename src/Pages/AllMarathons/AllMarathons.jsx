@@ -11,7 +11,7 @@ const AllMarathons = () => {
   const [marathons, setMarathons] = useState([]);
   const [totalMarathons, setTotalMarathons] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardPerPage, setCardPerPage] = useState(9);
+  const [cardPerPage, setCardPerPage] = useState(12);
   const [sort, setSort] = useState(null);
   const totalPages = Math.ceil(totalMarathons / cardPerPage);
   const pagesArray = [...Array(totalPages).keys()];
@@ -28,6 +28,8 @@ const AllMarathons = () => {
 
   // load Marathons data
   useEffect(() => {
+    setIsLoading(true);
+
     const conditionalLink = sort
       ? `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}&sort=${sort}`
       : `${serverUrl}/all_marathons?limit=${cardPerPage}&page=${currentPage}`;
@@ -42,7 +44,7 @@ const AllMarathons = () => {
   }, []);
 
   return !isLoading ? (
-    <div className="bg-greenBg py-16">
+    <div className="bg-greenBg pt-24 pb-16">
       <Container>
         <section id="marathons">
           <h1
@@ -59,7 +61,7 @@ const AllMarathons = () => {
             setCurrentPage={setCurrentPage}
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4">
             {marathons.map(marathon => (
               <Marathon key={marathon._id} marathon={marathon} />
             ))}

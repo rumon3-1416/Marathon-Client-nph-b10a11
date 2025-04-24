@@ -38,7 +38,7 @@ const NewsLetter = () => {
             className="flex items-center"
           >
             <input
-              className={`w-[10rem] sm:w-[15rem] md:w-[10rem] lg:w-[15rem] xl:w-[20rem] px-6 py-3 border-2 border-green outline-none rounded-s-lg ${
+              className={`w-[10rem] sm:w-[15rem] md:w-[10rem] lg:w-[15rem] xl:w-[20rem] px-6 py-3 border-2 border-green focus:border-dark-green outline-none rounded-s-sm transition-all duration-300 ${
                 darkTheme ? 'bg-[#343434]' : ''
               }`}
               type="email"
@@ -49,7 +49,7 @@ const NewsLetter = () => {
             />
             <button
               type="submit"
-              className="bg-green text-white font-semibold px-6 py-3 border-2 border-green rounded-e-lg"
+              className="bg-green hover:bg-dark-green text-white font-semibold px-6 py-3 border-2 border-green hover:border-dark-green rounded-e-sm transition-all duration-300"
             >
               Subscribe
             </button>

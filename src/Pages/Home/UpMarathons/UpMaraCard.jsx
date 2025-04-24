@@ -18,12 +18,12 @@ const UpMaraCard = ({ marathon }) => {
 
   return (
     <div
-      className={`rounded-xl shadow-lg flex flex-col items-start ${
+      className={`rounded-md shadow-lg flex flex-col items-start ${
         darkTheme ? 'bg-dark5' : 'bg-white'
       }`}
     >
       <img
-        className="w-full aspect-[4/3] object-cover rounded-xl mb-4"
+        className="w-full aspect-[4/3] object-cover rounded-md mb-4"
         src={image}
         alt={title}
       />

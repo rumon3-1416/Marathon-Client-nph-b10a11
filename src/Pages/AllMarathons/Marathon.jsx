@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../Hooks/useAuthContext';
+import Button from '../../components/Button';
 
 const Marathon = ({ marathon }) => {
   const { _id, title, image, marathonDate, location, description } = marathon;
@@ -10,23 +11,23 @@ const Marathon = ({ marathon }) => {
 
   return (
     <div
-      className={`rounded-xl shadow-lg flex flex-col items-start ${
+      className={`rounded-md shadow-lg flex flex-col items-start ${
         darkTheme ? 'bg-dark5' : 'bg-white'
       }`}
     >
-      <div className="w-full p-4">
+      <div className="w-full p-2">
         <img
-          className="w-full aspect-[4/3] object-cover rounded-lg"
+          className="w-full aspect-[4/3] object-cover rounded-sm"
           src={image}
           alt={title}
         />
       </div>
 
       {/* Desc */}
-      <div className="px-6 pb-8 grow flex flex-col items-start">
+      <div className="px-4 pb-6 grow flex flex-col items-start">
         <div className="grow">
           <h4
-            className={`text-xl font-bold mb-3 ${
+            className={`text-lg font-bold mb-3 ${
               darkTheme ? 'text-light2' : 'text-[#3c3c3c]'
             }`}
           >
@@ -42,7 +43,7 @@ const Marathon = ({ marathon }) => {
             <span>{marathonDate?.split('T')[0]}</span>
           </p>
           <p
-            className={`font-medium mt-2 text-justify ${
+            className={`text-sm font-medium mt-2 ${
               darkTheme ? 'text-gray-300' : 'text-gray2'
             }`}
           >
@@ -50,12 +51,12 @@ const Marathon = ({ marathon }) => {
           </p>
         </div>
 
-        <button
+        <Button
           onClick={() => navigate(`/marathon_details/${_id}`)}
-          className="bg-green text-white hover:bg-gold2 font-medium px-6 py-2.5 mt-4 rounded-lg"
+          className="mt-4"
         >
           See Details
-        </button>
+        </Button>
       </div>
     </div>
   );
