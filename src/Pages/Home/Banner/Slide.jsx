@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Slide = ({ data }) => {
+const Slide = ({ data, index }) => {
   const { image, title, description, cta_text } = data;
+
+  const navigate = useNavigate();
 
   return (
     <div className="relative">
@@ -19,12 +22,18 @@ const Slide = ({ data }) => {
           {description}
         </p>
         <button
-          onClick={() =>
-            document
-              .getElementById('marathons')
-              ?.scrollIntoView({ behavior: 'smooth' })
-          }
-          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-lg font-medium"
+          onClick={() => {
+            if (index === 0) {
+              navigate('/all_marathons');
+            } else if (index === 1) {
+              navigate('/dashboard');
+            } else {
+              document
+                .getElementById('marathons')
+                ?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="bg-green hover:bg-gold2 text-lg px-6 py-2 mt-6 rounded-sm font-medium transition-colors duration-300"
         >
           {cta_text}
         </button>

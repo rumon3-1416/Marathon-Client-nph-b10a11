@@ -39,9 +39,9 @@ const Banner = () => {
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           className="mySwiper"
         >
-          {slides?.map(data => (
+          {slides?.map((data, index) => (
             <SwiperSlide key={data._id}>
-              <Slide data={data} />
+              <Slide data={data} index={index} />
             </SwiperSlide>
           ))}
         </Swiper>
