@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Container from '../../Layouts/Container';
 import { useAuthContext } from '../../Hooks/useAuthContext';
 import Marathon from './Marathon';
@@ -46,68 +47,75 @@ const AllMarathons = () => {
   return !isLoading ? (
     <div className="bg-greenBg pt-24 pb-16">
       <Container>
-        <section id="marathons">
-          <h1
-            className={`text-4xl leading-[44px] font-semibold mb-4 ${
-              darkTheme ? 'text-light2' : 'text-dark'
-            }`}
-          >
-            Explore All Marathons
-          </h1>
-
-          <SortMara
-            setSort={setSort}
-            setCardPerPage={setCardPerPage}
-            setCurrentPage={setCurrentPage}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4">
-            {marathons.map(marathon => (
-              <Marathon key={marathon._id} marathon={marathon} />
-            ))}
-          </div>
-
-          {/* Pagination */}
-          <div className="text-gray2 sm:text-lg md:text-xl font-semibold pt-12 flex justify-center items-center gap-3">
-            <p
-              onClick={() => {
-                currentPage > 1 && setCurrentPage(currentPage - 1);
-              }}
-              className={`hover:text-green cursor-pointer ${
-                darkTheme ? 'text-gray-200' : ''
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <section id="marathons">
+            <h1
+              className={`text-4xl leading-[44px] font-semibold mb-4 ${
+                darkTheme ? 'text-light2' : 'text-dark'
               }`}
             >
-              Prev
-            </p>
-            {pagesArray.map(num => (
-              <button
-                onClick={() => setCurrentPage(num + 1)}
-                className={`px-2 sm:px-3.5 sm:py-1 rounded-lg border-2 border-light-green ${
-                  currentPage === num + 1
-                    ? darkTheme
-                      ? 'bg-greenBg text-gray-400'
-                      : 'bg-greenBg text-green'
-                    : darkTheme
-                    ? 'bg-goldBg text-gray-200'
-                    : 'bg-white'
+              Explore All Marathons
+            </h1>
+
+            <SortMara
+              setSort={setSort}
+              setCardPerPage={setCardPerPage}
+              setCurrentPage={setCurrentPage}
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4">
+              {marathons.map(marathon => (
+                <Marathon key={marathon._id} marathon={marathon} />
+              ))}
+            </div>
+
+            {/* Pagination */}
+            <div className="text-gray2 sm:text-lg md:text-xl font-semibold pt-12 flex justify-center items-center gap-3">
+              <p
+                onClick={() => {
+                  currentPage > 1 && setCurrentPage(currentPage - 1);
+                }}
+                className={`hover:text-green cursor-pointer ${
+                  darkTheme ? 'text-gray-200' : ''
                 }`}
-                key={num}
               >
-                {num + 1}
-              </button>
-            ))}
-            <p
-              onClick={() => {
-                currentPage < totalPages && setCurrentPage(currentPage + 1);
-              }}
-              className={`hover:text-green cursor-pointer ${
-                darkTheme ? 'text-gray-200' : ''
-              }`}
-            >
-              Next
-            </p>
-          </div>
-        </section>
+                Prev
+              </p>
+              {pagesArray.map(num => (
+                <button
+                  onClick={() => setCurrentPage(num + 1)}
+                  className={`px-2 sm:px-3.5 sm:py-1 rounded-lg border-2 border-light-green ${
+                    currentPage === num + 1
+                      ? darkTheme
+                        ? 'bg-greenBg text-gray-400'
+                        : 'bg-greenBg text-green'
+                      : darkTheme
+                      ? 'bg-goldBg text-gray-200'
+                      : 'bg-white'
+                  }`}
+                  key={num}
+                >
+                  {num + 1}
+                </button>
+              ))}
+              <p
+                onClick={() => {
+                  currentPage < totalPages && setCurrentPage(currentPage + 1);
+                }}
+                className={`hover:text-green cursor-pointer ${
+                  darkTheme ? 'text-gray-200' : ''
+                }`}
+              >
+                Next
+              </p>
+            </div>
+          </section>
+        </motion.div>
       </Container>
     </div>
   ) : (

@@ -182,10 +182,14 @@ const Navbar = () => {
 
                     <div className="pt-10 absolute top-0 right-0 hidden group-hover:block">
                       <div
-                        className={`bg-white w-24 h-12 border border-gray-300 rounded-md flex flex-col justify-center items-center`}
+                        className={`w-24 h-12 border border-gray-300 rounded-md flex flex-col justify-center items-center ${
+                          darkTheme ? 'bg-[#343434]' : 'bg-white'
+                        }`}
                       >
                         <button
-                          className="text-sm font-medium hover:text-red-800"
+                          className={`text-sm font-medium hover:text-red-800 ${
+                            darkTheme ? 'text-light2' : ''
+                          }`}
                           onClick={signOutUser}
                         >
                           Logout
@@ -198,7 +202,7 @@ const Navbar = () => {
                     {/* Login */}
                     <button
                       onClick={() => navigate('/signin')}
-                      className={`text-sm font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-1.5 border-2 rounded-s-sm ${
+                      className={`text-sm font-medium ps-3 sm:ps-6 lg:ps-8 pe-2 sm:pe-4 lg:pe-6 py-1.5 border-2 rounded-s-md ${
                         pathname === '/signin'
                           ? 'text-dark-green border-dark-green'
                           : 'text-green hover:text-dark-green border-green hover:border-dark-green'
@@ -209,7 +213,7 @@ const Navbar = () => {
                     {/* Register */}
                     <button
                       onClick={() => navigate('/signup')}
-                      className={`text-white text-sm font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-1.5 border-2 rounded-e-sm ${
+                      className={`text-white text-sm font-medium ps-2 sm:ps-4 lg:ps-6 pe-3 sm:pe-6 lg:pe-8 py-1.5 border-2 rounded-e-md ${
                         pathname === '/signup'
                           ? 'bg-dark-green border-dark-green'
                           : 'bg-green hover:bg-dark-green border-green hover:border-dark-green'

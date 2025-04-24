@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
@@ -27,24 +28,31 @@ const Banner = () => {
   return (
     <section className="bg-greenBg">
       {slides?.length > 2 ? (
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation, Autoplay]}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className="mySwiper"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
         >
-          {slides?.map((data, index) => (
-            <SwiperSlide key={data._id}>
-              <Slide data={data} index={index} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation, Autoplay]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            className="mySwiper"
+          >
+            {slides?.map((data, index) => (
+              <SwiperSlide key={data._id}>
+                <Slide data={data} index={index} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
       ) : (
         <Loading />
       )}

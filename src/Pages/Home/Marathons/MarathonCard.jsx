@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
 import Button from '../../../components/Button';
@@ -10,7 +11,11 @@ const MarathonCard = ({ marathon }) => {
   const navigate = useNavigate();
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
       className={`rounded-md shadow-lg flex flex-col items-start ${
         darkTheme ? 'bg-dark5' : 'bg-white'
       }`}
@@ -24,7 +29,7 @@ const MarathonCard = ({ marathon }) => {
       </div>
 
       {/* Desc */}
-      <div className="px-3 pb-5 grow flex flex-col items-start">
+      <div className="w-full px-3 pb-5 grow flex flex-col items-start">
         <div className="grow">
           <h4
             className={`text-lg font-bold mb-2 ${
@@ -45,12 +50,12 @@ const MarathonCard = ({ marathon }) => {
 
         <Button
           onClick={() => navigate(`/marathon_details/${_id}`)}
-          className="mt-4"
+          className="mt-4 w-full"
         >
           See Details
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

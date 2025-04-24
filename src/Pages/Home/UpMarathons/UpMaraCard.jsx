@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { motion } from 'framer-motion';
 import clockIcon from '../../../assets/icons/clock.png';
 import gpsIcon from '../../../assets/icons/location.png';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
@@ -17,7 +17,11 @@ const UpMaraCard = ({ marathon }) => {
   const { darkTheme } = useAuthContext();
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
       className={`rounded-md shadow-lg flex flex-col items-start ${
         darkTheme ? 'bg-dark5' : 'bg-white'
       }`}
@@ -68,7 +72,7 @@ const UpMaraCard = ({ marathon }) => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
