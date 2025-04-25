@@ -83,7 +83,7 @@ const AddMarathon = () => {
             Marathon Title
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
             id="title"
             type="text"
             name="title"
@@ -99,7 +99,7 @@ const AddMarathon = () => {
               Registration Start
             </p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
               selected={startDate}
               onChange={date => setStartDate(date)}
             />
@@ -110,7 +110,7 @@ const AddMarathon = () => {
               Registration End
             </p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
               selected={endDate}
               onChange={date => setEndDate(date)}
             />
@@ -122,7 +122,7 @@ const AddMarathon = () => {
           <div className="flex flex-col">
             <p className={`font-semibold mb-2 ${labelColor}`}>Marathon Start</p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
               selected={marathonDate}
               onChange={date => setMarathonDate(date)}
             />
@@ -136,7 +136,7 @@ const AddMarathon = () => {
               Running Distance
             </label>
             <select
-              className={`w-full px-4 py-3 rounded-lg outline-none  ${inputColor}`}
+              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300  ${inputColor}`}
               defaultValue=""
               name="distance"
               id="distance"
@@ -164,7 +164,7 @@ const AddMarathon = () => {
             Location
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
             type="text"
             id="location"
             name="location"
@@ -179,7 +179,7 @@ const AddMarathon = () => {
             Marathon Image
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-lg outline-none ${inputColor}`}
+            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
             type="text"
             id="image"
             name="image"
@@ -197,7 +197,7 @@ const AddMarathon = () => {
             Description
           </label>
           <textarea
-            className={`w-full px-4 py-3 rounded-lg outline-none resize-none ${inputColor}`}
+            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 resize-none ${inputColor}`}
             id="description"
             name="description"
             placeholder="Write a short description about you marathon"
@@ -210,7 +210,7 @@ const AddMarathon = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-green text-light2 hover:bg-gold2 text-xl font-semibold px-12 py-2.5 rounded-lg"
+            className="bg-green text-light2 hover:bg-dark-green font-semibold px-12 py-2.5 rounded-md"
           >
             Add
           </button>
