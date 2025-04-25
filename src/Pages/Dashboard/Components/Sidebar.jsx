@@ -79,26 +79,26 @@ const Sidebar = () => {
     <div className="min-h-screen max-h-screen sticky top-0 left-0 z-10">
       <div className="h-full relative">
         <div
-          className={`backdrop-blur-md w-max h-full absolute md:static ${
+          className={`backdrop-blur-md h-full absolute md:static transition-all duration-300 ${
             darkTheme
               ? 'bg-[#343434]/50 shadow-[4px_0_8px_#525252]'
               : 'bg-white/50 shadow-[4px_0_8px_#aaaaaa]'
-          }`}
+          } ${collapse ? 'w-[3.75rem]' : 'w-52'}`}
         >
-          <div className={`ps-3 pt-3 relative ${collapse ? 'pe-3' : 'pe-3'}`}>
+          <div className={`ps-3 pt-3 relative ${collapse ? 'pe-3' : 'pe-5'}`}>
             {/* Sidebar Button */}
             <button
               onClick={() => setCollapse(!collapse)}
-              className={`text-2xl p-1 rounded-md shadow-md shadow-gray-500 absolute top-[3.25rem] -right-4 ${
+              className={`text-2xl p-1 rounded-md shadow-md shadow-gray-500 absolute top-[3.25rem] -right-4 transition-colors duration-300 ${
                 darkTheme
-                  ? 'bg-[#414141] text-light2'
-                  : 'bg-light2 text-gray-800'
+                  ? 'bg-[#343434] text-light2 hover:bg-[#414141]'
+                  : 'bg-light2 text-gray-800 hover:bg-gray-200'
               }`}
             >
               {collapse ? <GoSidebarCollapse /> : <GoSidebarExpand />}
             </button>
 
-            {/* Logo */}
+            {/* Sidebar Head */}
             <div
               onClick={() => navigate('/')}
               className="py-3 border-b border-green cursor-pointer flex items-center gap-1"
@@ -113,6 +113,7 @@ const Sidebar = () => {
               <img className="h-8 relative right-1.5" src={logo} alt="" />
             </div>
 
+            {/* Sidebar Body Starts */}
             {/* Sidebar Links */}
             <ul
               className={`text-sm font-medium py-4 border-b border-green flex flex-col gap-1`}
@@ -125,6 +126,7 @@ const Sidebar = () => {
                 />
               ))}
             </ul>
+            {/* Sidebar Body Ends */}
 
             {/* Nav Links */}
             <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>

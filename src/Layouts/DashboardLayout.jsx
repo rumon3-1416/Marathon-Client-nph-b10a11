@@ -9,7 +9,7 @@ const DashboardLayout = () => {
         <Sidebar />
 
         <div className="w-full">
-          <div className="w-[95%] py-12 ps-14 md:ps-0 max-w-7xl mx-auto">
+          <div className="w-[95%] py-12 ps-16 md:ps-0 max-w-7xl mx-auto">
             <Outlet />
           </div>
         </div>
