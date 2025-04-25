@@ -8,7 +8,7 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
 
   return (
     <tr
-      className={`${
+      className={`border-none ${
         index % 2 !== 0
           ? darkTheme
             ? 'bg-[#595959]'
@@ -18,7 +18,7 @@ const MyMaraRow = ({ marathon, index, handleUpdate, handleDelete }) => {
           : ''
       } ${
         darkTheme ? 'text-gray-100 hover:bg-[#4f4f4f]' : 'hover:bg-[#dadada]'
-      } border-none`}
+      }`}
     >
       <td className="text-nowrap">{index + 1}</td>
       <td className="text-nowrap">{title}</td>

@@ -100,7 +100,7 @@ const MyMarathons = () => {
       {/* Table */}
       <div className="overflow-x-auto mt-4">
         {marathons.length > 0 ? (
-          <table className="table bg-[#fffcfc]">
+          <table className="table bg-[#fffcfc] rounded-none">
             {/* head */}
             <thead>
               <tr
@@ -149,6 +149,7 @@ const MyMarathons = () => {
           <UpdateMarathon
             marathon={updateMarathonModal.marathon}
             updateMarathon={updateMarathon}
+            setUpdateMarathonModal={setUpdateMarathonModal}
           />
         )}
 
