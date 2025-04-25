@@ -27,9 +27,7 @@ const Profile = () => {
           />
 
           <div className="">
-            <p className="text-skyBlue text-4xl font-bold">
-              {user?.displayName}
-            </p>
+            <p className="text-green text-4xl font-bold">{user?.displayName}</p>
             <p
               className={`text-lg font-semibold mt-2 ${
                 darkTheme && 'text-gray-200'
@@ -45,11 +43,15 @@ const Profile = () => {
             darkTheme ? 'bg-dark5 text-gray-100' : 'bg-white'
           } p-10 mt-10 rounded-2xl shadow-xl`}
         >
-          <div className="text-left text-lg font-medium w-fit grid grid-cols-[1fr,_auto] gap-x-8 gap-y-1">
-            <p>Name :</p>
-            <p>{user?.displayName}</p>
-            <p>Email :</p>
-            <p>{user?.email}</p>
+          <div className="text-left text-lg font-medium overflow-hidden">
+            <div className="flex flex-wrap gap-2">
+              <p className="text-nowrap">Name :</p>
+              <p>{user?.displayName}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <p className="text-nowrap">Email :</p>
+              <p className="text-wrap">{user?.email}</p>
+            </div>
           </div>
         </div>
       </div>
