@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   MdDone,
+  MdLogout,
   MdOutlineDarkMode,
   MdOutlineLightMode,
   MdOutlineDirectionsRun,
@@ -51,10 +52,10 @@ const navLinks = [
 ];
 
 const Sidebar = () => {
+  const sideRef = useRef(null);
   const [collapse, setCollapse] = useState(false);
   const { darkTheme, signOutUser, setDarkTheme } = useAuthContext();
 
-  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,7 +69,30 @@ const Sidebar = () => {
   }, [darkTheme]);
 
   useEffect(() => {
+    // Handle Resize Screen
+    const handleResize = e => {
+      e.target.innerWidth < 768 ? setCollapse(true) : setCollapse(false);
+    };
+    // Handle Outside Click
+    const handleClick = e => {
+      if (
+        window.innerWidth < 768 &&
+        sideRef.current &&
+        !sideRef.current.contains(e.target)
+      ) {
+        setCollapse(true);
+      }
+    };
+
     window.innerWidth < 768 ? setCollapse(true) : setCollapse(false);
+
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClick);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClick);
+    };
   }, []);
 
   window.addEventListener('resize', e => {
@@ -79,13 +103,18 @@ const Sidebar = () => {
     <div className="min-h-screen max-h-screen sticky top-0 left-0 z-10">
       <div className="h-full relative">
         <div
-          className={`backdrop-blur-md h-full absolute md:static transition-all duration-300 ${
+          ref={sideRef}
+          className={`h-full backdrop-blur-md absolute md:static transition-all duration-300 ${
             darkTheme
               ? 'bg-[#343434]/50 shadow-[4px_0_8px_#525252]'
               : 'bg-white/50 shadow-[4px_0_8px_#aaaaaa]'
           } ${collapse ? 'w-[3.75rem]' : 'w-52'}`}
         >
-          <div className={`ps-3 pt-3 relative ${collapse ? 'pe-3' : 'pe-5'}`}>
+          <div
+            className={`h-full ps-3 pt-3 relative ${
+              collapse ? 'pe-3' : 'pe-5'
+            }`}
+          >
             {/* Sidebar Button */}
             <button
               onClick={() => setCollapse(!collapse)}
@@ -101,7 +130,9 @@ const Sidebar = () => {
             {/* Sidebar Head */}
             <div
               onClick={() => navigate('/')}
-              className="py-3 border-b border-green cursor-pointer flex items-center gap-1"
+              className={`py-3 cursor-pointer flex items-center gap-1 ${
+                collapse ? 'ps-2' : 'ps-0'
+              }`}
             >
               <h2
                 className={`text-xl font-bold ${
@@ -113,11 +144,12 @@ const Sidebar = () => {
               <img className="h-8 relative right-1.5" src={logo} alt="" />
             </div>
 
+            {/* Border */}
+            <div className="border-t border-green"></div>
+
             {/* Sidebar Body Starts */}
             {/* Sidebar Links */}
-            <ul
-              className={`text-sm font-medium py-4 border-b border-green flex flex-col gap-1`}
-            >
+            <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
               {sideLinks.map(sideLink => (
                 <SideLink
                   key={sideLink.id}
@@ -127,6 +159,9 @@ const Sidebar = () => {
               ))}
             </ul>
             {/* Sidebar Body Ends */}
+
+            {/* Border */}
+            <div className="border-t border-green"></div>
 
             {/* Nav Links */}
             <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
@@ -139,21 +174,53 @@ const Sidebar = () => {
               ))}
             </ul>
 
+            {/* Border */}
+            <div className="border-t border-green"></div>
+
             {/* Sidebar Foot */}
-            <div className="flex flex-col fixed bottom-0 inset-x-0">
+            <div
+              className={`text-sm font-medium ps-3 py-4 flex flex-col gap-1 absolute bottom-0 inset-x-0 ${
+                collapse ? 'pe-3' : 'pe-5'
+              }`}
+            >
+              {/* Theme */}
               <button
                 onClick={() => {
                   localStorage.setItem('darkTheme', darkTheme ? '' : true);
                   setDarkTheme(!darkTheme);
                 }}
-                className={`text-2xl p-1 rounded-full ${
-                  darkTheme ? 'text-white bg-white/10' : 'text-dark bg-black/10'
+                className={`text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+                  collapse ? '' : 'md:px-3'
+                } ${
+                  darkTheme
+                    ? 'text-white hover:text-gray-800 hover:bg-white/90'
+                    : 'text-dark hover:text-light2 hover:bg-[#414141]'
                 }`}
               >
-                {darkTheme ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                <span className="text-xl">
+                  {darkTheme ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                </span>
+                <span
+                  className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+                >
+                  {darkTheme ? 'Light Theme' : 'Dark Theme'}
+                </span>
               </button>
-              <button onClick={signOutUser} className="text-light2 bg-green">
-                Sign Out
+              {/* Logout */}
+              <button
+                onClick={signOutUser}
+                className={`hover:text-light2 hover:bg-orange text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+                  collapse ? '' : 'md:px-3'
+                } ${darkTheme ? 'text-white' : 'text-dark'}`}
+              >
+                <span className="text-xl">
+                  <MdLogout />
+                </span>
+                <span
+                  className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+                >
+                  Log Out
+                </span>
               </button>
             </div>
           </div>

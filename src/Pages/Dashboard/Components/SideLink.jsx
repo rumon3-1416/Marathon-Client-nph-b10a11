@@ -11,7 +11,9 @@ const SideLink = ({ sideLink, collapse }) => {
   return (
     <li key={id}>
       <NavLink
-        className={`text-nowrap px-2 md:px-3 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+        className={`text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+          collapse ? '' : 'md:px-3'
+        } ${
           pathname === link
             ? 'text-light2 bg-green/90'
             : `hover:text-light2 hover:bg-green ${
