@@ -61,7 +61,7 @@ const UpdateModal = ({ marathon, updateMarathon, setUpdateMarathonModal }) => {
   return (
     <div className="bg-[#00000053] w-full min-h-screen max-h-screen backdrop-blur-sm p-8 sm:p-10 md:p-12 fixed inset-0 overflow-hidden flex flex-col justify-center items-center z-50">
       <div
-        className={`animate__animated animate__zoomIn px-5 py-8 max-h-full w-full max-w-[1232px] mx-auto shadow-lg overflow-y-auto rounded-lg ${
+        className={`animate__animated animate__zoomIn px-5 py-8 max-h-full w-full max-w-3xl mx-auto shadow-lg overflow-y-auto rounded-lg ${
           darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
         }`}
       >

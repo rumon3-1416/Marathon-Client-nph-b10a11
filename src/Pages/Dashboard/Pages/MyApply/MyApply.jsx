@@ -155,6 +155,7 @@ const MyApply = () => {
           <UpdateApply
             application={updateApplicationModal.application}
             updateApplication={updateApplication}
+            setUpdateApplicationModal={setUpdateApplicationModal}
           />
         )}
 
