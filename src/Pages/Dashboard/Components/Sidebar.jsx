@@ -46,7 +46,7 @@ const navLinks = [
   {
     id: '12',
     title: 'Marathons',
-    link: '/all_marathon',
+    link: '/all_marathons',
     icon: <MdOutlineDirectionsRun />,
   },
 ];

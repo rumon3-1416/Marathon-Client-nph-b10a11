@@ -6,6 +6,9 @@ import { useAuthContext } from '../../../../Hooks/useAuthContext';
 import Modal from '../../../../components/Modal/Modal';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
+const inputClasses =
+  'text-sm w-full px-4 py-2 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300';
+
 const AddMarathon = () => {
   const [modal, setModal] = useState({
     show: false,
@@ -22,7 +25,7 @@ const AddMarathon = () => {
 
   const labelColor = darkTheme ? 'text-gray-300' : 'text-gray-700';
   const inputColor = darkTheme
-    ? 'bg-dark3 text-gray-200'
+    ? 'bg-dark3 text-gray-200 border-gray-600'
     : 'bg-[#f1f1f1] text-gray-800';
 
   useEffect(() => {
@@ -64,7 +67,7 @@ const AddMarathon = () => {
   return (
     <section>
       <h3
-        className={`text-3xl font-bold text-center mb-12 ${
+        className={`text-3xl font-bold text-center mb-8 ${
           darkTheme ? 'text-light2' : 'text-gray-800'
         }`}
       >
@@ -73,17 +76,20 @@ const AddMarathon = () => {
 
       <form
         onSubmit={handleSubmit}
-        className={`px-8 py-10 rounded-xl shadow-lg ${
+        className={`px-5 py-6 rounded-xl shadow-lg ${
           darkTheme ? 'bg-dark5' : 'bg-[#fffcfc]'
         }`}
       >
         {/* Title */}
-        <div className="mb-6 flex flex-col">
-          <label htmlFor="title" className={`font-semibold mb-2 ${labelColor}`}>
+        <div className="mb-4 flex flex-col">
+          <label
+            htmlFor="title"
+            className={`text-sm font-semibold mb-1 ${labelColor}`}
+          >
             Marathon Title
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+            className={`${inputClasses} ${inputColor}`}
             id="title"
             type="text"
             name="title"
@@ -95,22 +101,22 @@ const AddMarathon = () => {
         {/* Start & End */}
         <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col">
-            <p className={`font-semibold mb-2 ${labelColor}`}>
+            <p className={`text-sm font-semibold mb-1 ${labelColor}`}>
               Registration Start
             </p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+              className={`${inputClasses} ${inputColor}`}
               selected={startDate}
               onChange={date => setStartDate(date)}
             />
           </div>
 
           <div className="flex flex-col">
-            <p className={`font-semibold mb-2 ${labelColor}`}>
+            <p className={`text-sm font-semibold mb-1 ${labelColor}`}>
               Registration End
             </p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+              className={`${inputClasses} ${inputColor}`}
               selected={endDate}
               onChange={date => setEndDate(date)}
             />
@@ -120,9 +126,11 @@ const AddMarathon = () => {
         {/* marathon Date & Distance */}
         <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col">
-            <p className={`font-semibold mb-2 ${labelColor}`}>Marathon Start</p>
+            <p className={`text-sm font-semibold mb-1 ${labelColor}`}>
+              Marathon Start
+            </p>
             <DatePicker
-              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+              className={`${inputClasses} ${inputColor}`}
               selected={marathonDate}
               onChange={date => setMarathonDate(date)}
             />
@@ -131,12 +139,12 @@ const AddMarathon = () => {
           <div className="flex flex-col">
             <label
               htmlFor="distance"
-              className={`font-semibold mb-2 ${labelColor}`}
+              className={`text-sm font-semibold mb-1 ${labelColor}`}
             >
               Running Distance
             </label>
             <select
-              className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300  ${inputColor}`}
+              className={`${inputClasses}  ${inputColor}`}
               defaultValue=""
               name="distance"
               id="distance"
@@ -156,15 +164,15 @@ const AddMarathon = () => {
         </div>
 
         {/* Location */}
-        <div className="mb-6 flex flex-col">
+        <div className="mb-4 flex flex-col">
           <label
             htmlFor="location"
-            className={`font-semibold mb-2 ${labelColor}`}
+            className={`text-sm font-semibold mb-1 ${labelColor}`}
           >
             Location
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+            className={`${inputClasses} ${inputColor}`}
             type="text"
             id="location"
             name="location"
@@ -174,12 +182,15 @@ const AddMarathon = () => {
         </div>
 
         {/* Image */}
-        <div className="mb-6 flex flex-col">
-          <label htmlFor="image" className={`font-semibold mb-2 ${labelColor}`}>
+        <div className="mb-4 flex flex-col">
+          <label
+            htmlFor="image"
+            className={`text-sm font-semibold mb-1 ${labelColor}`}
+          >
             Marathon Image
           </label>
           <input
-            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 ${inputColor}`}
+            className={`${inputClasses} ${inputColor}`}
             type="text"
             id="image"
             name="image"
@@ -189,15 +200,15 @@ const AddMarathon = () => {
         </div>
 
         {/* description */}
-        <div className="mb-6 flex flex-col">
+        <div className="mb-4 flex flex-col">
           <label
             htmlFor="description"
-            className={`font-semibold mb-2 ${labelColor}`}
+            className={`text-sm font-semibold mb-1 ${labelColor}`}
           >
             Description
           </label>
           <textarea
-            className={`w-full px-4 py-3 rounded-md border-[1.5px] focus:border-green outline-none transition-all duration-300 resize-none ${inputColor}`}
+            className={`${inputClasses} resize-none ${inputColor}`}
             id="description"
             name="description"
             placeholder="Write a short description about you marathon"
@@ -210,7 +221,7 @@ const AddMarathon = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-green text-light2 hover:bg-dark-green font-semibold px-12 py-2.5 rounded-md"
+            className="bg-green text-light2 hover:bg-dark-green text-sm font-semibold px-12 py-2 rounded-md"
           >
             Add
           </button>
