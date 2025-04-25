@@ -8,7 +8,6 @@ import { useAuthContext } from '../../Hooks/useAuthContext';
 import Container from '../../Layouts/Container';
 import logo from '../../assets/icons/logo.png';
 import userIcon from '../../assets/icons/user.png';
-import menuIcon from '../../assets/icons/menu.png';
 
 const Navbar = () => {
   const [lastYScroll, setLastYScroll] = useState(0);

@@ -20,7 +20,7 @@ const ApplySearch = ({ setApplications }) => {
     <div className="mb-6">
       <input
         onChange={handleSearch}
-        className={`px-3 py-1.5 border-2 border-[#6d9f78] rounded-lg outline-none ${
+        className={`px-3 py-1.5 border-2 border-[#6d9f78] rounded-md outline-none ${
           darkTheme ? 'bg-dark5 text-light2' : ''
         }`}
         type="text"
