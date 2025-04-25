@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   MdDone,
   MdLogout,
@@ -11,6 +11,7 @@ import {
 import { GoSidebarCollapse, GoSidebarExpand } from 'react-icons/go';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { IoHomeOutline } from 'react-icons/io5';
+import { AiOutlineUser } from 'react-icons/ai';
 
 import logo from '../../../assets/icons/logo.png';
 import { useAuthContext } from '../../../Hooks/useAuthContext';
@@ -34,6 +35,12 @@ const sideLinks = [
     title: 'My Apply',
     link: '/dashboard/my_apply',
     icon: <MdDone />,
+  },
+  {
+    id: '04',
+    title: 'My Profile',
+    link: '/dashboard/profile',
+    icon: <AiOutlineUser />,
   },
 ];
 const navLinks = [

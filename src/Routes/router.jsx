@@ -13,6 +13,7 @@ import MarathonDetails from '../Pages/MarathonDetails/MarathonDetails';
 import RegisterMarathon from '../Pages/RegisterMarathon/RegisterMarathon';
 import MainLayout from '../Layouts/MainLayout';
 import DashboardLayout from '../Layouts/DashboardLayout';
+import Profile from '../Pages/Dashboard/Pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           {
             path: 'my_apply',
             element: <MyApply />,
+          },
+          {
+            path: 'profile',
+            element: <Profile />,
           },
         ],
       },
