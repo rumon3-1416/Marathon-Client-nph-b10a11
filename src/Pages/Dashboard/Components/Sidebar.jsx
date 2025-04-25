@@ -101,7 +101,7 @@ const Sidebar = () => {
 
   return (
     <div className="min-h-screen max-h-screen sticky top-0 left-0 z-10">
-      <div className="h-full relative">
+      <div className="h-full relative border">
         <div
           ref={sideRef}
           className={`h-full backdrop-blur-md absolute md:static transition-all duration-300 ${
@@ -148,80 +148,84 @@ const Sidebar = () => {
             <div className="border-t border-green"></div>
 
             {/* Sidebar Body Starts */}
-            {/* Sidebar Links */}
-            <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
-              {sideLinks.map(sideLink => (
-                <SideLink
-                  key={sideLink.id}
-                  sideLink={sideLink}
-                  collapse={collapse}
-                />
-              ))}
-            </ul>
-            {/* Sidebar Body Ends */}
+            <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+              {/* Sidebar Links */}
+              <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
+                {sideLinks.map(sideLink => (
+                  <SideLink
+                    key={sideLink.id}
+                    sideLink={sideLink}
+                    collapse={collapse}
+                  />
+                ))}
+              </ul>
+              {/* Sidebar Body Ends */}
 
-            {/* Border */}
-            <div className="border-t border-green"></div>
+              {/* Border */}
+              <div className="border-t border-green"></div>
 
-            {/* Nav Links */}
-            <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
-              {navLinks.map(sideLink => (
-                <SideLink
-                  key={sideLink.id}
-                  sideLink={sideLink}
-                  collapse={collapse}
-                />
-              ))}
-            </ul>
-
-            {/* Border */}
-            <div className="border-t border-green"></div>
+              {/* Nav Links */}
+              <ul className={`text-sm font-medium py-4 flex flex-col gap-1`}>
+                {navLinks.map(sideLink => (
+                  <SideLink
+                    key={sideLink.id}
+                    sideLink={sideLink}
+                    collapse={collapse}
+                  />
+                ))}
+              </ul>
+            </div>
 
             {/* Sidebar Foot */}
             <div
-              className={`text-sm font-medium ps-3 py-4 flex flex-col gap-1 absolute bottom-0 inset-x-0 ${
+              className={`ps-3 absolute bottom-0 inset-x-0 ${
                 collapse ? 'pe-3' : 'pe-5'
               }`}
             >
-              {/* Theme */}
-              <button
-                onClick={() => {
-                  localStorage.setItem('darkTheme', darkTheme ? '' : true);
-                  setDarkTheme(!darkTheme);
-                }}
-                className={`text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
-                  collapse ? '' : 'md:px-3'
-                } ${
-                  darkTheme
-                    ? 'text-white hover:text-gray-800 hover:bg-white/90'
-                    : 'text-dark hover:text-light2 hover:bg-[#414141]'
-                }`}
-              >
-                <span className="text-xl">
-                  {darkTheme ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
-                </span>
-                <span
-                  className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+              {/* Border */}
+              <div className="border-t border-green"></div>
+
+              <div className={`text-sm font-medium py-4 flex flex-col gap-1`}>
+                {/* Theme */}
+                <button
+                  onClick={() => {
+                    localStorage.setItem('darkTheme', darkTheme ? '' : true);
+                    setDarkTheme(!darkTheme);
+                  }}
+                  className={`text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+                    collapse ? '' : 'md:px-3'
+                  } ${
+                    darkTheme
+                      ? 'text-white hover:text-gray-800 hover:bg-white/90'
+                      : 'text-dark hover:text-light2 hover:bg-[#414141]'
+                  }`}
                 >
-                  {darkTheme ? 'Light Theme' : 'Dark Theme'}
-                </span>
-              </button>
-              {/* Logout */}
-              <button
-                onClick={signOutUser}
-                className={`hover:text-light2 hover:bg-orange text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
-                  collapse ? '' : 'md:px-3'
-                } ${darkTheme ? 'text-white' : 'text-dark'}`}
-              >
-                <span className="text-xl">
-                  <MdLogout />
-                </span>
-                <span
-                  className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+                  <span className="text-xl">
+                    {darkTheme ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                  </span>
+                  <span
+                    className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+                  >
+                    {darkTheme ? 'Light Theme' : 'Dark Theme'}
+                  </span>
+                </button>
+                {/* Logout */}
+                <button
+                  onClick={signOutUser}
+                  className={`hover:text-light2 hover:bg-orange text-nowrap px-2 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
+                    collapse ? '' : 'md:px-3'
+                  } ${darkTheme ? 'text-white' : 'text-dark'}`}
                 >
-                  Log Out
-                </span>
-              </button>
+                  <span className="text-xl">
+                    <MdLogout />
+                  </span>
+                  <span
+                    className={`text-nowrap ${collapse ? 'hidden' : 'block'}`}
+                  >
+                    Log Out
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
